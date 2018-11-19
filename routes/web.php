@@ -15,10 +15,14 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('Home.home');
-});
+//ROUTES FOR HOME CONTROLLER
+Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
+Route::get('/committee', 'HomeController@committee');
+Route::get('/board', 'HomeController@board');
+Route::get('/products', 'HomeController@products');
 
+//
 Route::get('/board', function () {
 return view('Home.board');
 });

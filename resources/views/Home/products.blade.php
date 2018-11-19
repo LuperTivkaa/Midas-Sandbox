@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is a products view from the Home folder</h1>
-</body>
-</html>
+@extends('Layouts.app')
+@section('content')
+    <h1>Products</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat maiores totam, rerum nisi porro est fuga esse iste dolores in eius placeat minus beatae deleniti obcaecati aliquid fugit commodi quia.</p>
+@endsection

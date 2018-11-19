@@ -8,26 +8,31 @@ class HomeController extends Controller
 {
     //
     public function index (){
-        return view('Home.home');
+        $title ="Welcome To MIDAS Home";
+        return view('Home.home')->with('title',$title);
     }
     //about method
     public function about (){
-        return view('Home.about');
+        $title ="About MIDAS";
+        return view('Home.about')->with('title',$title);
     }
 
     //Steering Committtee
     public function committee (){
-        return view('Home.committee');
+        $title ="Steering Committee";
+        return view('Home.committee')->with('title',$title);
     }
 
     //Board
     public function board (){
-        return view('Home.board');
+        $title ="Board Members";
+        return view('Home.board')->with('title',$title);
     }
 
     //products
     public function products (){
-        return view('Home.products');
+        $title ="Our Products";
+        return view('Home.products')->with('title',$title);
     }
 
 }

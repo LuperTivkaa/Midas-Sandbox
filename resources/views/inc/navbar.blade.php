@@ -25,13 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="/about">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="/products">Products</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/committee">Steering Committee</a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="/board">Board</a>
                   </li>
                   {{-- LIST THAT DISPLAYS DROP DOWN MENU --}}
                   {{-- <li class="nav-item dropdown">

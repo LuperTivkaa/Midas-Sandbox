@@ -1,5 +1,74 @@
 @extends('Layouts.app')
 @section('content')
-    <h1>{{$title}}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, hic voluptates asperiores laudantium ipsa iste magni libero consectetur sed. Dicta delectus earum minima quibusdam iste quia ullam, amet voluptatibus obcaecati.</p>
+<div class="row">
+        <div class="col-sm-12 text-center">
+            <h4 class="display-1">MIDAS</h4>
+            <hr/>
+            <p class=" display-4 midas-banner-caption">Together, We Can Build The Future We Desire.</p>
+            <h6 class="lead">Desire, Innovate, Build</h6>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    {{-- <h1>Our Creed!</h1>
+    <h4 class="lead">Friendship, Team Work, Service </h4> --}}
+    <div class="row">
+        <div class="col-sm-2 text-capitalize">
+            {{-- empty div --}}
+        </div>
+        <div class="col-sm-8 text-center">
+            <img src="{{asset('images/Mission_Vision.png')}}" class="midas-responsive-img" />
+        </div>
+        <div class="col-sm-2 text-center">
+            {{-- empty div --}}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1 class="text-center">Our Products</h1>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>Loans</h4>
+            <p>
+                We have carefully loan products that are flexible, sustainable and painless that can help all members to access various financial services when eligible.
+                Our loan catalogue is made of long term, short term and emergency loans at various rates which serves the interest of our members.
+            </p>
+
+        </div>
+        <div class="col-md-4">
+            <h4>Bam</h4>
+            <p>
+                Our Bam is a targeted saving product designed to allow members of the cooperative save money towards recuurent expenditures like school during new academic savings.
+                The saving is not specifically for school fees but can also be applied to other areas of need.
+            </p>
+
+        </div>
+        <div class="col-md-4">
+            <h4>Fixed Deposits</h4>
+            <p>This is a product that is designed for a WIN-WIN situtation for us and depositors. Members are free to fixed their monies with us for a period of at least six (6) months at a pecentage flat rate that is determined by the exco  at intervals.</p>
+
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-sm-12">
+            <p><a href="#" class="btn btn-warning btn-lg">Learn More</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <h1>Built with Elegance</h1>
+            <h3 class="lead">...built for you and your lifestyle</h3>
+            <p>
+                At the heart of our products and services lies a deep understanding of our customers and cooperators' behaviour, their demographics and changing social lifestyle.
+                That is why we follow you wherever your lifestyle may take you, now is the time for the big idea whose time has come.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img src="{{asset('images/responsive.png')}}" class="midas-responsive-img" />
+        </div>
+    </div>
 @endsection

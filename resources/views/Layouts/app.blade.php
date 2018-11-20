@@ -19,7 +19,7 @@
             <footer>
                 <div class="row">
                     <div class="col-sm-6 col-md-6 col-lg-6">
-                        <h5>MIDAS Touch Multipurpose Cooperative Society Limited</h5>
+                        <h5 class="font-weight-bold">MIDAS Touch Multipurpose Cooperative Society Limited</h5>
                         <hr/>
                         <address>
                             Federal Medical Centre Makurdi,<br />
@@ -32,9 +32,13 @@
                         <p>&copy; MIDAS TOUCH</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">
-                    <h5>Social </h5>
+                    <h5 class="font-weight-bold">Social </h5>
                     <hr/>
-                        {{-- empty div --}}
+                        <ul class="list-unstyled">
+                            <li>Facebook</li>
+                            <li>Twitter</li>
+                            <li>Whatsapp</li>
+                        </ul>
                     </div>
                </div>
             </footer>

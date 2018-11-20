@@ -13,26 +13,27 @@ class HomeController extends Controller
     }
     //about method
     public function about (){
-        $title ="About MIDAS";
-        return view('Home.about')->with('title', $title);
+        //$title ="About MIDAS";
+       // return view('Home.about')->with('title', $title);
+        return view('Home.about');
     }
 
     //Steering Committtee
     public function committee (){
-        $title ="Steering Committee";
-        return view('Home.committee')->with('title', $title);
+        //$title ="Steering Committee";
+        return view('Home.committee');
     }
 
     //Board
     public function board (){
-        $title ="Board Members";
-        return view('Home.board')->with('title', $title);
+        //$title ="Board Members";
+        return view('Home.board');
     }
 
     //products
     public function products (){
-        $title = "Our Products";
-        return view('Home.products')->with('title',$title);
+        //$title = "Our Products";
+        return view('Home.products');
     }
 
 }

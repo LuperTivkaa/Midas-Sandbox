@@ -2,10 +2,13 @@
 @import 'customVariables';
 
 .midas-logo-styles {
-    width: 30px;
+    width: 200px;
     height:30px;
 }
 
 .midas-top-bar {
     background-color: $basic;
+    color: #000000;
+    font-weight:bolder;
+    font-size: 1.5rem;
 }

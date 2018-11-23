@@ -9,17 +9,20 @@
           </button>
         </div>
     </div> --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg midas-top-bar">
       <div class="container">
-        <a href="" class="navbar-brand">MIDAS TOUCH Multipurpose Cooperative Society Limited , Federal Centre Makurdi</a>
+        <a href="/" class="navbar-brand">
+          <img width="30" height="30" src="{{asset('images/logo2.svg')}}" alt="logo"> 
+          MIDAS Touch Multipurpose Cooperative Society Limited
+        </a>
       </div>
     </nav>
-
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">
-              <img class="" src="{{asset('images/logo2.png')}}" alt="logo">
-            </a>
+            {{-- <a class="navbar-brand" href="/">
+              <img class="midas-logo-styles" src="{{asset('images/logo.svg')}}" alt="logo">
+            </a> --}}
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

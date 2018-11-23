@@ -9,7 +9,7 @@
           </button>
         </div>
     </div> --}}
-    <nav class="navbar navbar-expand-lg midas-top-bar">
+    <nav class="navbar navbar-expand-sm midas-top-bar">
       <div class="container">
         <a href="/" class="navbar-brand">
           <img width="30" height="30" src="{{asset('images/logo2.svg')}}" alt="logo"> 
@@ -18,7 +18,7 @@
       </div>
     </nav>
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
         <div class="container">
             {{-- <a class="navbar-brand" href="/">
               <img class="midas-logo-styles" src="{{asset('images/logo.svg')}}" alt="logo">

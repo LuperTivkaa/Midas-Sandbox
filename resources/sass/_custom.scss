@@ -1,14 +1,30 @@
 //CUSTOM SASS
-@import 'customVariables';
+@import "customVariables";
 
 .midas-logo-styles {
     width: 200px;
-    height:30px;
+    height: 30px;
 }
 
 .midas-top-bar {
     background-color: $basic;
     color: #000000;
-    font-weight:bolder;
+    font-weight: bolder;
     font-size: 1.5rem;
+}
+
+.midas-nav {
+    color: $basic;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-decoration: none !important;
+}
+.midas-nav-bg {
+    background-color: $navbar-color;
+}
+.midas-active-link {
+    color: $basic;
+    border-left: #444 3px solid;
 }

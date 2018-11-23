@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="<link rel=" stylesheet " href="https://use.fontawesome.com/releases/v5.5.0/css/all.css
+        " integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU " crossorigin="anonymous ">">
+    <title>MIDAS APP</title>
 </head>
+
 <body>
     @include('inc.navbar')
     <div class="container">
-            
-            @yield('content')
+
+        @yield('content')
     </div>
     {{-- this the beginning of the footer section --}}
     <div class="container-fluid">
@@ -28,21 +32,23 @@
                             +234 081 189 014 11<br />
                             midastouch@gmail.com<br />
                         </address>
-                        
+
                         <p>&copy; MIDAS TOUCH</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">
-                    <h5 class="font-weight-bold">Social </h5>
-                    <hr/>
+                        <h5 class="font-weight-bold">Social </h5>
+                        <hr/>
                         <ul class="list-unstyled">
-                            <li>Facebook</li>
+                            <li><span><i class="fas fa-facebook"></i></span>Facebook</li>
                             <li>Twitter</li>
                             <li>Whatsapp</li>
+                            <i class="fab fa-facebook    "></i>
                         </ul>
                     </div>
-               </div>
+                </div>
             </footer>
         </div>
     </div>
 </body>
+
 </html>

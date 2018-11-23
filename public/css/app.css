@@ -10478,9 +10478,21 @@ a.text-dark:focus {
   font-size: 1.5rem;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.midas-nav {
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-decoration: none !important;
+}
+
+.midas-nav-bg {
+  background-color: #f50057;
+}
+
+.midas-active-link {
+  color: #ffffff;
+  border-left: #444 3px solid;
 }
 

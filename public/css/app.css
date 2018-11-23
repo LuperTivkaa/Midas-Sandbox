@@ -10466,6 +10466,18 @@ a.text-dark:focus {
   }
 }
 
+.midas-logo-styles {
+  width: 200px;
+  height: 30px;
+}
+
+.midas-top-bar {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

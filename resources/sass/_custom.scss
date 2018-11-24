@@ -28,3 +28,21 @@
     color: $basic;
     border-left: #444 3px solid;
 }
+
+.slider-height{
+    height:450px;
+}
+.carousel-bgimage{
+    background: url("../../public/images/carousel-1.jpg");
+    background-size: cover;
+}
+
+.carousel-bgimage2{
+    background: url("../../public/images/carousel-2.jpg");
+    background-size: cover;
+}
+
+.carousel-bgimage3{
+    background: url("../../public/images/carousel-3.jpg");
+    background-size: cover;
+}

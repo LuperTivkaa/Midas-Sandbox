@@ -10496,3 +10496,22 @@ a.text-dark:focus {
   border-left: #444 3px solid;
 }
 
+.slider-height {
+  height: 450px;
+}
+
+.carousel-bgimage {
+  background: url(/images/carousel-1.jpg?bee1c29cef236c0800c4f63484f5541e);
+  background-size: cover;
+}
+
+.carousel-bgimage2 {
+  background: url(/images/carousel-2.jpg?fa3a41376bee4c2f2ee5ae4d687a4dec);
+  background-size: cover;
+}
+
+.carousel-bgimage3 {
+  background: url(/images/carousel-3.jpg?4cf4a0c4e18f85cdb1be4d2f247b5c9a);
+  background-size: cover;
+}
+

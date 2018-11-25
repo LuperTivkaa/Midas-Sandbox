@@ -20,7 +20,7 @@
         @yield('content')
     </div>
     {{-- this the beginning of the footer section --}}
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="container">
             <footer>
                 <div class="row">

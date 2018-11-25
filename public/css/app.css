@@ -10515,3 +10515,7 @@ a.text-dark:focus {
   background-size: cover;
 }
 
+.cards-img {
+  height: 450px;
+}
+

@@ -8,9 +8,9 @@
             <li data-target="#midas-slider" data-slide-to="2"></li>
         </ol>
         {{-- put carousel inner class --}}
-        <div class="carousel-inner">
+        <div class="carousel-inner midas-showcase">
             <div class="carousel-item slider-height carousel-bgimage active">
-                <div class="container">
+                <div class="container primary-overlay">
                     <div class="carousel-caption d-none d-sm-block text-right mb-5">
                         <h1 class="display-1">MIDAS TOUCH</h1>
                         <p class=" display-4">Together, We Can Build The Future We Desire.</p>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="carousel-item slider-height carousel-bgimage2">
-                <div class="container">
+                <div class="container primary-overlay">
                     <div class="carousel-caption d-none d-sm-block text-left mb-5">
                         <h1 class="display-4">MIDAS TOUCH Multipurpose Cooperative Society</h1>
                         <h3 class="lead">It's An Idea...</h3>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="carousel-item slider-height carousel-bgimage3">
-                <div class="container">
+                <div class="container primary-overlay">
                     <div class="carousel-caption d-none d-sm-block mb-5">
                         <h1 class="display-3">Teamwork & Friendship</h1>
                         <p class="lead">Desire, Innovate, Build</p>

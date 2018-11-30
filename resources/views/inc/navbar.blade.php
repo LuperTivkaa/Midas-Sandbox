@@ -14,9 +14,8 @@
 <nav class="navbar navbar-expand-sm midas-top-bar">
   <div class="container">
     <a href="/" class="navbar-brand">
-          <img width="30" height="30" src="{{asset('images/logo2.svg')}}" alt="logo"> 
-          MIDAS Touch Multipurpose Cooperative Society Limited
-        </a>
+          <img  height="90"  src="{{asset('images/logo2.png')}}" alt="logo"> 
+    </a>
   </div>
 </nav>
 

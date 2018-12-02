@@ -13,8 +13,11 @@
 </div> --}}
 <nav class="navbar navbar-expand-sm midas-top-bar">
   <div class="container">
-    <a href="/" class="navbar-brand">
-          <img  height="90"  src="{{asset('images/logo2.png')}}" alt="logo"> 
+    <a href="/" class="navbar-brand d-none d-sm-none d-md-block d-lg-block d-xl-block">
+          <img  class=" " height="90"  src="{{asset('images/logo2.png')}}" alt="logo"> 
+    </a>
+    <a href="/" class="navbar-brand d-sm-block d-md-none d-lg-none d-xl-none">
+      <img height="30"  src="{{asset('images/logo.png')}}" alt="logo"> 
     </a>
   </div>
 </nav>

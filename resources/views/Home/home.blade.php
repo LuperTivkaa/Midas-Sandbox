@@ -123,7 +123,7 @@
 
     <div class="row">
         <div class="col-md-7">
-            <h1 class="display-1">Built with Elegance</h1>
+            <h1 class="display-1 midas-small-screen">Built with Elegance</h1>
             <h3 class="text-muted">...built for you and your lifestyle</h3>
             <p>
                 At the heart of our products and services lies a deep understanding of our customers and cooperators' behaviour, their demographics
@@ -140,7 +140,7 @@
 
 <section id="testimonials" class="p-4 bg-success text-white mb-3">
     <div class="container">
-        <h2 class="text-center display-3">Testimonials</h2>
+        <h2 class="text-center display-3 midas-small-screen">Testimonials</h2>
         <div class="row text-center">
             <div class="col">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -149,9 +149,9 @@
                             <div>
                                 <blockquote class="blockquote">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing.
+                                        MIDAS TOUCH is built on trust, fairness and equity, keep the head up.
                                     </p>
-                                    <footer class="blockquote-footer">John Doe From
+                                    <footer class="blockquote-footer">Tali Eunice
                                         <cite title="Admin Dept">Admin Dept</cite>
                                     </footer>
                                 </blockquote>
@@ -161,10 +161,10 @@
                             <div>
                                 <blockquote class="blockquote">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing.
+                                        MIDAS is home and it defines what it means to run a good 21st century organization.
                                     </p>
-                                    <footer class="blockquote-footer">John Doe From
-                                        <cite title="Admin Dept">Admin Dept</cite>
+                                    <footer class="blockquote-footer">Tivkaa Manasseh Luper,
+                                        <cite title="Admin Dept">FMC Staff</cite>
                                     </footer>
                                 </blockquote>
                             </div>
@@ -173,23 +173,23 @@
                             <div>
                                 <blockquote class="blockquote">
                                     <p class="mb-0">
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing.
+                                        I am glad I have a voice in this cooperative society, something rarely found else where
                                     </p>
-                                    <footer class="blockquote-footer">John Doe From
-                                        <cite title="Admin Dept">Admin Dept</cite>
+                                    <footer class="blockquote-footer">Isaiah Azende,
+                                        <cite title="Admin Dept">Finance Dept</cite>
                                     </footer>
                                 </blockquote>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    {{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="sr-only">Previous</span>
                             </a>
                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
                               <span class="sr-only">Next</span>
-                            </a>
+                            </a> --}}
                 </div>
                 {{--
                 <div class="test-sl">

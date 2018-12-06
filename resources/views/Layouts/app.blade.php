@@ -10,7 +10,7 @@
     <link href="{{asset('fontawesome-assets/css/brands.css')}}" rel="stylesheet">
     <link href="{{asset('fontawesome-assets/css/solid.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <title>MIDAS APP</title>
+    <title>MIDAS - {{$title}}</title>
 </head>
 
 <body>

@@ -33,6 +33,11 @@ class HomeController extends Controller
     public function products (){
         $title = "Our Products";
         return view('Home.products')->with('title',$title);
+    }
+    //Test products
+    public function testproducts (){
+        $title = "Our Productsyt";
+        return view('Home.products')->with('title',$title);
 
  }
 }

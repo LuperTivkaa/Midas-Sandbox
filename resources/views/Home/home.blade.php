@@ -82,7 +82,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container products">
     <h1 class="text-center  display-2">Our Products</h1>
 
     <div class="row text-center">
@@ -90,19 +90,19 @@
             <i class="fas fa-box fa-3x"></i>
             <h4 class="text-muted">Loans</h4>
             <p>
-                We have carefully loan products that are flexible, sustainable and painless that can help all members to access various financial
+                We have crafted loan products that are flexible, sustainable and painless that can help all members to access various financial
                 services when eligible. Our loan catalogue is made of long term, short term and emergency loans at various
-                rates which serves the interest of our members.
+                rates.
             </p>
 
         </div>
         <div class="col-md-4">
             <i class="fab fa-accusoft fa-3x"></i>
-            <h4 class="text-muted">Bam</h4>
+            <h4 class="text-muted">Targeted Savings</h4>
             <p>
-                Our Bam is a targeted saving product designed to allow members of the cooperative save money towards recuurent expenditures
-                like school during new academic savings. The saving is not specifically for school fees but can also be applied
-                to other areas of need.
+                This is a targeted saving product designed to allow members of the cooperative save money towards recurrent expenditures
+                like school fees during new academic sessions. The saving is not specifically for school fees but can also
+                be applied to other areas of need.
             </p>
 
         </div>
@@ -138,94 +138,93 @@
 </div>
 
 
-<section id="testimonials" class="p-4 bg-success text-white mb-3">
-    <div class="container">
-        <h2 class="text-center display-3 midas-small-screen">Testimonials</h2>
-        <div class="row text-center">
-            <div class="col">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div>
-                                <blockquote class="blockquote">
-                                    <p class="mb-0">
-                                        MIDAS TOUCH is built on trust, fairness and equity, keep the head up.
-                                    </p>
-                                    <footer class="blockquote-footer">Tali Eunice
-                                        <cite title="Admin Dept">Admin Dept</cite>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <blockquote class="blockquote">
-                                    <p class="mb-0">
-                                        MIDAS is home and it defines what it means to run a good 21st century organization.
-                                    </p>
-                                    <footer class="blockquote-footer">Tivkaa Manasseh Luper,
-                                        <cite title="Admin Dept">FMC Staff</cite>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <blockquote class="blockquote">
-                                    <p class="mb-0">
-                                        I am glad I have a voice in this cooperative society, something rarely found else where
-                                    </p>
-                                    <footer class="blockquote-footer">Isaiah Azende,
-                                        <cite title="Admin Dept">Finance Dept</cite>
-                                    </footer>
-                                </blockquote>
-                            </div>
+
+<div class="container p-4  mb-3">
+    <h2 class="text-center display-3 midas-small-screen">Testimonials</h2>
+    <div class="row text-center">
+        <div class="col">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div>
+                            <blockquote class="blockquote">
+                                <p class="mb-0">
+                                    MIDAS TOUCH is built on trust, fairness and equity, keep the head up.
+                                </p>
+                                <footer class="blockquote-footer">Tali Eunice
+                                    <cite title="Admin Dept">Admin Dept</cite>
+                                </footer>
+                            </blockquote>
                         </div>
                     </div>
-                    {{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <div class="carousel-item">
+                        <div>
+                            <blockquote class="blockquote">
+                                <p class="mb-0">
+                                    MIDAS is home and it defines what it means to run a good 21st century organization.
+                                </p>
+                                <footer class="blockquote-footer">Tivkaa Manasseh Luper,
+                                    <cite title="Admin Dept">FMC Staff</cite>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div>
+                            <blockquote class="blockquote">
+                                <p class="mb-0">
+                                    I am glad I have a voice in this cooperative society, something rarely found else where
+                                </p>
+                                <footer class="blockquote-footer">Isaiah Azende,
+                                    <cite title="Admin Dept">Finance Dept</cite>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                {{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                               <span class="sr-only">Previous</span>
                             </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
                               <span class="sr-only">Next</span>
                             </a> --}}
-                </div>
-                {{--
-                <div class="test-sl">
-                    <div>
-                        <blockquote class="blockquote">
-                            <p class="mb-0">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing.
-                            </p>
-                            <footer class="blockquote-footer">John Doe From
-                                <cite title="Admin Dept">Admin Dept</cite>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div>
-                        <blockquote class="blockquote">
-                            <p class="mb-0">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing.
-                            </p>
-                            <footer class="blockquote-footer">Kane Dow From
-                                <cite title="Nursing Dept">Nursing Dept</cite>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div>
-                        <blockquote class="blockquote">
-                            <p class="mb-0">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing.
-                            </p>
-                            <footer class="blockquote-footer">John Smith From
-                                <cite title="Admin Dept">Finance Dept</cite>
-                            </footer>
-                        </blockquote>
-                    </div>
-                </div> --}}
             </div>
+            {{--
+            <div class="test-sl">
+                <div>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing.
+                        </p>
+                        <footer class="blockquote-footer">John Doe From
+                            <cite title="Admin Dept">Admin Dept</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+                <div>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing.
+                        </p>
+                        <footer class="blockquote-footer">Kane Dow From
+                            <cite title="Nursing Dept">Nursing Dept</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+                <div>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing.
+                        </p>
+                        <footer class="blockquote-footer">John Smith From
+                            <cite title="Admin Dept">Finance Dept</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div> --}}
         </div>
     </div>
-</section>
+</div>
 @endsection

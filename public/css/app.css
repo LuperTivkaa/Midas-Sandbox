@@ -10532,6 +10532,19 @@ a.text-dark:focus {
   height: 450px;
 }
 
+.products {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffed4abe), to(#f69b3fc4));
+  background-image: linear-gradient(to right bottom, #ffed4abe, #f69b3fc4);
+  background-size: cover;
+  background-position: center;
+}
+
+.myfooter {
+  background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
+  background-size: cover;
+  background-position: top;
+}
+
 @media (max-width: 767.98px) {
   .midas-small-screen {
     font-size: 1.3rem;

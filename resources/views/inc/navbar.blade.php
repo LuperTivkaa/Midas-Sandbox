@@ -45,7 +45,7 @@
           <a class="midas-nav" href="/products">Products</a>
         </li>
         <li class="nav-item">
-          <a class="midas-nav" href="/committee">Steering Committee</a>
+          <a class="midas-nav" href="/committee">Committee</a>
         </li>
         <li class="nav-item">
           <a class="midas-nav" href="/board">Board</a>

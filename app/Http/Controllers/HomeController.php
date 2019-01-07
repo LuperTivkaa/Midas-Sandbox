@@ -34,4 +34,16 @@ class HomeController extends Controller
         $title = "Our Products";
         return view('Home.products')->with('title',$title);
     }
+
+//news
+public function news (){
+    $title = "News Update";
+    return view('Home.news')->with('title',$title);
+}
+
+//gallery
+public function gallery (){
+    $title = "Gallery";
+    return view('Home.gallery')->with('title',$title);
+}
 }

@@ -24,19 +24,3 @@ Route::get('/products', 'HomeController@products');
 Route::get('/news', 'HomeController@news');
 Route::get('/gallery', 'HomeController@gallery');
 
-//
-// Route::get('/board', function () {
-// return view('Home.board');
-// });
-
-// Route::get('/committee', function () {
-// return view('Home.committee');
-// });
-
-// Route::get('/about', function () {
-// return view('Home.about');
-// });
-
-// Route::get('/products', function () {
-// return view('Home.products');
-// });

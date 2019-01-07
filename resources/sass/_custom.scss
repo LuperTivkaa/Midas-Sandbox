@@ -1,4 +1,4 @@
-//CUSTOM SASS
+//CUSTOM SASS FOR OFFICIAL WEBSITE
 @import "customVariables";
 
 .midas-logo-styles {
@@ -72,8 +72,7 @@
     //clip-path: polygon(0 0, 100% 0, 100% 300px, 0 100%);
 }
 .myfooter {
-    background-image:
-        url("../../public/images/bg.jpg");
+    background-image: url("../../public/images/bg.jpg");
     background-size: cover;
     background-position: top;
 }

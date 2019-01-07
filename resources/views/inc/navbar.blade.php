@@ -50,6 +50,12 @@
         <li class="nav-item">
           <a class="midas-nav" href="/board">Board</a>
         </li>
+        <li class="nav-item">
+          <a class="midas-nav" href="/news">Press</a>
+        </li>
+        <li class="nav-item">
+          <a class="midas-nav" href="/gallery">Gallery</a>
+        </li>
         {{-- LIST THAT DISPLAYS DROP DOWN MENU --}} {{--
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"

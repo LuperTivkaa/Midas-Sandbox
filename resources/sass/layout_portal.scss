@@ -1,0 +1,31 @@
+//layout container
+.midas-container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: $dash-grey-light2;
+    box-shadow: $boxshadow;
+    min-height: 50rem;
+}
+
+.header {
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: $dash-grey-light2;
+    display: flex;
+    justify-content: space-between; //aligns header components among the main axis
+    align-items: center; // aligns header components along the cross axis
+}
+
+.midas-content {
+    display: flex;
+}
+
+.sidebar {
+    background-color: $grey-dark1;
+    flex: 0 0 18%; //short cut for flex basis for setting with 1st param -grow,second shrink, width
+}
+.midas-view {
+    background-color: #fff;
+    background-color: orangered;
+    flex: 1; //grow the element to fill the available space for it
+}

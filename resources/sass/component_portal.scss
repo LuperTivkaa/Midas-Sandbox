@@ -1,0 +1,55 @@
+///////////////////////////////////////
+//LOGO
+.logo {
+    height: 3.25rem;
+    margin-left: 3rem; //left margin of the logo
+}
+
+///////////////////////////////////////
+//SEARCH BOX
+
+.search {
+    flex: 0 0 40%; //setting the width of the search box;
+
+    &__input {
+        font-family: inherit; //does not by default inherit font of the global document
+        font-size: inherit; //does not by default inherit font-size of the global document
+        color: inherit;
+        background-color: $dash-grey-light2;
+        border: none; //no border
+        padding: 0.7rem 2rem; //20px
+        border-radius: 1500px;
+    }
+
+    &__button {
+    }
+
+    &__icon {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+///////////////////////////////////////
+//USER NAV
+.user-nav {
+    &__icon-box {
+    }
+    &__icon {
+        height: 2.25rem;
+        width: 2.25rem;
+    }
+
+    &__notification {
+    }
+
+    &__user {
+    }
+
+    &__user-photo {
+        height: 3.75rem;
+        border-radius: 50%;
+    }
+
+    &__user-name {
+    }
+}

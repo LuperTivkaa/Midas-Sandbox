@@ -24,3 +24,5 @@ Route::get('/products', 'HomeController@products');
 Route::get('/news', 'HomeController@news');
 Route::get('/gallery', 'HomeController@gallery');
 
+//dashobard routes
+Route::get('/Dashboard/home','DashboardController@index');

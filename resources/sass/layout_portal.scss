@@ -24,9 +24,13 @@
 .sidebar {
     background-color: $grey-dark1;
     flex: 0 0 18%; //short cut for flex basis for setting with 1st param -grow,second shrink, width
+    //pushing the legal text to the bottom
+    flex-direction: column; //used to the change the direction of the main axis from left to right To top to bottom
+    justify-content: space-between;
 }
 .midas-view {
     background-color: #fff;
-    background-color: orangered;
+    background-color: orangered; //test only
+    height: 80rem; //increase the height of the midas view content for test purpose only
     flex: 1; //grow the element to fill the available space for it
 }

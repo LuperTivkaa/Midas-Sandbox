@@ -1,4 +1,6 @@
 ///////////////////////////////////////
+//Beginning of the header section //////
+
 //LOGO
 .logo {
     height: 3.25rem;
@@ -35,7 +37,7 @@
         //styling the placeholder text
         &::-webkit-input-placeholder {
             font-weight: 100;
-            color: $dash-grey-light3;
+            color: $dash-grey-dark3;
         }
     }
 
@@ -58,7 +60,7 @@
     &__icon {
         height: 2rem;
         width: 2rem;
-        fill: $dash-grey-dark4; // changing the color of the magnifying icon in the search
+        fill: $dash-grey-dark2; // changing the color of the magnifying icon in the search
     }
 }
 ///////////////////////////////////////
@@ -68,8 +70,19 @@
     display: flex; //turning a flex item to a flex container
     align-items: center;
 
-    //selecting child elements of the parent
-    & + {
+    &__icon-box {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    &__icon-box:hover {
+        background-color: $dash-grey-light2;
+    }
+
+    &__user {
         padding: 0 2rem;
         cursor: pointer;
         height: 100%;
@@ -77,17 +90,9 @@
         align-items: center;
     }
 
-    //background on hover
-    & + {
+    &__user:hover {
         background-color: $dash-grey-light2;
     }
-
-    &__icon-box {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
     &__icon {
         height: 2.25rem;
         width: 2.25rem;
@@ -99,18 +104,15 @@
         height: 1.75rem;
         width: 1.75rem;
         border-radius: 50%;
-        background-color: $dash-primary;
+        background-color: $dash-primary1;
         color: #fff;
         position: absolute;
         top: 1.5rem;
         right: 1.1rem;
-        //Note that flex box works on text also; used to centre text in the notification
+        // //Note that flex box works on text also; used to centre text in the notification
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    &__user {
     }
 
     &__user-photo {
@@ -120,5 +122,32 @@
     }
 
     &__user-name {
+        font-weight: bold;
     }
+}
+
+///End header section////////
+
+//Beginning of the side naviagtion
+
+.side-nav {
+    &__item {
+    }
+
+    &__link {
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}
+///End side navigation section////////
+
+//begin legal text///
+.legal {
+    font-size: 1.2rem;
+    color: $dash-grey-light4;
+    text-align: center;
+    padding: 2.5rem;
 }

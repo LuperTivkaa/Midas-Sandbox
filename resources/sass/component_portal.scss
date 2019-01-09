@@ -2,7 +2,7 @@
 //LOGO
 .logo {
     height: 3.25rem;
-    margin-left: 3rem; //left margin of the logo
+    margin-left: 2rem; //left margin of the logo
 }
 
 ///////////////////////////////////////
@@ -64,14 +64,50 @@
 ///////////////////////////////////////
 //USER NAV
 .user-nav {
-    &__icon-box {
+    align-self: stretch; //allows this flex item to fill the entire header apart from other item
+    display: flex; //turning a flex item to a flex container
+    align-items: center;
+
+    //selecting child elements of the parent
+    & + {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
+
+    //background on hover
+    & + {
+        background-color: $dash-grey-light2;
+    }
+
+    &__icon-box {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
     &__icon {
         height: 2.25rem;
         width: 2.25rem;
+        fill: $dash-grey-dark2;
     }
 
     &__notification {
+        font-size: 0.8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: $dash-primary;
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
+        //Note that flex box works on text also; used to centre text in the notification
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__user {
@@ -80,6 +116,7 @@
     &__user-photo {
         height: 3.75rem;
         border-radius: 50%;
+        margin-right: 1rem;
     }
 
     &__user-name {

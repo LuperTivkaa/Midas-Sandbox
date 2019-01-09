@@ -36,8 +36,65 @@
     {{-- end of header part --}} {{-- wrapper for sidebar --}}
     <div class="midas-content">
         <nav class="sidebar">
-            navigation
+            <ul class="side-nav">
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                        <svg class="side-nav__icon">
+                                <use xlink:href="{{asset('images/sprite.svg#icon-home')}}"></use>
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                        <svg class="side-nav__icon">
+                                <use xlink:href="{{asset('images/sprite.svg#icon-people')}}"></use>
+                        </svg>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                        <svg class="side-nav__icon">
+                                <use xlink:href="{{asset('images/sprite.svg#icon-database')}}"></use>
+                        </svg>
+                        <span>Contributions</span>
+                    </a>
+                </li>
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                        <svg class="side-nav__icon">
+                                <use xlink:href="{{asset('images/sprite.svg#icon-feather')}}"></use>
+                        </svg>
+                        <span>Targeted Savings</span>
+                    </a>
+                </li>
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                            <svg class="side-nav__icon">
+                                    <use xlink:href="{{asset('images/sprite.svg#icon-layers')}}"></use>
+                            </svg>
+                            <span>Loans</span>
+                        </a>
+                </li>
+                <li class="side-nav__items">
+                    <a href="#" class="side-nav__link">
+                            <svg class="side-nav__icon">
+                                    <use xlink:href="{{asset('images/sprite.svg#icon-shopping_cart')}}"></use>
+                            </svg>
+                            <span>Products Scheme</span>
+                        </a>
+                </li>
+            </ul>
+            <div class="legal">
+                &copy; 2019 by Midas. All rights reserved.
+            </div>
         </nav>
+
+
+
+
+
         <main class="midas-view">
             midas content view
         </main>

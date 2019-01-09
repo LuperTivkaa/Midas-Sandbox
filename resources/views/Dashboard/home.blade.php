@@ -37,7 +37,7 @@
     <div class="midas-content">
         <nav class="sidebar">
             <ul class="side-nav">
-                <li class="side-nav__items">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
                         <svg class="side-nav__icon">
                                 <use xlink:href="{{asset('images/sprite.svg#icon-home')}}"></use>
@@ -45,7 +45,7 @@
                         <span>Home</span>
                     </a>
                 </li>
-                <li class="side-nav__items">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <svg class="side-nav__icon">
                                 <use xlink:href="{{asset('images/sprite.svg#icon-people')}}"></use>
@@ -53,37 +53,37 @@
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="side-nav__items">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <svg class="side-nav__icon">
                                 <use xlink:href="{{asset('images/sprite.svg#icon-database')}}"></use>
                         </svg>
-                        <span>Contributions</span>
+                        <span>Savings</span>
                     </a>
                 </li>
-                <li class="side-nav__items">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <svg class="side-nav__icon">
                                 <use xlink:href="{{asset('images/sprite.svg#icon-feather')}}"></use>
                         </svg>
-                        <span>Targeted Savings</span>
+                        <span>Savings Plus</span>
                     </a>
                 </li>
-                <li class="side-nav__items">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                             <svg class="side-nav__icon">
                                     <use xlink:href="{{asset('images/sprite.svg#icon-layers')}}"></use>
                             </svg>
                             <span>Loans</span>
-                        </a>
+                    </a>
                 </li>
-                <li class="side-nav__items">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                             <svg class="side-nav__icon">
                                     <use xlink:href="{{asset('images/sprite.svg#icon-shopping_cart')}}"></use>
                             </svg>
-                            <span>Products Scheme</span>
-                        </a>
+                            <span>Schemes</span>
+                    </a>
                 </li>
             </ul>
             <div class="legal">

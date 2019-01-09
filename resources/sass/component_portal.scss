@@ -136,19 +136,66 @@
     margin-top: 3.5rem;
 
     &__item {
+        position: relative;
+
+        // //add margin bottom except on the last element
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
     }
 
-    &__link {
+    //Add a before pseudo  element to have the hover effect
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: $dash-primary1;
+        //does d scale on all sides while scale(y) is on the vertical, from top to bottom
+        transform: scaleY(0);
+        // NOTE again that transform-origin starts from the center, we can change so many settings here
+        // setting properties on the transform 2nd param is delay
+        transition: transform 0.2s, width 0.4s cubic-bezier(1, 0.1) 0.2s,
+            background-color 0.1s;
+    }
+    // show the before element on hover
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+    //add bg color for the before pseudo element on active state
+    &__item:active::before {
+        background-color: $dash-primary2;
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: $dash-grey-light1;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block; // use inline-block also
+        padding: 1.5rem 3rem;
+        display: flex;
+        align-items: center;
+        position: relative; // used for the z-index
+        z-index: 10;
+        // // align the icons and the link text in centre
     }
 
     &__icon {
         width: 1.75rem;
         height: 1.75rem;
+        margin-right: 2rem;
+        fill: currentColor; //$dash-grey-light1;
+        // currentColor is the color of the parent element or the current element //$dash-grey-light1;
     }
 }
-///End side navigation section////////
+// /End side navigation section////////
 
-//begin legal text///
+// begin legal text///
 .legal {
     font-size: 1.2rem;
     color: $dash-grey-light4;

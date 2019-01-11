@@ -93,6 +93,23 @@
 
 
 
+        <main class="midas-view">
+            <div class="gallery">
+                <figure class="gallery__item">
+                    <img src="{{asset('images/midas-product-danger.png')}}" alt="photo" class="gallery__photo">
+                </figure>
+                <figure class="gallery__item">
+                    <img src="{{asset('images/midas-product-light.png')}}" alt="photo" class="gallery__photo">
+                </figure>
+                <figure class="gallery__item">
+                    <img src="{{asset('images/midas-product-danger.png')}}" alt="photo" class="gallery__photo">
+                </figure>
+            </div>
+
+            <div class="overview">
+                <h1 class="overview__heading">
+                    Total Savings N 1,234,345.00
+                </h1>
 
 
         <main class="midas-view">

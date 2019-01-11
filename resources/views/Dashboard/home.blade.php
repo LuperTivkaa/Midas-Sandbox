@@ -33,7 +33,7 @@
             </div>
         </nav>
     </header>
-    {{-- end of header part --}} {{-- wrapper for sidebar --}}
+    {{-- end of header part --}}
     <div class="midas-content">
         <nav class="sidebar">
             <ul class="side-nav">
@@ -146,6 +146,6 @@
             </div>
         </main>
     </div>
-    {{-- end wrapper for side bar --}}
+
 </div>
 @endsection

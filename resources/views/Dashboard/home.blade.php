@@ -112,8 +112,38 @@
                 </h1>
 
 
-        <main class="midas-view">
-            midas content view
+                <div class="overview__stars">
+                    <svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
+                    </svg>
+                    <svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
+                    </svg>
+                    <svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
+                    </svg>
+                    <svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
+                    </svg>
+                    <svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
+                    </svg>
+                </div>
+
+
+                <div class="overview__location">
+                    <svg class="overview__icon-location">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-location-pin')}}"></use> 
+                       
+                    </svg>
+                    <button class="btn-inline">link me to somewhere</button>
+                </div>
+
+                <div class="overview__rating">
+                    <div class="overview__rating-average">8.9</div>
+                    <div class="overview__rating-count">500 votes</div>
+                </div>
+            </div>
         </main>
     </div>
     {{-- end wrapper for side bar --}}

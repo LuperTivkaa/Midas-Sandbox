@@ -33,3 +33,27 @@
     background-color: #fff;
     flex: 1; //grow the element to fill the available space for it
 }
+
+.detail {
+    font-size: 1.4rem;
+    display: flex; //ensures that items are displayed side by side
+    padding: 4.5rem;
+    background-color: $dash-grey-light1;
+    border-bottom: $border-line;
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: $shadow-light;
+    padding: 3rem;
+    flex: 0 0 60%; //occupies 60% of the available width
+    margin-right: 4.5rem;
+}
+.user-reviews {
+    flex: 1; //occupies the remaining space
+
+    //change the display to center the reviews button
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

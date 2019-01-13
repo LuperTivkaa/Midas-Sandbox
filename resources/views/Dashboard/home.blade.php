@@ -144,8 +144,93 @@
                     <div class="overview__rating-count">500 votes</div>
                 </div>
             </div>
+
+            <div class="detail">
+                <div class="description">
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, velit nemo! Aperiam cum reprehenderit
+                        unde velit dolorum minima? Cum repellat enim assumenda eaque quasi eveniet nulla mollitia accusamus
+                        libero similique?
+                    </p>
+
+                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, velit nemo! Aperiam cum reprehenderit
+                        unde velit dolorum minima? Cum repellat enim assumenda eaque quasi eveniet nulla mollitia accusamus
+                        libero similique?
+                    </p>
+
+                    <ul class="list">
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                        <li class="list__item">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+                    </ul>
+
+                    <div class="recommend">
+                        <p class="recommend__count">
+                            Lucy and 3 other friends recommend this service
+                        </p>
+                        <div class="recommend__friends">
+                            <img src="{{asset('images/ternenge.jpg')}}" alt="" class="recommend__photo">
+                            <img src="{{asset('images/sesugh.jpg')}}" alt="" class="recommend__photo">
+                            <img src="{{asset('images/edigah.jpg')}}" alt="" class="recommend__photo">
+                            <img src="{{asset('images/andy.jpg')}}" alt="" class="recommend__photo">
+                            <img src="{{asset('images/apaa.jpg')}}" alt="" class="recommend__photo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-reviews">
+                    <figure class="review">
+                        <blockquote class="review__text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, architecto.
+                        </blockquote>
+                        <figcaption class="review__user">
+                            <img src="{{asset('images/ternenge.jpg')}}" alt="review photo" class="review__photo">
+                            <div class="review__user-box">
+                                <p class="review__user-name">Ternenge Torough</p>
+                                <p class="review__user-date">Feb 23rd, 2019</p>
+                            </div>
+                            <div class="review__rating">
+                                7.9
+                            </div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="review">
+                        <blockquote class="review__text">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, architecto.
+                        </blockquote>
+                        <figcaption class="review__user">
+                            <img src="{{asset('images/andy.jpg')}}" alt="review photo" class="review__photo">
+                            <div class="review__user-box">
+                                <p class="review__user-name">Shimakaa Iorlumun</p>
+                                <p class="review__user-date">Feb 23rd, 2019</p>
+                            </div>
+                            <div class="review__rating">
+                                9.9
+                            </div>
+                        </figcaption>
+                    </figure>
+
+                    <button class="btn-inline">
+                        Show All <span>&rarr;</span>
+                    </button>
+
+                </div>
+
+            </div>
+            <div class="cta">
+                <h2 class="cta__book-now">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet reiciendis porro architecto, officia aperiam quibusdam.
+                </h2>
+                <button class="btn">
+                    Book Now  
+                </button>
+            </div>
         </main>
     </div>
-
 </div>
 @endsection

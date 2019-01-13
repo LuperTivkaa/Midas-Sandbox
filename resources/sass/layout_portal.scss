@@ -11,7 +11,7 @@
     font-size: 1.4rem;
     height: 7rem;
     background-color: #fff;
-    border-bottom: 1px solid $dash-grey-light2;
+    border-bottom: $border-line;
     display: flex;
     justify-content: space-between; //aligns header components among the main axis
     align-items: center; // aligns header components along the cross axis

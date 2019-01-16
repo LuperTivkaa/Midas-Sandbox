@@ -41,4 +41,27 @@
     Let me conclude by asking everyone to join us in thanking God for giving us a Vision that has the potential of attracting
     all and sundry to save with us. God bless us all.
 </p>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="form-group">
+            <label for="mylmp">LMP</label>
+            <input type="text" class="form-control mm" placeholder="LMP Date">
+        </div>
+        <div class="form-group">
+            <label for="EDD">EDD</label>
+            <input type="text" class="form-control myedd" id="EDD" placeholder="EDD">
+            <span id="ff"></span>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="form-group">
+            <label for="EGA">EGA</label>
+            <input type="text" class="form-control" id="EGA" placeholder="EGA">
+        </div>
+        <div class="form-group">
+            <label for="Ddate">First Visit</label>
+            <input type="text" class="form-control" id="Ddate" placeholder="First Visit">
+        </div>
+    </div>
+</div>
 @endsection

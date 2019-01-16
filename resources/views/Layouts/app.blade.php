@@ -113,7 +113,93 @@
    $('.mm').datepicker({
       format: 'yyyy-mm-dd'
     });
+
+    //edd using jquery function
+$(".mm").on('change', function() {
+    var cdate = $(".mm").val();
+    const lmp = new Date(cdate);
+    
+    //get EDD
+    const myEdd = edd();
+   
+    //Attach this to the EDD INPUT FIELD
+     $(".myedd").val(myEdd);
+
+    // const lmp_inDays = Math.floor(lmp_in_ms/86400000)
+    // //lmp +280 days
+    
+    //EDD DAY FORMAT
+    const eddFormat = dayFormat(lmp);
+    
+    //attach it to a span below the input element
+    $("#ff").text(eddFormat)
+
+    
+    //EGA
+    const egaInfo = ega(lmp);
+    $("#EGA").val(egaInfo);
+
+    //Default date for first visit
+    const defaultVisit = mydefaultDate();
+    $("#Ddate").val(defaultVisit)
 });
+});
+
+
+//FUNCTIONS 
+
+//FUNCTION TO DIAPLAY DATE IN READABLE FORMAT
+function dayFormat(lmpDate){
+    const lmp_in_ms = lmpDate.getTime();
+    /*
+    TO REPRESENT EDD IN HUMAN READABLE FORMAT
+    GET THE MILLISECONDS IN THE SELECTED LMP
+    ADD IT TO THE NUMBER OF MILLISECONDS IN 280 DAYS AND DIVIDE BY 86400000
+    **/
+    const myEdd_in_ms = lmp_in_ms + 24192000000;
+     
+     //CONVERT THE MILLISECCONDS TO DATE TIME
+    return eddDayFormat = new Date(myEdd_in_ms).toDateString();
+}
+
+//FUNCTION TO CALCULATE EDD
+function edd(){
+ /*
+    EDD = LMP +280 DAYS
+    LMP I ASSUME IS EQUAL TO ONE DAY
+    BUT 1 DAY = 86400000 MILLISECONDS (24*60*60*1000)
+    280 DAYS   = 24192000000 (280*86400000)
+    THEREFORE EDD = 86400000+24192000000 = 24278400000
+    **/
+    const edd = 24278400000/86400000;
+    //EDD IN DAY STRING
+    return eddDays = edd + " " + "Days";
+}
+
+//FUNCTIONN TO CALCULATE EGA
+function ega(lmpDate){
+     //TODAY - LMP
+     const lmp_in_ms = lmpDate.getTime();
+     const _2day = Date.now();
+    //ega in milliseconds =24*60*60*1000*7 = 604800000
+    const ega_ms = _2day - lmp_in_ms;
+    // Milliseconds in week = 
+    const ega_wks = Math.floor(ega_ms/604800000);
+    return egaWeekStr = ega_wks + " " + "Weeks";
+}
+
+//FUNCTION TO GET DEFAULT DATE
+function mydefaultDate(){
+    const currenDate = new Date(Date.now());
+    const yr = currenDate.getFullYear();
+    let mnth = currenDate.getMonth();
+    const mydate =  currenDate.getDate();
+    //Note that javascript starts counting months from 0-11
+    if(mnth === 0){
+        mnth = 1;
+    }
+    return yr+"-"+mnth+"-"+mydate;
+}
     </script>
 </body>
 

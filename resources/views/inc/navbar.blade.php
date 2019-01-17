@@ -1,24 +1,3 @@
-{{--
-<nav>
-  <div class="container">
-
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">
-              <img height="65" src="{{asset('images/logo2.png')}}" alt="logo"> 
-          </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/products">Products</a></li>
-        <li><a href="/committee">Commitee</a></li>
-        <li><a href="/board">Board</a></li>
-        <li><a href="/press-release">Press</a></li>
-        <li><a href="/gallery">Gallery</a></li>
-      </ul>
-    </div>
-
-  </div>
-</nav> --}}
-
 <nav>
 
   <div class="nav-wrapper">

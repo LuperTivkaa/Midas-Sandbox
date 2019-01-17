@@ -1,17 +1,18 @@
-@extends('Layouts.app')
+@extends('Layouts.app') 
 @section('content')
 <div class="row">
-        <div class="col-sm-12 text-center">
-            <h4 class="display-1">MIDAS</h4>
-            <hr/>
-            <p class=" display-4 midas-banner-caption">Together, We Can Build The Future We Desire.</p>
-            <h6 class="lead">Desire, Innovate, Build</h6>
-        </div>
+    <div class="col-sm-12 text-center">
+        <h4 class="display-1">MIDAS</h4>
+        <hr/>
+        <p class=" display-4 midas-banner-caption">Together, We Can Build The Future We Desire.</p>
+        <h6 class="lead">Desire, Innovate, Build</h6>
     </div>
+</div>
 </div>
 
 <div class="container text-center">
-    {{-- <h1>Our Creed!</h1>
+    {{--
+    <h1>Our Creed!</h1>
     <h4 class="lead">Friendship, Team Work, Service </h4> --}}
     <div class="row">
         <div class="col-sm-2 text-capitalize">
@@ -33,28 +34,35 @@
         <div class="col-md-4">
             <h4 class="text-muted">Loans</h4>
             <p>
-                We have carefully loan products that are flexible, sustainable and painless that can help all members to access various financial services when eligible.
-                Our loan catalogue is made of long term, short term and emergency loans at various rates which serves the interest of our members.
+                We have carefully loan products that are flexible, sustainable and painless that can help all members to access various financial
+                services when eligible. Our loan catalogue is made of long term, short term and emergency loans at various
+                rates which serves the interest of our members.
             </p>
 
         </div>
         <div class="col-md-4">
             <h4 class="text-muted">Bam</h4>
             <p>
-                Our Bam is a targeted saving product designed to allow members of the cooperative save money towards recuurent expenditures like school during new academic savings.
-                The saving is not specifically for school fees but can also be applied to other areas of need.
+                Our Bam is a targeted saving product designed to allow members of the cooperative save money towards recuurent expenditures
+                like school during new academic savings. The saving is not specifically for school fees but can also be applied
+                to other areas of need.
             </p>
 
         </div>
         <div class="col-md-4">
             <h4 class="text-muted">Fixed Deposits</h4>
-            <p>This is a product that is designed for a WIN-WIN situtation for us and depositors. Members are free to fixed their monies with us for a period of at least six (6) months at a pecentage flat rate that is determined by the exco  at intervals.</p>
+            <p>This is a product that is designed for a WIN-WIN situtation for us and depositors. Members are free to fixed
+                their monies with us for a period of at least six (6) months at a pecentage flat rate that is determined
+                by the exco at intervals.</p>
 
         </div>
     </div>
     <div class="row text-center">
         <div class="col-sm-12">
-            <p><a href="/products" class="btn btn-warning btn-lg">Learn More</a></p>
+            <p>
+                <a href="/products" class="btn">Learn More
+                    <i class="large material-icons">mode_edit</i>
+            </a></p>
         </div>
     </div>
 
@@ -63,8 +71,9 @@
             <h1 class="display-1">Built with Elegance</h1>
             <h3 class="text-muted">...built for you and your lifestyle</h3>
             <p>
-                At the heart of our products and services lies a deep understanding of our customers and cooperators' behaviour, their demographics and changing social lifestyle.
-                That is why we follow you wherever your lifestyle may take you, now is the time for the big idea whose time has come.
+                At the heart of our products and services lies a deep understanding of our customers and cooperators' behaviour, their demographics
+                and changing social lifestyle. That is why we follow you wherever your lifestyle may take you, now is the
+                time for the big idea whose time has come.
             </p>
         </div>
         <div class="col-md-5">

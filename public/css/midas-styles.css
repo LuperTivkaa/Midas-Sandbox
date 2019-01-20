@@ -1,4 +1,19 @@
 .nav {
-  height: 75px;
+  height: 75px !important;
+}
+
+.midas-top-bar {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.banner-height {
+  height: 300px;
+}
+
+.myfooter {
+  background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
+  background-size: cover;
+  background-position: top;
 }
 

@@ -1,130 +1,156 @@
-@extends('Layouts.app')
+@extends('Layouts.app') 
 @section('content')
-    <h1>Steering Committee</h1>
-    <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 mb-3 text-center ">
-      
+<h1>Steering Committee</h1>
+
+<div class="row center-align">
+
+    <div class="col s12">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="{{asset('images/andy.jpg')}}" class="responsive-img midas-cards">
             </div>
-    
-            <div class="col-sm-12  col-md-6 col-lg-6 mb-3 text-center">
-    
-                <div class="card text-center">
-                    <img class="card-img-top" src="{{asset('images/andy.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mr. SHIMAKAA, iorlumun</h5>
-                        <h6 class="text-muted">President</h6>
-                        <p class="card-text">He is a clinical psychologist in the department of Clinical Psychology.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">ashimakaa@gmail.com</small>
-                        <small class="text-muted">+234 08063899921</small>
-                    </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5 class="header">Shimakaa, Iorlumun Andrew</h5>
+                    <span class="grey-text">President</span>
+                    <p>He is a clinical psychologist in the department of Clinical Psychology.</p>
                 </div>
-            </div>
-    
-            <div class="col-sm-12  col-md-3 col-lg-3 text-center">
-    
+                <div class="card-action teal accent-3">
+                    <p><small class="pink-text darken-4"><i class="material-icons left">email</i> ashimakaa@gmail.com</small></p>
+                    <p><small class="pink-text darken-4"><i class="material-icons left">call</i> +234 08063899921</small></p>
+                </div>
             </div>
         </div>
-    
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-    
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/sesugh.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mr. SESUGH, denen</h5>
-                        <h6 class="text-muted">Secretary</h6>
-                        <p class="card-text">He is a nurse in the department of Ophthalmology.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">sesden2003@gmail.com</small>
-                        <small class="text-muted">+234 08069401427</small>
-                    </div>
-                </div>
-    
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/sesugh.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">Denen Sesugh</span>
             </div>
-    
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/edigah.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mrs. EDIGAH, felicia. </h5>
-                        <h6 class="text-muted">Member</h6>
-                        <p class="card-text">Works in the counselling unit of the APIN unit.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">edigahfelicia@gmail.com</small>
-                        <small class="text-muted">+234 07035389822</small>
-                    </div>
-                </div>
+            <div class="card-content">
+                <h5 class="">Secretary</h5>
+                <p>Nurse.
+                </p>
             </div>
-    
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/ternenge.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mr. TOROUGH, ternenge daniel, ACA</h5>
-                        <h6 class="text-muted">Member</h6>
-                        <p class="card-text">He is a chartered accountant with ICANN and works in the finance department.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">ter4humanity@gmail.com</small>
-                        <small class="text-muted">+234 08065310831</small>
-                    </div>
-                </div>
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i> sesden2003@gmail.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 08069401427</p>
             </div>
-    
         </div>
-    
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/apaa.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mr. APAA, tersoo</h5>
-                        <h6 class="text-muted">Member</h6>
-                        <p class="card-text">Works in the data office, APIN Complex.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">tergoodman@yahoo.com</small>
-                        <small class="text-muted">+234 08069665303</small>
-                    </div>
-                </div>
+    </div>
+
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/edigah.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">Edigah Felicia</span>
             </div>
-    
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/uche.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Dr. UCHE, augustine azuka</h5>
-                        <h6 class="text-muted">Member</h6>
-                        <p class="card-text">A consultant gynaecologist in the department of Obsterics and Gynaecology.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">drucheazuka@gmail.com</small>
-                        <small class="text-muted">+234 08035976505</small>
-                    </div>
-                </div>
-    
+            <div class="card-content">
+                <h5 class="grey-text">Member</h5>
+                <p>Nurse</p>
             </div>
-    
-            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="{{asset('images/eronini.jpg')}}" alt="Card image cap">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold">Mrs. ERONINI, chiedozie</h5>
-                        <h6 class="text-muted">Member</h6>
-                        <p class="card-text">A laboratory scientist in the Department of Medical Laboratory.</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">eronininneoma7@gmail.com, mumuh12@yahoo.com</small>
-                        <small class="text-muted">+234 07067415598,, 08027880708</small>
-                    </div>
-                </div>
-    
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i> edigahfelicia@gmail.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 07035389822</p>
             </div>
-    
         </div>
-    
+    </div>
+
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/ternenge.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">Torough Ternenge, ACA</span>
+            </div>
+            <div class="card-content">
+                <h5 class="grey-text">Member</h5>
+                <p>Chartered Accountant</p>
+            </div>
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i> ter4humanity@gmail.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 08065310831</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="row">
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/eronini.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">ERONINI, Chiedozie</span>
+            </div>
+            <div class="card-content">
+                <h5 class="">Member</h5>
+                <p>Laboratory Scientist
+                </p>
+            </div>
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i>eronininneoma7@gmail.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 07067415598</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/uche.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">Dr. Uche Augustine Azuka</span>
+            </div>
+            <div class="card-content">
+                <h5 class="grey-text">Member</h5>
+                <p>Consultant Gynaecologist</p>
+            </div>
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i> drucheazuka@gmail.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 08035976505</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12 m4 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{asset('images/apaa.jpg')}}" class="responsive-img midas-cards">
+                <span class="card-title">Apaa, Tersoo</span>
+            </div>
+            <div class="card-content">
+                <h5 class="grey-text">Member</h5>
+                <p>Data Officer, APIN Complex</p>
+            </div>
+            <div class="card-action">
+                <p class="pink-text darken-4"><i class="material-icons left">email</i> tergoodman@yahoo.com
+                </p>
+                <p class="pink-text darken-4"><i class="material-icons left">call</i> +234 08069665303</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+</div>
 @endsection

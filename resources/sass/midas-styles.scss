@@ -3,3 +3,65 @@
 .nav {
     height: 75px !important;
 }
+
+.midas-top-bar {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    //font-weight: bolder;
+    //font-size: 1.5rem;
+}
+
+.banner-height {
+    height: 300px;
+}
+// .carousel-bgimage {
+//     //background: url("../../public/images/carousel-1.jpg");
+//     background: url("../../public/images/agm1.jpg");
+//     background-size: cover;
+// }
+
+// .carousel-bgimage2 {
+//     //background: url("../../public/images/carousel-2.jpg");
+//     background: url("../../public/images/agm2.jpg");
+//     background-size: cover;
+// }
+
+// .carousel-bgimage3 {
+//     //background: url("../../public/images/carousel-3.jpg");
+//     background: url("../../public/images/agm3.jpg");
+//     background-size: cover;
+// }
+// .midas-showcase {
+//     position: relative;
+// }
+// .primary-overlay {
+//     background: $primary-overlay;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+// }
+
+.myfooter {
+    background-image: url("../../public/images/bg.jpg");
+    background-size: cover;
+    background-position: top;
+}
+
+//media queries
+// @media #{$small-and-down} {
+//     // styles for small screens and down
+// }
+// @media #{$medium-and-up} {
+//     // styles for medium screens and larger
+// }
+// @media #{$medium-and-down} {
+//     // styles for medium screens and down
+// }
+// @media #{$large-and-up} {
+//     // styles for large screens and up
+// }
+// @media #{$extra-large-and-up} {
+//     // styles for extra large screens and up
+// }

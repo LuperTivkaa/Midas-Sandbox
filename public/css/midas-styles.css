@@ -11,6 +11,12 @@
   height: 300px;
 }
 
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 47%;
+}
+
 .myfooter {
   background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
   background-size: cover;

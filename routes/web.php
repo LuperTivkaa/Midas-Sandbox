@@ -22,3 +22,6 @@ Route::get('/committee', 'HomeController@committee');
 Route::get('/board', 'HomeController@board');
 Route::get('/products', 'HomeController@products');
 
+//ROUTES FOR ADMIN DASHBOARD
+
+Route::get('/Dashboard', 'MadminController@index');

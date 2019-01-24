@@ -47,7 +47,7 @@
     </div>
 </section>
 
-{{-- Deatil content container --}}
+{{-- Detail content container --}}
 <section class="section section-content-details">
     <div class="row">
         <div class="col s12 m6 l8">
@@ -60,19 +60,36 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 m6 l4 grey lighten-3">
-            <div class="card-panel white  center">
-                <ul class="collection with-header latest-comments">
-                    <li class="collection-header">
-                        <h5>Loan Applications</h5>
-                    </li>
+        <div class="col s12 m6 l4">
+            <div>
+                <h5>Loan Applications Summary</h5>
+                <ul class="collection latest-comments">
                     <li class="collection-item avatar">
-                        <img src="{{asset('images/logo2.svg')}}" alt="" class="circle">
+                        <img src="{{asset('images/ternenge.jpg')}}" alt="" class="circle">
                         <span class="title">John Ityo</span>
                     </li>
                 </ul>
-
             </div>
+            <div>
+                <h5>Target Savings Summary</h5>
+                <ul class="collection with-header latest-comments">
+                        <li class="collection-item avatar">
+                            <img src="{{asset('images/ternenge.jpg')}}" alt="" class="circle">
+                            <span class="title">John Ityo</span>
+                        </li>
+                    </ul>
+            </div>
+            <div>
+                <h5>Top Loan Applicants</h5>
+                <ul class="collection with-header latest-comments">
+                        <li class="collection-item avatar">
+                            <img src="{{asset('images/ternenge.jpg')}}" alt="" class="circle">
+                            <span class="title">John Ityo</span>
+                        </li>
+                    </ul>
+            </div>
+
+
         </div>
     </div>
 </section>

@@ -11,11 +11,11 @@ class MadminController extends Controller
         $title ="Dashboard Home";
         return view('Madmin.index')->with('title',$title);
     }
-    //about method
-    // public function about (){
-    //     $title ="About MIDAS";
-    //     return view('Home.about')->with('title',$title);
-    // }
+    //Cooperators
+    public function cooperators (){
+        $title ="Cooperators";
+        return view('Madmin.users')->with('title',$title);
+    }
 
     //Steering Committtee
     // public function committee (){

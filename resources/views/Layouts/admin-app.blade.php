@@ -18,7 +18,7 @@
     @include('inc.admin-navbar') @yield('admin-content')
 
 
-    <footer class="page-footer grey darken-3">
+    <footer class="page-footer grey darken-3 section">
         <div class="container">
             <div class="row">
                 <div class="col s12 m4 l4 grey-text text-lighten-3">
@@ -55,25 +55,72 @@
         </div>
     </footer>
 
+    {{-- fixed action button --}}
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+                <i class="material-icons">add</i>
+            </a>
+        <ul>
+            <li>
+                <a href="#post-modal" class="modal-trigger btn-floating blue">
+                    <i class="material-icons">mode_edit</i>
+                </a>
+            </li>
+            <li>
+                <a href="#category-modal" class="modal-trigger btn-floating blue">
+                        <i class="material-icons">folder</i>
+                    </a>
+            </li>
+            <li>
+                <a href="#user-modal" class="modal-trigger btn-floating blue">
+                        <i class="material-icons">supervisor_account</i>
+                    </a>
+            </li>
+        </ul>
+    </div>
+
+    {{-- POST MODAL --}}
+
+    <div id=post-modal class="modal ">
+        <div class="modal-content ">
+            <h4>Post</h4>
+            <form action="">
+                <div class="row">
+                    <div class="input-field col s6 m6 l4">
+                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6 m6 l8">
+                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <label for="first_name">First Name</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer ">
+            <a href="#! " class="modal-close waves-effect waves-green btn-flat ">Agree</a>
+        </div>
+    </div>
+
     {{--Below is loader --}}
-    <div class="loader preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
+    <div class="loader preloader-wrapper big active ">
+        <div class="spinner-layer spinner-blue ">
+            <div class="circle-clipper left ">
+                <div class="circle "></div>
             </div>
-            <div class="gap-patch">
-                <div class="circle"></div>
+            <div class="gap-patch ">
+                <div class="circle "></div>
             </div>
-            <div class="circle-clipper right">
-                <div class="circle"></div>
+            <div class="circle-clipper right ">
+                <div class="circle "></div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin=" anonymous "></script>
+    <script src="{{asset( 'js/app.js')}} "></script>
+    <script src="{{asset( 'js/bootstrap-datepicker.js')}} "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
     <script src="https://canvasjs.com/assets/script/js/canvasjs.min.js "></script>
     <script>
@@ -83,7 +130,7 @@
         //set time out
     setTimeout(function(){
 
-        $(document).ready(function(){
+$(document).ready(function(){
 
 // //SHOW SECTIONS
 $('.section').fadeIn();
@@ -93,7 +140,7 @@ $('.loader').fadeOut();
 $('.sidenav').sidenav();
 
 //INIT dropdown menu
-$(".dropdown-trigger").dropdown({
+$(".dropdown-trigger ").dropdown({
 coverTrigger:false,
 hover:true
 
@@ -118,6 +165,26 @@ step: function(now){
 }
 });
 });
+
+//INIT MODAL
+$('.modal').modal();
+
+//INIT FLOATING BUTTON
+$('.fixed-action-btn').floatingActionButton();
+
+//INIT TOAST ON  CLICK OF BUTTON APPROVE
+$('.approve').click(function(e){
+    e.preventDefault();
+    M.toast({html: 'Comment Approved',
+    displayLength: 3000})
+})
+
+//INIT TOAST ON  CLICK OF BUTTON DENY
+$('.deny').click(function(e){
+    e.preventDefault();
+    M.toast({html: 'Comment Denied',
+    displayLength: 3000})
+})
 
 });
 

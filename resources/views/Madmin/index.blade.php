@@ -51,12 +51,10 @@
 <section class="section section-content-details">
     <div class="row">
         <div class="col s12 m6 l8">
-            <div class="card-panel blue lighten-1 white-text center">
-                <i class="material-icons">insert_emoticon</i>
-                <h5>Loan Applications</h5>
-                <h3 class="count">768</h3>
-                <div class="progress grey lighten-1">
-                    <div class="determinate white" style="width:40%;"></div>
+            <div class=" blue lighten-1 white-text">
+                <h5>Main Content Goes Here</h5>
+
+
                 </div>
             </div>
         </div>

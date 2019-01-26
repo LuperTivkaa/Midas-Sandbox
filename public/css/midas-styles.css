@@ -17,6 +17,10 @@
   left: 47%;
 }
 
+.side-content {
+  padding: 3px;
+}
+
 .myfooter {
   background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
   background-size: cover;

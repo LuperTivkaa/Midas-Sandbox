@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="col s12 m6 l4">
-            <div>
+            <div class="side-content grey lighten-1">
                 <h5>Loan Applications Summary</h5>
                 <ul class="collection latest-comments">
                     <li class="collection-item avatar">

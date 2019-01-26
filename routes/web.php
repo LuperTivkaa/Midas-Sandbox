@@ -25,3 +25,4 @@ Route::get('/products', 'HomeController@products');
 //ROUTES FOR ADMIN DASHBOARD
 
 Route::get('/Dashboard', 'MadminController@index');
+Route::get('/Dashboard/Users', 'MadminController@cooperators');

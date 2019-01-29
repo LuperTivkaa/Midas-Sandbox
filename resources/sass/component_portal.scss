@@ -16,6 +16,13 @@
     align-items: center; //centers the element along the cross axis
     justify-content: center; //centers element along the main axis
 
+    @media only screen and (max-width: $bp-smallest) {
+        //order the items, move the search bar to the last increasing order
+        order: 1; //default order value is 0
+        flex: 0 0 100%; //flex basis of 100%
+        background-color: $dash-grey-light2;
+    }
+
     &__input {
         font-family: inherit; //does not by default inherit font of the global document
         font-size: inherit; //does not by default inherit font-size of the global document
@@ -134,6 +141,10 @@
     font-size: 1.4rem;
     list-style: none;
     margin-top: 3.5rem;
+    @media only screen and (max-width: $bp-medium) {
+        display: flex;
+        margin: 0;
+    }
 
     &__item {
         position: relative;
@@ -141,6 +152,14 @@
         // //add margin bottom except on the last element
         &:not(:last-child) {
             margin-bottom: 0.5rem;
+            //remove the bottom margin
+            @media only screen and (max-width: $bp-medium) {
+                margin: 0;
+            }
+        }
+        //let the menu items oocupy 1/3 of the available space
+        @media only screen and (max-width: $bp-medium) {
+            flex: 1; //give them the ability to grow based on the space available
         }
     }
 
@@ -179,10 +198,20 @@
         display: block; // use inline-block also
         padding: 1.5rem 3rem;
         display: flex;
-        align-items: center;
+        align-items: center; // // align the icons and the link text in centre
         position: relative; // used for the z-index
         z-index: 10;
-        // // align the icons and the link text in centre
+
+        @media only screen and (max-width: $bp-medium) {
+            // // align the icons and the link text in centre
+            justify-content: center;
+            padding: 2rem;
+        }
+        //stack icons on top of one another
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            padding: 1.5rem 0.5rem;
+        }
     }
 
     &__icon {
@@ -191,6 +220,14 @@
         margin-right: 2rem;
         fill: currentColor; //$dash-grey-light1;
         // currentColor is the color of the parent element or the current element //$dash-grey-light1;
+
+        @media only screen and (max-width: $bp-small) {
+            //remove the margin right
+            margin-right: 0;
+            margin-bottom: 0.7rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 }
 // /End side navigation section////////
@@ -201,19 +238,23 @@
     color: $dash-grey-light4;
     text-align: center;
     padding: 2.5rem;
+    //remove the legal text at this break point
+    @media only screen and (max-width: $bp-medium) {
+        display: none;
+    }
 }
 
 ///////////////////////
-//Gallery section
+//Gallery section NOT IN USE ANY MORE
 
-.gallery {
-    display: flex;
-    &__photo {
-        //responsive images are defined in %
-        width: 100%;
-        display: block;
-    }
-}
+// .gallery {
+//     display: flex;
+//     &__photo {
+//         //responsive images are defined in %
+//         width: 100%;
+//         display: block;
+//     }
+// }
 
 //overview component
 
@@ -225,10 +266,15 @@
     &__heading {
         font-size: 2.25rem;
         font-weight: 300;
-        text-transform: uppercase;
+        //text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 3rem;
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25 2rem;
+        }
     }
+
     &__stars {
         margin-right: auto;
         display: flex; //removes the small bottom margin on the pins svg
@@ -239,89 +285,116 @@
         height: 1.75rem;
         fill: $dash-primary1;
     }
-
-    &__location {
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
+    &__push {
+        margin-right: auto;
     }
+    //NO LONGER IN USE: STYLES THE LOCATION COMPONENT
+    // &__location {
+    //     font-size: 1.2rem;
+    //     display: flex;
+    //     align-items: center;
+    // }
 
-    &__icon-location {
-        margin-right: 0.5rem;
-    }
+    // &__icon-location {
+    //     margin-right: 0.5rem;
+    // }
+
     &__rating {
         background-color: $dash-primary1;
         color: #fff;
         margin-left: 3rem;
         padding: 0 2.25rem;
         align-self: stretch;
-
         // //to center align elements
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+        }
     }
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -3px;
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+        }
     }
     &__rating-count {
         font-size: 0.8rem;
         text-transform: uppercase;
-    }
-}
-
-//btn inline
-.btn-inline {
-    border: none;
-    color: $dash-primary1;
-    font-size: inherit; //inherit the font size of the parent element
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    display: inline-block;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 0.2s;
-
-    //used on the button below the reviews
-    & span {
-        margin-left: 3px;
-        transition: margin-left 0.2s;
-    }
-
-    &:hover {
-        color: $dash-grey-dark2;
-        span {
-            margin-left: 8px;
+        @media only screen and (max-width: $bp-small) {
+            font-size: 0.5rem;
         }
     }
-
-    &:focus {
-        outline: none;
-        animation: pulsate 1s infinite; //infinte means the animation is infinite
+    &__link:link,
+    &__link:visited {
+        color: $dash-grey-light1;
+        text-decoration: none;
+        //text-transform: uppercase;
+        font-size: 1.15rem;
+        //display: block; // use inline-block also
+    }
+    &__savings:link,
+    &__savings:visited {
+        color: $dash-grey-dark2;
+        text-decoration: none;
+        cursor: pointer;
     }
 }
 
-//animations for the btn inline focus effect
-@keyframes pulsate {
-    0% {
-        transform: scale(1);
-        box-shadow: none;
-    }
+//btn inline NO LONGER IN USE BECASUE COMPNENT IS NO LONGER IN USE
+// .btn-inline {
+//     border: none;
+//     color: $dash-primary1;
+//     font-size: inherit; //inherit the font size of the parent element
+//     border-bottom: 1px solid currentColor;
+//     padding-bottom: 2px;
+//     display: inline-block;
+//     background-color: transparent;
+//     cursor: pointer;
+//     transition: all 0.2s;
 
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
-    }
+//     //used on the button below the reviews
+//     & span {
+//         margin-left: 3px;
+//         transition: margin-left 0.2s;
+//     }
 
-    100% {
-        transform: scale(1);
-        box-shadow: none;
-    }
-}
+//     &:hover {
+//         color: $dash-grey-dark2;
+//         span {
+//             margin-left: 8px;
+//         }
+//     }
+
+//     &:focus {
+//         outline: none;
+//         animation: pulsate 1s infinite; //infinte means the animation is infinite
+//     }
+// }
+
+//animations for the btn inline focus effect NO LONGER IN USE BECOS ELEMENT NOT IN USE
+// @keyframes pulsate {
+//     0% {
+//         transform: scale(1);
+//         box-shadow: none;
+//     }
+
+//     50% {
+//         transform: scale(1.05);
+//         box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+//     }
+
+//     100% {
+//         transform: scale(1);
+//         box-shadow: none;
+//     }
+// }
 
 //paragraph
 .paragraph:not(:last-of-type) {
@@ -354,15 +427,18 @@
         margin-right: 0.7rem;
         background-color: $dash-primary1;
         //used for older browsers , u cant style this
-        //background-image: url("../../public/images/chevron-left.svg");
-        //background-size: cover;
-        //newer browsers use mask use the image to see through a background image
+        background-image: url("../../public/images/chevron-left.svg");
+        background-size: cover;
 
-        -webkit-mask-image: url("../../public/images/chevron-left.svg");
-        -webkit-mask-size: cover;
-        //for
-        mask-image: url("../../public/images/chevron-left.svg");
-        mask-size: cover;
+        //newer browsers use mask use the image to see through a background image
+        @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+            -webkit-mask-image: url("../../public/images/chevron-left.svg");
+            -webkit-mask-size: cover;
+            //for
+            mask-image: url("../../public/images/chevron-left.svg");
+            mask-size: cover;
+            background-image: none;
+        }
     }
 }
 
@@ -377,6 +453,7 @@
     }
 
     &__friends {
+        display: flex; //allows the flex items to stay side by side
     }
     &__photo {
         box-sizing: content-box; //ensures that the border on the image does not affect its size default
@@ -386,7 +463,7 @@
         border: 3px solid #fff;
 
         &:not(:last-child) {
-            margin-right: -1.5rem; //places the photo slightly on top of one another overlapping
+            margin-right: -2rem; //places the photo slightly on top of one another overlapping
         }
     }
 }
@@ -402,9 +479,19 @@
     //prevent overflow of the quotation mark
     overflow: hidden;
 
+    @media only screen and (max-width: $bp-medium) {
+        // Reduce the padding
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+
     &__text {
         margin-bottom: 2rem;
         //align  the quotation mark behind the text
+        position: relative;
+        z-index: 10;
+    }
+    &__heading {
         position: relative;
         z-index: 10;
     }
@@ -460,14 +547,27 @@
 //CTA
 
 .cta {
-    padding: 3.5rem;
+    padding: 3.5rem 0;
     text-align: center;
+    @media only screen and (max-width: $bp-medium) {
+        // Reduce the padding
+        padding: 2.5rem 0;
+    }
 
     &__book-now {
         font-size: 2rem;
         font-weight: 300;
         text-transform: uppercase;
         margin-bottom: 2.5rem;
+    }
+    &__feature-request {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__request-content {
+        width: 40%;
+        border-radius: 3px 3px 3px;
     }
 }
 
@@ -482,6 +582,8 @@
     background-image: linear-gradient(to right, $dash-primary1, $dash-primary3);
     color: #fff;
     cursor: pointer;
+    width: 30%;
+    margin-top: 1.5rem;
 
     &:focus {
         outline: none;

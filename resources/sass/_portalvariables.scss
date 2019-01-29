@@ -22,3 +22,10 @@ $primary-overlay: rgba(199, 123, 176, 0.8);
 $boxshadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 $shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
 $border-line: 1px solid $dash-grey-light2;
+
+//break points variables
+$bp-largest: 75em; // 1200px/16px =75em
+$bp-large: 68.75em; // 1100px/16px =68.75em
+$bp-medium: 56.25em; // 900px/16px =56.25em
+$bp-small: 37.5em; // 600px/16px =37.5em
+$bp-smallest: 31.25em; // 500px/16px =31.25em

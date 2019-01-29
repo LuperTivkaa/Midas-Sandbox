@@ -33,7 +33,7 @@
             </div>
         </nav>
     </header>
-    {{-- end of header part --}}
+    {{-- end of header part --}} {{-- SIDE BAR NAV --}}
     <div class="midas-content">
         <nav class="sidebar">
             <ul class="side-nav">
@@ -61,6 +61,7 @@
                         <span>Savings</span>
                     </a>
                 </li>
+                {{--
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <svg class="side-nav__icon">
@@ -68,13 +69,13 @@
                         </svg>
                         <span>Savings Plus</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                             <svg class="side-nav__icon">
                                     <use xlink:href="{{asset('images/sprite.svg#icon-layers')}}"></use>
                             </svg>
-                            <span>Loans</span>
+                            <span>My Loans</span>
                     </a>
                 </li>
                 <li class="side-nav__item">
@@ -92,26 +93,20 @@
         </nav>
 
 
-
+        {{-- main content area --}}
         <main class="midas-view">
-            <div class="gallery">
-                <figure class="gallery__item">
-                    <img src="{{asset('images/midas-product-danger.png')}}" alt="photo" class="gallery__photo">
-                </figure>
-                <figure class="gallery__item">
-                    <img src="{{asset('images/midas-product-light.png')}}" alt="photo" class="gallery__photo">
-                </figure>
-                <figure class="gallery__item">
-                    <img src="{{asset('images/midas-product-danger.png')}}" alt="photo" class="gallery__photo">
-                </figure>
-            </div>
 
             <div class="overview">
-                <h1 class="overview__heading">
-                    Total Savings N 1,234,345.00
-                </h1>
+                <h6 class="overview__heading">
+                    <a href="" class="overview__savings">Total Savings N 1,234,345.00 </a>
+                </h6>
+                <span><svg class="overview__icon-star">
+                        <use xlink:href="{{asset('images/sprite.svg#icon-chevron-with-circle-left')}}"></use>
+                </svg>
+                </span>
+                <h6 class="overview__heading overview__push">2 Jan, 2019</h6>
 
-
+                {{--
                 <div class="overview__stars">
                     <svg class="overview__icon-star">
                         <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
@@ -128,20 +123,19 @@
                     <svg class="overview__icon-star">
                         <use xlink:href="{{asset('images/sprite.svg#icon-pin')}}"></use>
                     </svg>
-                </div>
-
-
+                </div> --}} {{-- NO LONGER IN USE --}} {{--
                 <div class="overview__location">
                     <svg class="overview__icon-location">
                         <use xlink:href="{{asset('images/sprite.svg#icon-location-pin')}}"></use> 
                        
                     </svg>
                     <button class="btn-inline">link me to somewhere</button>
-                </div>
+                </div> --}}
 
                 <div class="overview__rating">
-                    <div class="overview__rating-average">8.9</div>
-                    <div class="overview__rating-count">500 votes</div>
+                    <div class="overview__rating-average"><a href="" class="overview__link">N 200,500</a></div>
+                    <div class="overview__rating-count">TS</div>
+                    <div class="overview__rating-count">1 Jan, 2019</div>
                 </div>
             </div>
 
@@ -184,6 +178,7 @@
 
                 <div class="user-reviews">
                     <figure class="review">
+                        <h5 class="review__heading">Loan Summary</h5>
                         <blockquote class="review__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, architecto.
                         </blockquote>
@@ -200,6 +195,7 @@
                     </figure>
 
                     <figure class="review">
+                        <h5 class="review__heading">Application Summary</h5>
                         <blockquote class="review__text">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, architecto.
                         </blockquote>
@@ -224,11 +220,15 @@
             </div>
             <div class="cta">
                 <h2 class="cta__book-now">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet reiciendis porro architecto, officia aperiam quibusdam.
+                    How Can We Improve, Let's Hear From You
                 </h2>
-                <button class="btn">
-                    Book Now  
-                </button>
+                <form action="#" id="#" class="cta__feature-request">
+
+                    <textarea name="#" id="#" cols="5" rows="5" class="cta__request-content"></textarea>
+                    <button type="submit" class="btn">Send</button> {{-- <button class="btn">
+                        Book Now  
+                    </button> --}}
+                </form>
             </div>
         </main>
     </div>

@@ -75,7 +75,8 @@
                 <li class="collection-item"><span class="new badge yellow darken-4" data-badge-caption="Yes"></span>Loan Processing Fee Non-Refundable</li>
                 <li class="collection-item"><span class="new badge yellow darken-4" data-badge-caption="No"></span>Loan Subject To Queuing</li>
                 <li class="collection-item"><span class="new badge yellow darken-4" data-badge-caption="Yes"></span>Payment Based on First Come, First
-                    Served</li>
+                    Served
+                </li>
                 <li class="collection-item"><span class="new badge yellow darken-4" data-badge-caption="Yes"></span>Contract Staff Eligible</li>
                 <li class="collection-item"><span class="new badge yellow darken-4" data-badge-caption="No"></span>Grace Period</li>
             </ul>
@@ -104,7 +105,8 @@
                 <li class="collection-item"><span class="new badge green darken-4" data-badge-caption="Yes"></span>Loan Processing Fee Non-Refundable</li>
                 <li class="collection-item"><span class="new badge green darken-4" data-badge-caption="No"></span>Loan Subject To Queuing</li>
                 <li class="collection-item"><span class="new badge green darken-4" data-badge-caption="Yes"></span>Payment Based on First Come, First
-                    Served</li>
+                    Served
+                </li>
                 <li class="collection-item"><span class="new badge green darken-4" data-badge-caption="Yes"></span>Contract Staff Eligible</li>
                 <li class="collection-item"><span class="new badge green darken-4" data-badge-caption="No"></span>Grace Period</li>
             </ul>

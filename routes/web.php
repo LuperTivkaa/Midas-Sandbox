@@ -21,8 +21,12 @@ Route::get('/about', 'HomeController@about');
 Route::get('/committee', 'HomeController@committee');
 Route::get('/board', 'HomeController@board');
 Route::get('/products', 'HomeController@products');
+Route::get('/news', 'HomeController@news');
+Route::get('/gallery', 'HomeController@gallery');
 
 //ROUTES FOR ADMIN DASHBOARD
 
 Route::get('/Dashboard', 'MadminController@index');
 Route::get('/Dashboard/Users', 'MadminController@cooperators');
+//dashobard routes
+Route::get('/Dashboard/home','DashboardController@index');

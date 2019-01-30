@@ -21,6 +21,18 @@
             <h6>Desire, Innovate, Build</h6>
         </div> --}}
     </div>
+    </section>
+
+    {{--
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h4 class="display-1">MIDAS</h4>
+            <hr/>
+            <p class=" display-4 midas-banner-caption">Together, We Can Build The Future We Desire.</p>
+            <h6 class="lead">Desire, Innovate, Build</h6>
+        </div>
+    </div> --}}
+
 </div>
 {{-- core value section--}}
 <div class="container">

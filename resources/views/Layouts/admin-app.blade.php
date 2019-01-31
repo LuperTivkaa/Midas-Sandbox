@@ -9,13 +9,25 @@
     <link href="{{asset('fontawesome-assets/css/brands.css')}}" rel="stylesheet">
     <link href="{{asset('fontawesome-assets/css/solid.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
     <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}">
     <title>MIDAS- {{$title}}</title>
 </head>
 
-<body>
-    @include('inc.admin-navbar') @yield('admin-content')
+<body class="grey lighten-5">
+    @include('inc.admin-navbar')
+    @include('inc.admin-top-section')
+
+    <section class="section section-content-details">
+        <div class="row">
+            <div class="col s12 m6 l8">
+                <div class="white">
+                    @yield('main-content')
+                </div>
+            </div>
+    @include('inc.admin-side-section')
+        </div>
+    </section>
+    {{-- @yield('admin-content') --}}
 
 
     <footer class="page-footer grey darken-3 section">
@@ -120,9 +132,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin=" anonymous "></script>
     <script src="{{asset( 'js/app.js')}} "></script>
-    <script src="{{asset( 'js/bootstrap-datepicker.js')}} "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
-    <script src="https://canvasjs.com/assets/script/js/canvasjs.min.js "></script>
     <script>
         //HIDE ALL SECTIONS
     $('.section').hide();
@@ -143,8 +153,6 @@ $('.sidenav').sidenav();
 $(".dropdown-trigger ").dropdown({
 coverTrigger:false,
 hover:true
-
-
 });
 
 //INIT Carousel

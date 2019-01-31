@@ -30,3 +30,6 @@ Route::get('/Dashboard', 'MadminController@index');
 Route::get('/Dashboard/Users', 'MadminController@cooperators');
 //dashobard routes
 Route::get('/Dashboard/home','DashboardController@index');
+
+//REGISTRATION ROUTES
+Route::get('/Staff/New','RegistrationController@newstaff');

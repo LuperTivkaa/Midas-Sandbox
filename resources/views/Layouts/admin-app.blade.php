@@ -19,10 +19,10 @@
 
     <section class="section section-content-details">
         <div class="row">
-            <div class="col s12 m6 l8">
-                <div class="white">
-                    @yield('main-content')
-                </div>
+            <div class="col s12 m6 l8 white main-detail">
+
+                @yield('main-content')
+
             </div>
     @include('inc.admin-side-section')
         </div>

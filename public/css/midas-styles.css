@@ -21,6 +21,10 @@
   padding: 3px;
 }
 
+.main-detail {
+  min-height: 100vh;
+}
+
 .myfooter {
   background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
   background-size: cover;

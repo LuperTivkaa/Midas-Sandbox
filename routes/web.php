@@ -32,4 +32,5 @@ Route::get('/Dashboard/Users', 'MadminController@cooperators');
 Route::get('/Dashboard/home','DashboardController@index');
 
 //REGISTRATION ROUTES
-Route::get('/Staff/New','RegistrationController@newstaff');
+Route::get('/Staff/New','RegistrationController@createStaff');
+Route::post('/create','RegistrationController@storeStaff');

@@ -35,6 +35,7 @@ class RegistrationController extends Controller
     //*** */return redirect('')->home;
 // ***return redirect('/Staff/New')->with('success','Staff Created');
 //return redirect('/Staff/New');
+
      return 13234;
 }
 }

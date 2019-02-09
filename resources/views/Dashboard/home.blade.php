@@ -1,4 +1,4 @@
-@extends('Layouts.admin') 
+@extends('Layouts.user') 
 @section('admin') {{-- overall container --}}
 <div class="midas-container">
     {{-- header markup --}}

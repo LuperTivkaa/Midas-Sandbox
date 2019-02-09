@@ -33,4 +33,4 @@ Route::get('/Dashboard/home','DashboardController@index');
 
 //REGISTRATION ROUTES
 Route::get('/User/New','RegistrationController@createStaff');
-Route::post('/User/New','RegistrationController@storeUser');
+Route::post('/User/Create','RegistrationController@storeUser');

@@ -11,4 +11,9 @@ class RegistrationController extends Controller
         $title ="New Staff";
         return view('Registration.createStaff')->with('title',$title);
     }
+
+    public function storeStaff (){
+        $title ="New Staff";
+        return view('Registration.createStaff')->with('title',$title);
+    }
 }

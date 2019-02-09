@@ -6,7 +6,7 @@
             <h5 class="teal-text">New User</h5>
         </div>
 
-        <form class="col s12" method="POST" action="/profile">
+        <form class="col s12" method="POST" action="/User/New">
             @csrf
             <div class="row">
                 <div class="input-field col s6">

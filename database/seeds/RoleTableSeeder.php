@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
 
 class RoleTableSeeder extends Seeder
 {
@@ -15,30 +16,32 @@ class RoleTableSeeder extends Seeder
         $staff = Role::create([
             'name'=>'Staff',
             'description'=>'Staff Role',
-            'permission'=>[
+            'permissions'=>json_encode([
                 'create-user'=>true,
                 'create-savings'=>true,
-            ]
+                'edit'=>true,
+            ]),
         ]);
 
         $admin = Role::create([
             'name'=>'Admin',
             'description'=>'Admin Role',
-            'permission'=>[
+            'permissions'=>json_encode([
                 'create-user'=>true,
                 'update-user'=>true,
                 'view-user'=>true,
-            ]
+            ]),
         ]);
 
         $accounts = Role::create([
             'name'=>'Accounts',
             'description'=>'Accounts Role',
-            'permission'=>[
+            'permissions'=>json_encode([
                 'create-user'=>true,
                 'update-user'=>true,
                 'view-user'=>true,
-            ]
+                'review'=>true,
+            ]),
         ]);
     }
 }

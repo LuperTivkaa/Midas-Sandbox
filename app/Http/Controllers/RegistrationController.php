@@ -36,7 +36,7 @@ class RegistrationController extends Controller
     $user->roles()->attach(request(['role']));
 
     //Login the User
-    auth()->login($user);
+    //auth()->login($user);
     //flash message
     //*** */session()->flash('message','Staff Created');
     //redirect to route

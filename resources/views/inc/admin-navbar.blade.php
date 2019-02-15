@@ -1,4 +1,15 @@
 <nav class="blue darken-4">
+
+    <div class="container">
+        <div class="nav-wrapper">
+            <ul class="right">
+                @if (Auth::check())
+                <li class="right">{{auth()->user()->username}}</li>
+                @endif
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
         <div class="nav-wrapper">
             <a href="/" class="brand-logo"><img height="30"  src="{{asset('images/logo2.svg')}}" alt="logo"></a>
@@ -12,10 +23,11 @@
                 <li><a class="dropdown-trigger" href="/about" data-target='dropdown3'><i class="material-icons left">style</i></a></li>
                 <li><a class="dropdown-trigger" href="/about" data-target='dropdown4'><i class="material-icons left">person</i></a></li>
                 <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i class="material-icons left">dashboard</i></a></li>
-
             </ul>
+
         </div>
     </div>
+
 
 </nav>
 

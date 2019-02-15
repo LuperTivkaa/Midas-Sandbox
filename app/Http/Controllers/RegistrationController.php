@@ -34,7 +34,12 @@ class RegistrationController extends Controller
     //Create the staff
    // $user = User::create(request(['payment_number','password','email']));
     $user->roles()->attach(request(['role']));
-
+//check to see if user has roles
+//if($user->roles()){
+    //redirect to staff portal
+//}else{
+    //redirect to user portal
+//}
     //Login the User
     //auth()->login($user);
     //flash message

@@ -21,6 +21,16 @@
   padding: 3px;
 }
 
+#f-message {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  height: 50px;
+  border-radius: 3px 3px 3px 3px;
+}
+
 .myfooter {
   background-image: url(/images/bg.jpg?057781f722782298bdf5827be2ff29f8);
   background-size: cover;

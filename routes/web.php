@@ -26,11 +26,26 @@ Route::get('/gallery', 'HomeController@gallery');
 
 //ROUTES FOR ADMIN DASHBOARD
 
-Route::get('/Dashboard', 'MadminController@index');
-Route::get('/Dashboard/Users', 'MadminController@cooperators');
+Route::get('/Dashboard', 'MadminController@index')->middleware('auth');
+
+
 //dashobard routes
 Route::get('/Dashboard/home','DashboardController@index');
 
 //REGISTRATION ROUTES
-Route::get('/User/New','RegistrationController@createStaff');
-Route::post('/User/Create','RegistrationController@storeUser');
+
+    Route::get('/New','RegistrationController@createStaff');
+    Route::post('/Create','RegistrationController@storeUser');
+
+
+// Route::group(['prefix'=>'User'], function(){
+//     Route::get('/New','RegistrationController@createStaff')
+//     ->middleware('auth');
+//     Route::post('/Create','RegistrationController@storeUser')
+//     ->middleware('can:create');
+// });
+
+//Session/login controller
+Route::get('/login', 'SessionController@create')->name('login');
+Route::post('/signin','SessionController@store');
+Route::get('/logout','SessionController@destroy');

@@ -17,9 +17,10 @@ class RoleTableSeeder extends Seeder
             'name'=>'Staff',
             'description'=>'Staff Role',
             'permissions'=>json_encode([
-                'create-user'=>true,
-                'create-savings'=>true,
-                'edit'=>true,
+                'create'=>true,
+                'read'=>true,
+                'update'=>true,
+                'partial'=>true,
             ]),
         ]);
 
@@ -27,9 +28,9 @@ class RoleTableSeeder extends Seeder
             'name'=>'Admin',
             'description'=>'Admin Role',
             'permissions'=>json_encode([
-                'create-user'=>true,
-                'update-user'=>true,
-                'view-user'=>true,
+                'create'=>true,
+                'read'=>true,
+                'update'=>true,
             ]),
         ]);
 
@@ -37,10 +38,10 @@ class RoleTableSeeder extends Seeder
             'name'=>'Accounts',
             'description'=>'Accounts Role',
             'permissions'=>json_encode([
-                'create-user'=>true,
-                'update-user'=>true,
-                'view-user'=>true,
-                'review'=>true,
+                'create'=>true,
+                'update'=>true,
+                'read'=>true,
+                'all'=>true,
             ]),
         ]);
     }

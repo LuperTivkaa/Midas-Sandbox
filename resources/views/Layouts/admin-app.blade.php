@@ -155,6 +155,9 @@ coverTrigger:false,
 hover:true
 });
 
+//INIT SELECT
+$('select').formSelect();
+
 //INIT Carousel
 $('.carousel.carousel-slider').carousel({
 fullWidth: true

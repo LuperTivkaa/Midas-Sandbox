@@ -18,4 +18,24 @@ public function users(){
     return $this->belongsToMany(User::class,'role_users');
 
 }
+
+//has access for permisions
+
+public function hasAccess(array $permissions)
+    {
+        foreach($permissions as $permission){
+            if($role->hasPermission($permission)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //has permission
+    protected function hasPermission(string $permission )
+    {
+        $permissions = json_decode($this->permissions,true);
+        return $permissions[$permission]??false;
+    }
 }

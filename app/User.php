@@ -40,6 +40,16 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_users');
     }
 
+    //define relationship with next of kin
+    public function nok(){
+        return $this->hasOne(Nok::class);
+    }
+
+    //define relationship with user bank details
+    public function bank(){
+        return $this->hasOne(Bank::class);
+    }
+
     //has access method used in authserviceprovider
     public function hasAccess(array $permissions)
     {
@@ -54,5 +64,9 @@ class User extends Authenticatable
     public function inRole($name){
         return $this->roles()->where('name',$name)
         ->count()==1;
+    }
+
+    public function checkRole(){
+        return $this->roles()->pluck('name')->count()>=1;
     }
 }

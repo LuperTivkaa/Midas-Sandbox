@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-//use App\User;
+use App\User;
+use App\Role;
 
 class SessionController extends Controller
 { 
@@ -24,52 +25,32 @@ class SessionController extends Controller
     public function store(){
         $this->validate(request(), [
             'password' =>'required',
-            'email' =>'required|email',
+            'payment_number' =>'required',
         ]);
        
         //attempt to login
-        if(!Auth::attempt(request(['password','email']))){
+        if(!Auth::attempt(request(['password','payment_number']))){
             return back()->withErrors([
                 'message'=>'Please check your login credentials and try again.'
             ]);
         } 
-        // Check and redirect
-        //get user id
+        //check to see if user has roles
+        $user = User::where('payment_number', request(['payment_number']))->first();
+        if($user->checkRole())
+        {
+            return redirect('/Dashboard');
+        }
+            return redirect('/Dashboard/home');
+        
+        
         //check if id exist in role
         //if true, then staff and user, create a link to show user portal for staff only
         //otherwise redirect to user portal
 
 
         //redirect
-        return redirect('/Dashboard');
-        // $credentials = $request->only('email', 'password');
-
-        // if (Auth::attempt($credentials)) {
-        //     // Authentication passed...
-        //     return redirect('/Dashboard');
-        //     //return redirect()->intended('dashboard');
-        // }
-        // else{
-        //     return back()->withErrors([
-        //         'message'=>'Please check your login credentials and try again.'
-        //          ]);
-        // }
-
-        // $this->validate(request(), [
-        //     'password' =>'required',
-        //     'email' =>'required|email',
-        // ]);
-       
-        //attempt to login
-        // $email = request()->input('email');
-        // $password = request()->input('password');
+        //return redirect('/Dashboard');
         
-        // if(!Auth::attempt(['email'=>$email,'password'=>$password])){
-        //     return back()->withErrors([
-        //         'message'=>'Please check your login credentials and try again.'
-        //     ]);
-        // }  
-        // return redirect('/Dashboard');       
     }
 
     //logout

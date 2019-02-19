@@ -105,6 +105,7 @@
                     <select id="employ_type" name="employ_type">
                                 <option value="Permanent">Permanent</option>
                                 <option value="Temporal">Temporal</option>
+                                <option value="Temporal">MIDAS Permanent</option>
                     </select>
                     <label>Employment Type</label>
                 </div>

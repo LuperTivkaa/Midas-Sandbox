@@ -93,7 +93,7 @@
                     <label for="last_name">Last name</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="other_name" name="other_name" type="text" class="validate" required>
+                    <input id="other_name" name="other_name" type="text">
                     <label for="other_name">Other name</label>
                 </div>
 

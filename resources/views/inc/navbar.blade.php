@@ -9,16 +9,16 @@
   </div>
 </div>
 {{-- Drop Down Content --}}
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="/products"><i class="material-icons left">shopping_basket</i>Products</a></li>
-  <li><a href="/committee"><i class="material-icons left">supervisor_account</i>Exco</a></li>
-  <li><a href="/board"><i class="material-icons left">view_stream</i>Board</a></li>
-  <li><a href="/press-release"><i class="material-icons left">library_books</i>Press</a></li>
-  <li><a href="/gallery"><i class="material-icons left">movie</i>Gallery</a></li>
+<ul id="dropdown1" class="dropdown-content orange darken-3">
+  <li><a href="/products" class="white-text"><i class="material-icons left">shopping_basket</i>Products</a></li>
+  <li><a href="/committee" class="white-text"><i class="material-icons left">supervisor_account</i>Exco</a></li>
+  <li><a href="/board" class="white-text"><i class="material-icons left">view_stream</i>Board</a></li>
+  <li><a href="/press-release" class="white-text"><i class="material-icons left">library_books</i>Press</a></li>
+  <li><a href="/gallery" class="white-text"><i class="material-icons left">movie</i>Gallery</a></li>
 </ul>
 {{-- end drop dropdown content --}}
 
-<nav class="teal acccent-4">
+<nav class="orange darken-3">
   <div class="container">
     <div class="nav-wrapper">
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -28,8 +28,8 @@
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons left">view_quilt</i>More<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/user/login" class="btn-small red accent-3 waves-effect waves-light"><i class="material-icons left">no_encryption</i>User</a></li>
-        <li><a href="/staff/login" class="btn-small orange darken-4 waves-effect waves-light"><i class="material-icons left">vpn_lock</i>Staff</a></li>
+        <li><a href="/login" class="btn-small orange lighten-2 waves-effect waves-blue waves-light"><i class="material-icons left">no_encryption</i>Login</a></li>
+
       </ul>
     </div>
   </div>

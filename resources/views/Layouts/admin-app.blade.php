@@ -71,22 +71,32 @@
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red">
                 <i class="material-icons">add</i>
-            </a>
+        </a>
         <ul>
             <li>
-                <a href="#post-modal" class="modal-trigger btn-floating blue">
-                    <i class="material-icons">mode_edit</i>
+                <a href="/Nok" class="modal-trigger btn-floating teal darken-3">
+                <i class="material-icons">person_pin</i>
                 </a>
             </li>
             <li>
-                <a href="#category-modal" class="modal-trigger btn-floating blue">
-                        <i class="material-icons">folder</i>
-                    </a>
+                <a href="/bank" class="modal-trigger btn-floating cyan darken-3">
+            <i class="material-icons">attach_money</i>
+            </a>
             </li>
             <li>
-                <a href="#user-modal" class="modal-trigger btn-floating blue">
-                        <i class="material-icons">supervisor_account</i>
-                    </a>
+                <a href="#post-modal" class="modal-trigger btn-floating light-blue accent-1">
+                <i class="material-icons">mode_edit</i>
+                </a>
+            </li>
+            <li>
+                <a href="#category-modal" class="modal-trigger btn-floating red accent-3">
+                <i class="material-icons">folder</i>
+                </a>
+            </li>
+            <li>
+                <a href="#user-modal" class="modal-trigger btn-floating red accent-1">
+                <i class="material-icons">supervisor_account</i>
+                </a>
             </li>
         </ul>
     </div>
@@ -162,6 +172,12 @@ $('select').formSelect();
 $('.carousel.carousel-slider').carousel({
 fullWidth: true
 });
+
+//INIT DATEPICKER
+$('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+}
+);
 
 //COUNTER SNIPPET
 $('.count').each(function() {

@@ -34,12 +34,7 @@ class RegistrationController extends Controller
     //Create the staff
    // $user = User::create(request(['payment_number','password','email']));
     $user->roles()->attach(request(['role']));
-//check to see if user has roles
-//if($user->roles()){
-    //redirect to staff portal
-//}else{
-    //redirect to user portal
-//}
+
     //Login the User
     //auth()->login($user);
     //flash message
@@ -49,4 +44,18 @@ class RegistrationController extends Controller
 // ***return redirect('/Staff/New')->with('success','Staff Created');
 return redirect('/New');
 }
+
+//form for nok 
+public function nextOfKin (){
+    $title ="User NOK";
+    //$roles = Role::orderBy('name')->pluck('name','id');
+    return view('Registration.nok',compact('title'));
+}
+
+//form for nok 
+public function bank(){
+    $title ="User Bank Detail";
+    return view('Registration.bank',compact('title'));
+}
+
 }

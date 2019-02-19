@@ -18,7 +18,7 @@
 //ROUTES FOR HOME CONTROLLER
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
-Route::get('/committee', 'HomeController@committee');
+Route::get('/committee', 'HomeController@committee'); 
 Route::get('/board', 'HomeController@board');
 Route::get('/products', 'HomeController@products');
 Route::get('/news', 'HomeController@news');
@@ -30,12 +30,14 @@ Route::get('/Dashboard', 'MadminController@index')->middleware('auth');
 
 
 //dashobard routes
-Route::get('/Dashboard/home','DashboardController@index');
+Route::get('/Dashboard/home','DashboardController@index')->middleware('auth');
 
 //REGISTRATION ROUTES
 
-    Route::get('/New','RegistrationController@createStaff');
-    Route::post('/Create','RegistrationController@storeUser');
+Route::get('/New','RegistrationController@createStaff');
+Route::post('/Create','RegistrationController@storeUser');
+Route::get('/Nok','RegistrationController@nextOfKin');
+Route::get('/bank','RegistrationController@bank');
 
 
 // Route::group(['prefix'=>'User'], function(){

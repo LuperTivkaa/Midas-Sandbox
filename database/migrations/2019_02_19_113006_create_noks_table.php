@@ -16,6 +16,7 @@ class CreateNoksTable extends Migration
         Schema::create('noks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('relationship');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('other_name')->nullable();

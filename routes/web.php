@@ -34,10 +34,12 @@ Route::get('/Dashboard/home','DashboardController@index')->middleware('auth');
 
 //REGISTRATION ROUTES
 
-Route::get('/New','RegistrationController@createStaff');
+Route::get('/New','RegistrationController@createUser');
 Route::post('/Create','RegistrationController@storeUser');
 Route::get('/Nok','RegistrationController@nextOfKin');
+Route::post('/nokStore','RegistrationController@nokStore');
 Route::get('/bank','RegistrationController@bank');
+Route::post('/bankStore','RegistrationController@bankStore');
 
 
 // Route::group(['prefix'=>'User'], function(){
@@ -51,3 +53,6 @@ Route::get('/bank','RegistrationController@bank');
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/signin','SessionController@store');
 Route::get('/logout','SessionController@destroy');
+
+//Manage Users  Controller
+Route::get('user/all','UsersController@index');

@@ -19,5 +19,8 @@
         "materialize-css": "^1.0.0-rc.2",
         "popper.js": "^1.12",
         "vue": "^2.5.17"
+    },
+    "dependencies": {
+        "toastr": "^2.1.4"
     }
 }

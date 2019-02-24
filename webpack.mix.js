@@ -14,4 +14,9 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/midas-styles.scss", "public/css")
-    .sass("resources/sass/portal.scss", "public/css");
+    .sass("resources/sass/portal.scss", "public/css")
+    .copy(
+        "node_modules/toastr/build/toastr.min.css",
+        "public/css/toastr.min.css"
+    )
+    .copy("node_modules/toastr/build/toastr.min.js", "public/js/toastr.min.js");

@@ -10,7 +10,10 @@
     <link href="{{asset('fontawesome-assets/css/brands.css')}}" rel="stylesheet">
     <link href="{{asset('fontawesome-assets/css/solid.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}">
+    <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}"> {{--
+    <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
     <title>MIDAS- {{$title}}</title>
 </head>
 
@@ -125,7 +128,7 @@
         </div>
     </div>
 
-    {{--Below is loader --}}
+    {{--Below is loader --}} {{--
     <div class="loader preloader-wrapper big active ">
         <div class="spinner-layer spinner-blue ">
             <div class="circle-clipper left ">
@@ -138,11 +141,14 @@
                 <div class="circle "></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin=" anonymous "></script>
     <script src="{{asset( 'js/app.js')}} "></script>
+    <script src="{{asset( 'js/toastr.min.js')}} "></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
     <script>
         //HIDE ALL SECTIONS
@@ -219,6 +225,27 @@ $('.deny').click(function(e){
     },
     1000);
     </script>
+    {{--
+    <script>
+        @if(Session::has('message'))
+    var type = "{{Session::get('alert-type','info')}}"
+    switch(type){
+        case: 'info':
+        toastr.info("{{Session::get('message')}}");
+        break;
+        case: 'success':
+        toastr.success("{{Session::get('message')}}");
+        break;
+        case: 'warning':
+        toastr.warning("{{Session::get('message')}}");
+        break;
+        case: 'error':
+        toastr.error("{{Session::get('message')}}");
+        break;
+    }
+    @endif
+    </script> --}}
 </body>
+@toastr_render
 
 </html>

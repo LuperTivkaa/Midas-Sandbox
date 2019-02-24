@@ -46,8 +46,6 @@ class RegistrationController extends Controller
 
     //     $user = User::create($input);
 
-    
-
     //     return back()->with('success', 'User created successfully.');
 
     // }
@@ -98,14 +96,31 @@ class RegistrationController extends Controller
    // $user = User::create(request(['payment_number','password','email']));
     $user->roles()->attach(request(['role']));
 
+    if ($user->save()) {
+        toastr()->success('Data has been saved successfully!');
+
+        //return redirect()->route('posts.index');
+        return redirect('/New');
+    }
+
+    toastr()->error('An error has occurred please try again later.');
+    return back();
+
+        // $notification =array(
+        //     'message'=>'User Created Successfully',
+        //     'alert-type'=>'success'
+        // );
+        // return redirect('/New')->with($notification);
+    
+
     //Login the User
     //auth()->login($user);
     //flash message
-    session()->flash('message','User Created Successfully');
+    //session()->flash('message','User Created Successfully');
     //redirect to route
     //*** */return redirect('')->home;
 // ***return redirect('/Staff/New')->with('success','Staff Created');
-return redirect('/New');
+//return redirect('/New');
 }
 
 //form for nok 

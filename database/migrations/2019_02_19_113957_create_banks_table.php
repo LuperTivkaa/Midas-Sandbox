@@ -19,7 +19,7 @@ class CreateBanksTable extends Migration
             $table->string('bank_branch');
             $table->integer('sort_code')->unique();
             $table->string('acct_name');
-            $table->integer('acct_number')->unique();
+            $table->bigInteger('acct_number')->unique();
             $table->integer('user_id')->unique();
             $table->timestamps();
         });

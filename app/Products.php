@@ -14,4 +14,8 @@ class Products extends Model
         // 'email',
         // 'password',
    ];
+    //Define relationship with product subscription
+    public function productsubscriptions(){
+        return $this->hasMany(ProductSubscription::class);
+    }
 }

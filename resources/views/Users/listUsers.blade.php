@@ -2,28 +2,14 @@
 @section('main-content')
 <div class="container">
     @include('inc.messages')
-    <div class="row">
-        <div class="col 12">
-            <h5 class="teal-text">All Users</h5>
-            <div class="divider"></div>
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col s3">
-            <a href="" class="btn">New</a>
+    <div class="row subject-header">
+        <div class="col s6">
+            <span class="text-teal">ALL USERS</span>
         </div>
         <div class="col s6">
-
-            <a href="" class="btn">New</a>
-
-        </div>
-        <div class="col s3">
-            <a href="" class="btn">New</a>
+            <span><a href="/New"><i class="small material-icons">person_add</i></a></span>
         </div>
     </div>
-
-
 
     <div class="row">
         <div class="col s12">
@@ -46,18 +32,11 @@
                     @endforeach
                 </tbody>
             </table>
-            <ul class="pagination">
-                {{$users->links()}}
-            </ul>
-            @else
+            {{$users->links()}} @else
             <p>No Users Created Yet</p>
             @endif
         </div>
     </div>
-    <div class="row">
-        <div class="col s12">
 
-        </div>
-    </div>
 </div>
 @endsection

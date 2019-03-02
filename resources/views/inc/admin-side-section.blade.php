@@ -1,22 +1,25 @@
-<div class="col s12 m6 l4">
-    <div class="side-content white">
-        <h5>Loan Applications Summary</h5>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas error eligendi illum mollitia, eaque minus ullam
-            numquam eius ea sapiente sunt explicabo doloremque praesentium ratione dolorum pariatur eveniet natus iusto.</p>
+<div class="col s12 m4 l3 side-section-detail">
+
+    <div class="user-profiles white side-section-inner">
+        <h6 class="profile__heading pink-test lighten-4">Loan Applications</h6>
+        <p class="sub-profile">Summary as at 23rd Feb, 2019</p>
+        <span class="sub-profile">Long Term</span>
+        <span><a href="">133</a></span>
+        <span class="sub-profile">Medium Term</span>
+        <span><a href="">45</a></span>
+        <span class="sub-profile">Short Term </span>
+        <span><a href="">67</a></span>
+        <span class="sub-profile">Emergency</span>
+        <span><a href="">0</a></span>
     </div>
-    <div class="side-content white">
-        <h5>Target Savings Summary</h5>
-        <ul class="collection with-header latest-comments">
-            <li class="collection-item avatar">
-                <img src="{{asset('images/girl.png')}}" alt="" class="circle">
-                <span class="title">Priscilla</span>
-                <p class="truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non nam quaerat vel fugit odio delectus quidem
-                    nemo modi, cum, fuga odit tempore et quae beatae totam? Veniam, similique. Maxime!
-                </p>
-                <a href="#" class="approve green-text">Approve</a> | <a href="#" class="deny red-text">Deny</a>
-            </li>
-        </ul>
+
+    <div class="user-profiles white side-section-inner">
+        <h6 class="profile__heading">Target Savings</h6>
+        <p class="sub-profile">Summary as at 23rd Feb, 2019</p>
+        <span><a href="">N 23,000,000</a></span>
     </div>
+
+    {{--
     <div class="side-content white">
         <h5>Top Loan Applicants</h5>
         <ul class="collection with-header latest-comments">
@@ -29,5 +32,5 @@
                 <a href="#" class="approve green-text">Approve</a> | <a href="#" class="deny red-text">Deny</a>
             </li>
         </ul>
-    </div>
+    </div> --}}
 </div>

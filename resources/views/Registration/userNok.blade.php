@@ -6,7 +6,6 @@
         <div class="col s5">
             <h5 class="teal-text">User Next Of Kin</h5>
         </div>
-
         <form class="col s12" method="POST" action="/nokStore">
             {{ csrf_field() }}
             <div class="row">

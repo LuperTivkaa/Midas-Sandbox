@@ -12,6 +12,14 @@ use App\Bank;
 
 class RegistrationController extends Controller
 {
+    //constructor
+    public function __constructor(){
+    //prevent user from seeing signin page
+    $this->middleware('auth');
+    }
+
+  
+
     //Register  new staff
     public function createUser (){
         $title ="New User";
@@ -106,13 +114,6 @@ class RegistrationController extends Controller
     toastr()->error('An error has occurred please try again later.');
     return back();
 
-        // $notification =array(
-        //     'message'=>'User Created Successfully',
-        //     'alert-type'=>'success'
-        // );
-        // return redirect('/New')->with($notification);
-    
-
     //Login the User
     //auth()->login($user);
     //flash message
@@ -156,10 +157,15 @@ public function nokStore (Request $request){
     $user_nok->other_name = $request['other_name'];
     $user_nok->phone = $request['phone'];   
     $user_nok->save();
+    if ($user_nok->save()) {
+        toastr()->success('User Next of Kin has been saved successfully!');
 
-    //flash message
-session()->flash('message','User Next Of Kin Created Successfully');
-return redirect('/Nok');
+        //return redirect()->route('posts.index');
+        return redirect('/Nok');
+    }
+
+    toastr()->error('An error has occurred please try again later.');
+    return back();
 }
 
 
@@ -178,7 +184,7 @@ public function bankStore (Request $request){
         'bank_branch' =>'required',
         'sort_code' =>'required',
         'acct_name' =>'required',
-        'acct_number' =>'required|integer',
+        'acct_number' =>'required|integer|max:10|min:10',
     ]);
 
     $user = User::where('payment_number',request(['payment_number']))->firstOrFail();
@@ -193,13 +199,22 @@ public function bankStore (Request $request){
     $user_bank->user_id = $user_id;
     
     $user_bank->save();
-   
+    if ($user_bank->save()) {
+        toastr()->success('User bank details has been saved successfully!');
+
+        //return redirect()->route('posts.index');
+        return redirect('/New');
+    }
+
+    toastr()->error('An error has occurred please try again later.');
+    return back();
     //flash message
-    session()->flash('message','User Bank Details Created Successfully');
-    //redirect to route
-    //*** */return redirect('')->home;
-// ***return redirect('/Staff/New')->with('success','Staff Created');
-return redirect('/New');
 }
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('users', function () {
+//         // Matches The "/admin/users" URL
+//     });
+// });
 
 }

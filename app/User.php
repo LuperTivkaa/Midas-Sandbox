@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $dates = ['created_at', 'updated_at','dob'];
+
     //Code automatically hash password
     // public function setPasswordAttribute($pass)
     // {
@@ -48,6 +50,18 @@ class User extends Authenticatable
     //define relationship with user bank details
     public function bank(){
         return $this->hasOne(Bank::class);
+    }
+
+    //Define relationship with product subscription
+    public function productsubscriptions(){
+        return $this->hasMany(ProductSubscription::class);
+
+    }
+
+    //Define relationship with loan subscription
+    public function loansubscriptions(){
+        return $this->hasMany(LoanSubscription::class);
+
     }
 
     //has access method used in authserviceprovider

@@ -4,7 +4,7 @@
         <div class="nav-wrapper">
             <ul class="right">
                 @if (Auth::check())
-                <li class="right">{{auth()->user()->username}}</li>
+                <li class="right">{{auth()->user()->first_name}}</li>
                 @endif
             </ul>
         </div>
@@ -38,9 +38,11 @@
             <div class="background">
                 <img src="{{asset('images/logo2.svg')}}">
             </div>
-            <a href="#user"><img class="circle" src="{{asset('images/logo2.svg')}}"></a>
-            <a href="#name"><span class="grey-text darken-3 name">John Doe</span></a>
-            <a href="#email"><span class="grey-text darken-3 email">jdandturk@gmail.com</span></a>
+            <a href="#"><img class="circle" src="{{asset('images/logo2.svg')}}"></a>
+            <a href="#"><span class="grey-text darken-3 name">@if(Auth::check())
+                {{auth()->user()->first_name}}, {{auth()->user()->last_name}}@endif
+                </span></a>
+            <a href="#"><span class="grey-text darken-3 email">@if(Auth::check()){{auth()->user()->email}}@endif</span></a>
         </div>
     </li>
     <li><a class="subheader">Profile</a></li>

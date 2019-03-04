@@ -1,7 +1,8 @@
 @extends('Layouts.admin-app') 
 @section('main-content')
 <div class="container">
-    @include('inc.messages')
+    {{--
+    @include('inc.messages') --}}
     <div class="row subject-header">
         <div class="col s6">
             <span class="text-teal">ALL USERS</span>

@@ -1,13 +1,14 @@
 @extends('Layouts.admin-app') 
 @section('main-content')
 <div class="container">
-    @include('inc.messages')
-    <div class="row">
-        <div class="col 6">
+    {{--
+    @include('inc.messages') --}}
+    <div class="row subject-header">
+        <div class="col s6">
             <h5 class="teal-text">All Bank Details | </h5>
             <div class="divider"></div>
         </div>
-        <div class="col 6">
+        <div class="col s6">
             <h5 class="teal-text"><a href="/bank"><i class="material-icons">add</i> New</a></h5>
             <div class="divider"></div>
         </div>

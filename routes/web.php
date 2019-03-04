@@ -50,13 +50,6 @@ Route::get('/Dashboard/home','DashboardController@index');
 
     });
 
-// Route::group(['prefix'=>'User'], function(){
-//     Route::get('/New','RegistrationController@createStaff')
-//     ->middleware('auth');
-//     Route::post('/Create','RegistrationController@storeUser')
-//     ->middleware('can:create');
-// });
-
 //Session/login controller
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/signin','SessionController@store');
@@ -73,3 +66,10 @@ Route::get('/editBank/{id}','UsersController@editBank');
 Route::post('/updateBank/{id}','UsersController@updateBank');
 Route::get('/editNok/{id}','UsersController@editNok');
 Route::post('/updateNok/{id}','UsersController@updateNok');
+
+//Products routes
+Route::get('/products','ProductsController@index');
+Route::get('/product/create','ProductsController@create');
+Route::post('/product/store','ProductsController@store');
+Route::get('/editProduct/{id}','ProductsController@edit');
+Route::post('/updateProduct/{id}','ProductsController@update');

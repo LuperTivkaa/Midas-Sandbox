@@ -22,6 +22,7 @@
     @include('inc.admin-top-section')
 
     <section class="section section-content-details">
+    @include('inc.messages')
         <div class="row">
             <div class="col s12 m8 l9 user-profiles">
                 <div class="white">

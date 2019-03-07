@@ -12,29 +12,31 @@
 
     <div class="row">
         <div class="col s12">
-            {{-- @if (count($users)>=1) --}}
+            @if (count($products)>=1)
             <table class="highlight">
                 <thead>
                     <tr>
                         <th>Product Name</th>
                         <th>Description</th>
                         <th>Unit Cost</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($users as $user) --}}
+                    @foreach ($products as $product)
                     <tr>
-                        {{--
-                        <td><a href="/userDetails/{{$user->id}}">{{$user->first_name}}</a></td>
-                        <td>{{$user->last_name}}</td>
-                        <td>Active</td> --}}
+
+                        <td><a href="/product/detail/{{$product->id}}">{{$product->name}}</a></td>
+                        <td>{{$product->description}}</td>
+                        <td>{{$product->unit_cost}}</td>
+                        <td><a href="/product-subscribe/{{$product->id}}">Subscribe</a></td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
-            {{-- {{$users->links()}} @else --}}
+            {{$products->links()}} @else
             <p>No product added yet</p>
-            {{-- @endif --}}
+            @endif
         </div>
     </div>
 </div>

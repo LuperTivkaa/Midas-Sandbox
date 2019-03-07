@@ -21,7 +21,7 @@ class CreateProductSubscriptionsTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('staff_id');
-            $table->string('status')->default('Pending');
+            //$table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

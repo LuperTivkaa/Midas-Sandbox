@@ -185,6 +185,9 @@ $('.carousel.carousel-slider').carousel({
 fullWidth: true
 });
 
+//INIT MATERIAL BOX IMAGE
+$('.materialboxed').materialbox();
+
 //INIT DATEPICKER
 $('.datepicker').datepicker({
     format: 'yyyy-mm-dd',

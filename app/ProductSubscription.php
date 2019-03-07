@@ -15,4 +15,6 @@ class ProductSubscription extends Model
         public function products(){
             return $this->belongsTo(Products::class);
         }
+
+        protected $dates = ['created_at', 'updated_at','start_date','end_date'];
 }

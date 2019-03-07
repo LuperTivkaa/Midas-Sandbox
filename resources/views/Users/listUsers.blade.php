@@ -28,7 +28,7 @@
                     <tr>
                         <td><a href="/userDetails/{{$user->id}}">{{$user->first_name}}</a></td>
                         <td>{{$user->last_name}}</td>
-                        <td>Active</td>
+                        <td>{{$user->status}}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -151,6 +151,7 @@ public function nokStore (Request $request){
     $user_nok->user_id = $user_id;
     $user_nok->relationship = $request['relationship'];
     $user_nok->email = $request['email'];
+    $user_nok->gender = $request['sex'];
     $user_nok->title = $request['title'];
     $user_nok->first_name = $request['first_name'];
     $user_nok->last_name = $request['last_name'];
@@ -184,7 +185,7 @@ public function bankStore (Request $request){
         'bank_branch' =>'required',
         'sort_code' =>'required',
         'acct_name' =>'required',
-        'acct_number' =>'required|integer|max:10|min:10',
+        'acct_number' =>'required|integer|digits:10',
     ]);
 
     $user = User::where('payment_number',request(['payment_number']))->firstOrFail();

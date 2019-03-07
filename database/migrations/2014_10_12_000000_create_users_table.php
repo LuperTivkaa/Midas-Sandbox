@@ -15,8 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-           // $table->string('username')->default('midastouch');
-            $table->integer('payment_number')->unique();
+            $table->bigInteger('payment_number')->unique();
             $table->string('password')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -34,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->date('dob');
             $table->string('employ_type');
             $table->string('job_cadre');
+            $table->string('status')->default('Active');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -18,4 +18,6 @@ class Products extends Model
     public function productsubscriptions(){
         return $this->hasMany(ProductSubscription::class);
     }
+
+    protected $dates = ['created_at', 'updated_at'];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Products;
 
 class ProductsController extends Controller
 {
@@ -13,9 +14,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //List all candidates
-        $title ='All Product';
-        $products = Products::all();
+        //List all products
+        $title ='All Products';
+        $products = Products::orderBy('name','asc')->paginate(10);
         return view('Products.index',compact('products','title'));
     }
     /**
@@ -38,25 +39,26 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $title ="Product List";
         //Save product
         $this->validate(request(), [
         'product_name' =>'required|string',
         'description'=>'required|string',
-        'unit_cost' =>'required|decimal|integer',
+        'unit_cost' =>'required|numeric|betwween:0.00,999999999.99',
         ]);
         
 
         $product = new Products();
-        $product->title = $request['product_name'];
-        $product->gender = $request['description'];
-        $product->relationship = $request['unit_cost'];
+        $product->name = $request['product_name'];
+        $product->description = $request['description'];
+        $product->unit_cost = $request['unit_cost'];
 
         $product->save();
     
         if($product->save()) {
             toastr()->success('Product has been saved successfully!');
     
-            return view('Products.index',compact('profile','title'));
+            return view('Products.newProduct',compact('title'));
         }
     
         toastr()->error('An error has occurred trying to save, please try again later.');
@@ -73,6 +75,9 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $title ='Product Detail';
+        $product = Products::find($id);
+        return view('Products.productDetail',compact('product','title'));
     }
 
     /**
@@ -84,9 +89,9 @@ class ProductsController extends Controller
     public function edit($id)
     {
         //
-        $products = Products::find($id);
         $title ='Edit Product';
-        return view('Products.editProducts',compact('products','title'));
+        $product = Products::find($id);
+        return view('Products.editProducts',compact('product','title'));
         
     }
 
@@ -100,30 +105,28 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $title ="All Products";
+        $title ="Product Detail";
         $this->validate(request(), [
             'product_name' =>'required|string',
             'description'=>'required|string',
-            'unit_cost' =>'required|decimal|integer',
+            'unit_cost' =>'required|numeric|between:0.00,999999999.99',
         ]);
 
         $product = Products::find($id);
-        $product->product_name = $request['product_name'];
+        $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
         $product->save();
 
-
-        $products = Products::find($id);
-        $title ='Edit Product';
-        return view('Products.editProducts',compact('products','title'));
+        //$products = Products::find($id);
+        //return view('Products.editProducts',compact('products','title'));
          //find user
-        $userid = $nokUpdate->user_id;
-        $profile = User::find($userid);
-        if ($nokUpdate->save()) {
+        // $userid = $nokUpdate->user_id;
+        // $profile = User::find($userid);
+        if ($product->save()) {
             toastr()->success('Data has been edited successfully!');
     
-            return view('Users.userView',compact('profile','title'));
+            return view('Products.productDetail',compact('product','title'));
         }
     
         toastr()->error('An error has occurred trying to update, please try again later.');

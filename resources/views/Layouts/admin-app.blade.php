@@ -22,11 +22,12 @@
     @include('inc.admin-top-section')
 
     <section class="section section-content-details">
-    @include('inc.messages')
+        {{--
+    @include('inc.messages') --}}
         <div class="row">
             <div class="col s12 m8 l9 user-profiles">
                 <div class="white">
-                    @yield('main-content')
+    @include('inc.messages') @yield('main-content')
                 </div>
             </div>
     @include('inc.admin-side-section')
@@ -152,6 +153,7 @@
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js "></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         //HIDE ALL SECTIONS
     $('.section').hide();
@@ -233,26 +235,28 @@ $('.deny').click(function(e){
     },
     1000);
     </script>
-    {{--
+
     <script>
-        @if(Session::has('message'))
-    var type = "{{Session::get('alert-type','info')}}"
-    switch(type){
-        case: 'info':
-        toastr.info("{{Session::get('message')}}");
-        break;
-        case: 'success':
-        toastr.success("{{Session::get('message')}}");
-        break;
-        case: 'warning':
-        toastr.warning("{{Session::get('message')}}");
-        break;
-        case: 'error':
-        toastr.error("{{Session::get('message')}}");
-        break;
-    }
-    @endif
-    </script> --}}
+        //MOVE TO THE DOCUMENT READY FUNCTION NOT WORKING FOR NOW REFACTOR
+        $(document).on("click", "#delete", function(e){
+         e.preventDefault();
+         var link = $(this).attr("href");
+         swal({
+             title: "Are you sure you want to delete?",
+             text: "Once deleted this will be permanent",
+             icon: "warning",
+             buttons:true,
+             dangerMode:true,
+         }).then((willDelete)=>{
+             if(willDelete){
+                 window.location.href=link;
+             }else{
+                 swal("Safe Data");
+             }
+         })
+     })
+    </script>
+
 </body>
 @toastr_render
 

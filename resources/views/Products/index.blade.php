@@ -7,6 +7,7 @@
         <div class="col s12 subject-header">
             <p class="teal-text">All Products</p>
             <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
+            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Product Subscription">add_shopping_cart</i></a></span>
         </div>
     </div>
 
@@ -25,11 +26,10 @@
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
-
                         <td><a href="/product/detail/{{$product->id}}">{{$product->name}}</a></td>
                         <td>{{$product->description}}</td>
                         <td>{{$product->unit_cost}}</td>
-                        <td><a href="/product-subscribe/{{$product->id}}">Subscribe</a></td>
+                        <td><a href="/new-subscription">Subscribe</a></td>
                     </tr>
                     @endforeach
                 </tbody>

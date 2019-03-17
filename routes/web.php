@@ -15,6 +15,12 @@
 //     return view('welcome');
 // });
 
+// Route::prefix('admin')->group(function () {
+//     Route::get('users', function () {
+//         // Matches The "/admin/users" URL
+//     });
+// });
+
   //
     // Route::middleware(['auth'])->group(function () {
     //     Route::get('leadsadd','crmcontroller@addleads');
@@ -46,10 +52,9 @@ Route::get('/Dashboard/home','DashboardController@index');
         Route::post('/nokStore','RegistrationController@nokStore');
         Route::get('/bank','RegistrationController@bank');
         Route::post('/bankStore','RegistrationController@bankStore');
-
     });
     
-
+    
 //Session/login controller
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/signin','SessionController@store');
@@ -79,5 +84,27 @@ Route::post('/updateProduct/{id}','ProductsController@update');
 
 //Product Subscription
 Route::get('/subscriptions','ProductSubscriptionController@index');
-Route::get('/new_subscription','ProductSubscriptionController@create');
+Route::get('/new-subscription','ProductSubscriptionController@create');
+Route::post('/productsub','ProductSubscriptionController@store');
+Route::get('/p-sub/{id}','ProductSubscriptionController@show');
+Route::get('/user/products/{id}','ProductSubscriptionController@userSubscriptions');
+Route::get('/userProdSub/edit/{id}','ProductSubscriptionController@edit');
+Route::post('/user/ProductEdit/{id}','ProductSubscriptionController@update');
+Route::get('/userProdSub/delete/{id}','ProductSubscriptionController@destroy');
 
+//Loan Product Routes
+Route::get('/loanProducts','LoanProductController@index');
+Route::get('/loanProduct/create','LoanProductController@create');
+Route::post('/loanProduct/store','LoanProductController@store');
+Route::get('/loanProduct/edit/{id}','LoanProductController@edit');
+Route::post('/loanProduct/update/{id}','LoanProductController@update');
+
+//Loan Subscription Routes
+Route::get('/loan-subscriptions','LoanSubscriptionController@index');
+Route::get('/loanSub/create','LoanSubscriptionController@create');
+Route::post('/productsub','LoanSubscriptionController@store');
+Route::get('/p-sub/{id}','LoanSubscriptionController@show');
+Route::get('/user/products/{id}','LoanSubscriptionController@userSubscriptions');
+Route::get('/userProdSub/edit/{id}','LoanSubscriptionController@edit');
+Route::post('/user/ProductEdit/{id}','LoanSubscriptionController@update');
+Route::get('/userProdSub/delete/{id}','LoanSubscriptionController@destroy');

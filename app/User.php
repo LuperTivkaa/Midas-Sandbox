@@ -53,16 +53,16 @@ class User extends Authenticatable
     }
 
     //Define relationship with product subscription
-    public function productsubscriptions(){
-        return $this->hasMany(ProductSubscription::class);
-
+    //done; A user has many product subscriptions
+    public function psubscriptions(){
+        return $this->hasMany(Psubscription::class);
     }
 
     //Define relationship with loan subscription
-    public function loansubscriptions(){
-        return $this->hasMany(LoanSubscription::class);
+    // public function loansubscriptions(){
+    //     return $this->hasMany(LoanSubscription::class);
 
-    }
+    // }
 
     //has access method used in authserviceprovider
     public function hasAccess(array $permissions)

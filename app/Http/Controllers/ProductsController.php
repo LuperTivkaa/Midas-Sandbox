@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Products;
+use App\Product;
 
 class ProductsController extends Controller
 {
@@ -16,7 +16,7 @@ class ProductsController extends Controller
     {
         //List all products
         $title ='All Products';
-        $products = Products::orderBy('name','asc')->paginate(10);
+        $products = Product::orderBy('name','asc')->paginate(10);
         return view('Products.index',compact('products','title'));
     }
     /**
@@ -39,16 +39,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $title ="Product List";
+        $title ="New Product";
         //Save product
         $this->validate(request(), [
         'product_name' =>'required|string',
         'description'=>'required|string',
-        'unit_cost' =>'required|numeric|betwween:0.00,999999999.99',
+        'unit_cost' =>'required|numeric|between:0.00,999999999.99',
         ]);
         
-
-        $product = new Products();
+        $product = new Product();
         $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
@@ -57,8 +56,7 @@ class ProductsController extends Controller
     
         if($product->save()) {
             toastr()->success('Product has been saved successfully!');
-    
-            return view('Products.newProduct',compact('title'));
+            return redirect('/product/create');
         }
     
         toastr()->error('An error has occurred trying to save, please try again later.');
@@ -76,7 +74,7 @@ class ProductsController extends Controller
     {
         //
         $title ='Product Detail';
-        $product = Products::find($id);
+        $product = Product::find($id);
         return view('Products.productDetail',compact('product','title'));
     }
 
@@ -90,7 +88,7 @@ class ProductsController extends Controller
     {
         //
         $title ='Edit Product';
-        $product = Products::find($id);
+        $product = Product::find($id);
         return view('Products.editProducts',compact('product','title'));
         
     }
@@ -112,7 +110,7 @@ class ProductsController extends Controller
             'unit_cost' =>'required|numeric|between:0.00,999999999.99',
         ]);
 
-        $product = Products::find($id);
+        $product = Product::find($id);
         $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
@@ -142,7 +140,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
-        $products = Products::find($id);
+        $products = Product::find($id);
         $product->delete();
         if ($product->delete()) {
             toastr()->success('Data has been deleted successfully!');

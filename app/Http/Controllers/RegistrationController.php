@@ -144,29 +144,35 @@ public function nokStore (Request $request){
         'last_name'=>'required',
         'phone'=>'required',
     ]);
-    $user = User::where('payment_number',request(['payment_number']))->firstOrFail();
-    $user_id = $user->id;
+    if(User::where('payment_number',request(['payment_number']))->exists())
+    {
+        $user = User::where('payment_number',request(['payment_number']))->first();
+        $user_id = $user->id;
+        $user_nok = new Nok();
+        $user_nok->user_id = $user_id;
+        $user_nok->relationship = $request['relationship'];
+        $user_nok->email = $request['email'];
+        $user_nok->gender = $request['sex'];
+        $user_nok->title = $request['title'];
+        $user_nok->first_name = $request['first_name'];
+        $user_nok->last_name = $request['last_name'];
+        $user_nok->other_name = $request['other_name'];
+        $user_nok->phone = $request['phone'];   
+        $user_nok->save();
 
-    $user_nok = new Nok();
-    $user_nok->user_id = $user_id;
-    $user_nok->relationship = $request['relationship'];
-    $user_nok->email = $request['email'];
-    $user_nok->gender = $request['sex'];
-    $user_nok->title = $request['title'];
-    $user_nok->first_name = $request['first_name'];
-    $user_nok->last_name = $request['last_name'];
-    $user_nok->other_name = $request['other_name'];
-    $user_nok->phone = $request['phone'];   
-    $user_nok->save();
-    if ($user_nok->save()) {
-        toastr()->success('User Next of Kin has been saved successfully!');
+        if ($user_nok->save()) {
+            toastr()->success('User Next of Kin has been saved successfully!');
+    
+            //return redirect()->route('posts.index');
+            return redirect('/user/nok');
+        }
+        toastr()->error('An error has occurred please try again later.');
+        return back();
 
-        //return redirect()->route('posts.index');
-        return redirect('/Nok');
     }
-
-    toastr()->error('An error has occurred please try again later.');
-    return back();
+ 
+    toastr()->error('This user does not exist yet!.');
+    return back();   
 }
 
 
@@ -188,34 +194,31 @@ public function bankStore (Request $request){
         'acct_number' =>'required|integer|digits:10',
     ]);
 
-    $user = User::where('payment_number',request(['payment_number']))->firstOrFail();
-    $user_id = $user->id;
-
-    $user_bank = new Bank();
-    $user_bank->bank_name = $request['bank_name'];
-    $user_bank->bank_branch = $request['bank_branch'];
-    $user_bank->sort_code = $request['sort_code'];
-    $user_bank->acct_name = $request['acct_name'];
-    $user_bank->acct_number = $request['acct_number'];
-    $user_bank->user_id = $user_id;
+    if(User::where('payment_number',request(['payment_number']))->exists())
+    {
+        $user = User::where('payment_number',request(['payment_number']))->first();
+        $user_id = $user->id;
+        $user_bank = new Bank();
+        $user_bank->bank_name = $request['bank_name'];
+        $user_bank->bank_branch = $request['bank_branch'];
+        $user_bank->sort_code = $request['sort_code'];
+        $user_bank->acct_name = $request['acct_name'];
+        $user_bank->acct_number = $request['acct_number'];
+        $user_bank->user_id = $user_id;
+        $user_bank->save();
+        if ($user_bank->save()) {
+            toastr()->success('User bank details has been saved successfully!');
     
-    $user_bank->save();
-    if ($user_bank->save()) {
-        toastr()->success('User bank details has been saved successfully!');
-
-        //return redirect()->route('posts.index');
-        return redirect('/New');
+            //return redirect()->route('posts.index');
+            return redirect('/user/bank');
+        }
+        toastr()->error('An error has occurred trying to save record, please try again later.');
+        return back();
     }
-
-    toastr()->error('An error has occurred please try again later.');
+        
+    toastr()->error('This user does not exist yet!');
     return back();
-    //flash message
+   
 }
-
-// Route::prefix('admin')->group(function () {
-//     Route::get('users', function () {
-//         // Matches The "/admin/users" URL
-//     });
-// });
 
 }

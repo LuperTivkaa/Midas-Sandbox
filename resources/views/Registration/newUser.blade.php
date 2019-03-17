@@ -40,7 +40,7 @@
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
-                @can('all')
+                {{-- @can('all') --}}
                 <div class="input-field col s6">
                     <select id="role" name="role">
                         {{-- <option value="" disabled>Choose role</option> --}}
@@ -51,7 +51,7 @@
                     </select>
                     <label>System Role</label>
                 </div>
-                @endcan
+                {{-- @endcan --}}
             </div>
             <div class="row">
                 <div class="input-field col s4">

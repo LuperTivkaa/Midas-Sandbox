@@ -23,7 +23,6 @@
                         <th>Units</th>
                         <th>Cost</th>
                         <th>Date Added</th>
-
                     </tr>
                 </thead>
                 <tbody>

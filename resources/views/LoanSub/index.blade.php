@@ -6,8 +6,7 @@
     <div class="row">
         <div class="col s12 subject-header">
             <p class="teal-text">All Loan Request</p>
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
-            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
+            <span><a href="/loanSub/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Loan Subscription">playlist_add</i></a></span>
         </div>
     </div>
 
@@ -17,6 +16,7 @@
             <table class="highlight">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Loan Description</th>
                         <th>Total Request</th>
                     </tr>
@@ -24,6 +24,7 @@
                 <tbody>
                     @foreach ($loanReq as $item)
                     <tr>
+                        <td>{{$loop->iteration}}</td>
                         <td><a href="/loan-request/{{$item->id}}">{{$item->description}}</a></td>
                         <td>{{$item->loansubscriptions_count}}</td>
                     </tr>

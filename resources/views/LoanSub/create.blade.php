@@ -6,8 +6,7 @@
     <div class="row">
         <div class="col s12 subject-header">
             <span class="teal-text">New  Loan Subscription</span>
-            <span><a href="/subscriptions"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Subscription">view_list</i></a></span>
-            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Products">apps</i></a></span>
+            <span><a href="/loan-subscriptions"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Loan Subscription">view_list</i></a></span>
         </div>
     </div>
     <div class="row">

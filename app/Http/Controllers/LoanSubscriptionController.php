@@ -47,7 +47,7 @@ class LoanSubscriptionController extends Controller
         //
         $this->validate(request(), [
             'payment_id'=>'required|integer',
-            'custom_tenor' =>'required|integer|between:1,60',
+            'custom_tenor' =>'nullable|integer|between:1,60',
             'amount_applied' =>'required|numeric|between:0.00,999999999.99',
             ]);
 
@@ -82,7 +82,14 @@ class LoanSubscriptionController extends Controller
      */
     public function show($id)
     {
-        //
+        //Show detail of all subscriptions for a particular product
+        //Display detail product subscription listings
+        $title ='Loan Subscriptions Detail';
+        $loanDetails = Lsubscription::where('loan_id',$id)->with(['loan' => function ($query) {
+          $query->orderBy('description', 'desc');
+      }])->paginate(10);
+        
+        return view('LoanSub.loanSubDetail',compact('loanDetails','title'));
     }
 
     /**
@@ -93,7 +100,11 @@ class LoanSubscriptionController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Show form for editing loan subscription
+        $title ='Edit Loan Subscription';
+        $lSub = Lsubscription::find($id);
+        $loanProd = Loan::orderBy('description')->pluck('description','id');
+        return view('LoanSub.editLoanSub',compact('lSub','loanProd','title'));
     }
 
     /**
@@ -106,6 +117,42 @@ class LoanSubscriptionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate(request(), [
+            'payment_id'=>'required|integer',
+            'custom_tenor' =>'nullable|integer|between:1,60',
+            'amount_applied' =>'required|numeric|between:0.00,999999999.99',
+            ]);
+
+            if(User::where('payment_number',request(['payment_id']))->exists())
+            {
+                $user = User::where('payment_number',request(['payment_id']))->first();
+                $user_id = $user->id;
+                $loan_sub = Lsubscription::find($id);
+                $loan_sub->user_id = $user_id;
+                $loan_sub->loan_id = $request['loan_product'];
+                $loan_sub->custom_tenor = $request['custom_tenor'];
+                $loan_sub->amount_applied = $request['amount_applied'];
+                $loan_sub->created_by = auth()->id();
+                $loan_sub->save();
+                if($loan_sub->save()) {
+                    toastr()->success('Loan request has been edited successfully!');
+                    return redirect('/loanSub/create');
+                }
+            
+                toastr()->error('An error has occurred trying to update a loan request!');
+                return back();
+            }
+        toastr()->error('No user exist with this payment identification number.');
+        return back();
+    }
+
+    public function userLoanSubscriptions(){
+        $title = "User Loan Subscriptions";
+        // $userLoanApps = Psubscription::where('user_id',$id)->with(['product' => function ($query) {
+        //     $query->orderBy('name', 'desc');
+        // }])->paginate(10);
+
+        return view('LoanSub.userLoanSub',compact('title'));
     }
 
     /**

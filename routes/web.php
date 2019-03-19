@@ -102,9 +102,9 @@ Route::post('/loanProduct/update/{id}','LoanProductController@update');
 //Loan Subscription Routes
 Route::get('/loan-subscriptions','LoanSubscriptionController@index');
 Route::get('/loanSub/create','LoanSubscriptionController@create');
-Route::post('/productsub','LoanSubscriptionController@store');
-Route::get('/p-sub/{id}','LoanSubscriptionController@show');
-Route::get('/user/products/{id}','LoanSubscriptionController@userSubscriptions');
-Route::get('/userProdSub/edit/{id}','LoanSubscriptionController@edit');
-Route::post('/user/ProductEdit/{id}','LoanSubscriptionController@update');
-Route::get('/userProdSub/delete/{id}','LoanSubscriptionController@destroy');
+Route::post('/loanSub/store','LoanSubscriptionController@store');
+Route::get('/loan-request/{id}','LoanSubscriptionController@show');
+Route::get('/loanSub/edit/{id}','LoanSubscriptionController@edit');
+Route::post('/loanSub/update/{id}','LoanSubscriptionController@update');
+Route::get('/user/loan/{id}','LoanSubscriptionController@userLoanSubscriptions');
+//Route::get('/userProdSub/delete/{id}','LoanSubscriptionController@destroy');

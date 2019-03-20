@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //Done by me Luper Tivkaa
+        $this->app->singleton(FakerGenerator::class, function () {
+            return FakerFactory::create('en_NG');
+          });
     }
 }

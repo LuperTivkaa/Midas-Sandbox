@@ -16,6 +16,8 @@ class CreateTargetsavingsTable extends Migration
         Schema::create('targetsavings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->decimal('amount',8,2);
+            $table->date('entry_date');
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('created_by'); //ID of the logged in staff

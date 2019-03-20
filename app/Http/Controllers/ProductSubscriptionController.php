@@ -37,8 +37,7 @@ class ProductSubscriptionController extends Controller
     {
         //New Subscription from
         $title ='New Product Subscription';
-        $prodList = Product::orderBy('name')->pluck('name','id');
-        return view('ProductSub.create',compact('title','prodList'));
+        return view('ProductSub.create',compact('title'));
     }
 
     /**
@@ -122,8 +121,7 @@ class ProductSubscriptionController extends Controller
         //
         $title ='Edit Product Subscription';
         $product = Psubscription::find($id);
-        $prodList = Product::orderBy('name')->pluck('name','id');
-        return view('ProductSub.editSubscription',compact('product','prodList','title'));
+        return view('ProductSub.editSubscription',compact('product','title'));
     }
 
     /**

@@ -12,4 +12,9 @@ class Loan extends Model
     public function loansubscriptions(){
         return $this->hasMany(Lsubscription::class);
     }
+
+    //loan products
+    public static function loanProducts(){
+        return static::orderBy('description')->pluck('description','id');
+    }
 }

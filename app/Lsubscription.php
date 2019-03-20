@@ -13,7 +13,7 @@ class Lsubscription extends Model
         }
     
         //loan relationship
-        //A subscription belongs to a loan
+        //Each loan subscription belongs to a loan
         public function loan(){
             return $this->belongsTo(Loan::class);
         }

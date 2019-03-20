@@ -32,8 +32,7 @@ class LoanSubscriptionController extends Controller
     {
         //New Loan Subscription Form
         $title ='New Loan Subscription';
-        $loanProd = Loan::orderBy('description')->pluck('description','id');
-        return view('LoanSub.create',compact('title','loanProd'));
+        return view('LoanSub.create',compact('title'));
     }
 
     /**
@@ -103,8 +102,7 @@ class LoanSubscriptionController extends Controller
         // Show form for editing loan subscription
         $title ='Edit Loan Subscription';
         $lSub = Lsubscription::find($id);
-        $loanProd = Loan::orderBy('description')->pluck('description','id');
-        return view('LoanSub.editLoanSub',compact('lSub','loanProd','title'));
+        return view('LoanSub.editLoanSub',compact('lSub','title'));
     }
 
     /**

@@ -19,6 +19,10 @@ class Product extends Model
     public function psubscriptions(){
         return $this->hasMany(Psubscription::class);
     }
+
+    public static function  productList(){
+        return static::orderBy('name')->pluck('name','id');
+    }
     
     protected $dates = ['created_at', 'updated_at'];
 }

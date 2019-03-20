@@ -29,13 +29,6 @@ class User extends Authenticatable
 
     protected $dates = ['created_at', 'updated_at','dob'];
 
-    //Code automatically hash password
-    // public function setPasswordAttribute($pass)
-    // {
-
-    //     $this->attributes['password'] = Hash::make($pass);
-        
-    // }
 
     //Define relationship with roles
     public function roles(){
@@ -62,6 +55,27 @@ class User extends Authenticatable
      public function loansubscriptions(){
         return $this->hasMany(Lsubscription::class);
     }
+
+    //Relationship with Target Savings Review
+    public function tsreviews(){
+        return $this->hasMany(Targetsr::class);
+    } 
+
+    //Relationship with Target Saving
+    public function targetsavings(){
+        return $this->hasMany(Targetsaving::class);
+    }
+
+    //Relationship with Saving
+    public function savings(){
+        return $this->hasMany(Saving::class);
+    }
+
+    //Relationship with saving reviews
+    public function savingreviews(){
+        return $this->hasMany(Savingreview::class);
+    }
+
 
     //Define relationship with loan subscription
     // public function loansubscriptions(){

@@ -13,7 +13,7 @@ class Psubscription extends Model
     }
 
     //relationship with products
-    //Done ; A product subscription belonngs to a product
+    //Done ; Each product subscription belongs to a product
     public function product(){
         return $this->belongsTo(Product::class);
     }

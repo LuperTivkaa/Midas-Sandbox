@@ -76,6 +76,11 @@ class User extends Authenticatable
         return $this->hasMany(Savingreview::class);
     }
 
+     //Relationship with loan deductions
+     public function loandeductions(){
+        return $this->hasMany(Ldeduction::class);
+    }
+
 
     //Define relationship with loan subscription
     // public function loansubscriptions(){

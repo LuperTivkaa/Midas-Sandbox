@@ -57,6 +57,11 @@ class User extends Authenticatable
     public function psubscriptions(){
         return $this->hasMany(Psubscription::class);
     }
+    //User relationship with loan subscriptions
+    //User has many subscriptions
+     public function loansubscriptions(){
+        return $this->hasMany(Lsubscription::class);
+    }
 
     //Define relationship with loan subscription
     // public function loansubscriptions(){

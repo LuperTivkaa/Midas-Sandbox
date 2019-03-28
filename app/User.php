@@ -1,5 +1,7 @@
 <?php
 namespace App;
+use App\Saving;
+use App\Savingreview;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -51,7 +53,7 @@ class User extends Authenticatable
         return $this->hasMany(Psubscription::class);
     }
     //User relationship with loan subscriptions
-    //User has many subscriptions
+    //User has many subscriptions 
      public function loansubscriptions(){
         return $this->hasMany(Lsubscription::class);
     }
@@ -82,11 +84,60 @@ class User extends Authenticatable
     }
 
 
-    //Define relationship with loan subscription
-    // public function loansubscriptions(){
-    //     return $this->hasMany(LoanSubscription::class);
+    public  function totalSavings($id)
+    {
+        return Saving::where('user_id',$id)->sum('amount_saved');
+        //$balance = DB::table('data')->where('user_id' '=' $id)->sum('balance');
+    }
 
+    public  function monthlySaving($id)
+    {
+        // Monthly saving amount
+        $userSavingRev = Savingreview::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Active');
+        })
+        ->first();
+        return $userSavingRev->current_amount;
+    }
+
+    public  function activeLoans($id)
+    {
+        //Number of active loans
+        $activeLoans = Lsubscription::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('loan_status', '=', 'Active');
+        })->get();
+        return $activeLoans->count();
+    }
+
+    public  function pendingLoans($id)
+    {
+        //Number of pending loans
+        $pendingLoans = Lsubscription::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('loan_status', '=', 'Pending');
+        })->get();
+        return $pendingLoans->count();
+    }
+
+    public function requiredPercent($amt){
+        return 0.3 * $amt;
+    }
+
+    public function availablePercent($id){
+        return 0.3 * $this->totalSavings($id);
+    }
+
+    // public static function totalSavings($id)
+    // {
+    //     return static::selectRaw('users.name, count(*) submitted_games')
+    //         ->join('games', 'games.user_id', '=', 'users.id')
+    //         ->groupBy('users.name')
+    //         ->orderBy('submitted_games', 'DESC')
+    //         ->get();
     // }
+
 
     //has access method used in authserviceprovider
     public function hasAccess(array $permissions)

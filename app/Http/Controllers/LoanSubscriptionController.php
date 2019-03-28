@@ -42,7 +42,7 @@ class LoanSubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+        {
         //
         $this->validate(request(), [
             'payment_id'=>'required|integer',
@@ -71,7 +71,7 @@ class LoanSubscriptionController extends Controller
             }
         toastr()->error('No user exist with this payment identification number.');
         return back();
-    }
+        }
 
     /**
      * Display the specified resource.
@@ -80,16 +80,16 @@ class LoanSubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+        {
         //Show detail of all subscriptions for a particular product
         //Display detail product subscription listings
         $title ='Loan Subscriptions Detail';
         $loanDetails = Lsubscription::where('loan_id',$id)->with(['loan' => function ($query) {
           $query->orderBy('description', 'desc');
       }])->paginate(10);
-        
+
         return view('LoanSub.loanSubDetail',compact('loanDetails','title'));
-    }
+        }
 
     /**
      * Show the form for editing the specified resource.
@@ -98,12 +98,12 @@ class LoanSubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+        {
         // Show form for editing loan subscription
         $title ='Edit Loan Subscription';
         $lSub = Lsubscription::find($id);
         return view('LoanSub.editLoanSub',compact('lSub','title'));
-    }
+        }
 
     /**
      * Update the specified resource in storage.
@@ -113,7 +113,7 @@ class LoanSubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+        {
         //
         $this->validate(request(), [
             'payment_id'=>'required|integer',
@@ -142,16 +142,116 @@ class LoanSubscriptionController extends Controller
             }
         toastr()->error('No user exist with this payment identification number.');
         return back();
-    }
+        }
 
-    public function userLoanSubscriptions(){
+
+    public function userLoanSubscriptions($id){
         $title = "User Loan Subscriptions";
-        // $userLoanApps = Psubscription::where('user_id',$id)->with(['product' => function ($query) {
-        //     $query->orderBy('name', 'desc');
-        // }])->paginate(10);
 
-        return view('LoanSub.userLoanSub',compact('title'));
+        //Find user
+        $user = User::find($id);
+
+        $activeLoans = Lsubscription::where('user_id',$id)
+        ->where(function ($query){
+            $query->where('loan_status','Active');
+        })->with(['loan' => function ($query) {
+        $query->orderBy('description', 'desc');
+        }])->get();
+
+        $pendingLoans = Lsubscription::where('user_id',$id)
+        ->where(function ($query){
+            $query->where('loan_status','=','Pending');
+        })->with(['loan' => function ($query) {
+        $query->orderBy('description', 'desc');
+        }])->get();
+
+        return view('LoanSub.userLoanSub',compact('title','activeLoans','pendingLoans','user'));
     }
+
+
+    //show form for reviewing user loan
+
+    public function review($id){
+        // Show form for editing loan subscription
+        $title ='Review Loan Subscription';
+        $review = Lsubscription::find($id);
+        return view('LoanSub.review',compact('review','title'));
+    }
+
+    //Review Store
+
+    public function reviewStore(Request $request, $id)
+        {
+        //
+            
+            $this->validate(request(), [
+            'notes' =>'required',
+            'start_date' =>'required|date',
+            'end_date' =>'required|date',
+            'amount_approved' =>'required|numeric|between:0.00,999999999.99',
+            ]);
+
+
+                 //Retrieve loan subscription instance
+                $loan_sub = Lsubscription::find($id);
+                //check if custom tenor is checked
+                //if answer is yes
+                //then use that for calculating deductions
+                //if not use default
+                $tenorCheck = Lsubscription::where('id',$id)
+                ->where(function ($query){
+                $query->whereNull('custom_tenor');
+                })->get();
+
+                if($tenorCheck->isEmpty()){
+                    $tenor = $loan_sub->loan->tenor;
+                }else
+                {
+                    $tenor = $loan_sub->custom_tenor;
+                }
+                
+                $approved_amt = $request['amount_approved'];
+
+                $monthly_deduction = $approved_amt/$tenor;
+
+                
+                $loan_sub->amount_approved = $approved_amt;
+                $loan_sub->monthly_deduction = $monthly_deduction;
+                $loan_sub->loan_status = 'Active';
+                $loan_sub->loan_start_date = $request['start_date'];
+                $loan_sub->loan_end_date = $request['end_date'];
+                $loan_sub->review_comment = $request['notes'];
+                $loan_sub->review_by = auth()->id();
+                $loan_sub->save();
+                if($loan_sub->save()) {
+                    toastr()->success('Loan request has been approved successfully!');
+                    //redirect user loans listing page
+                    return redirect('/pendingLoans');
+                }
+                toastr()->error('An error has occurred trying to review a loan request!');
+                return back();
+        }
+
+
+        //All pending loans
+        public function pendingLoans(){
+        $title ='All Pending Loans';
+        // $subs = Psubscription::with('product')->get();
+        $pendingLoans = Lsubscription::where('loan_status','Pending')->oldest()->with(['loan','user'])
+                   ->paginate(20);
+        return view('LoanSub.pendingLoans',compact('pendingLoans','title'));
+        }
+
+        //All active Loans
+
+        public function activeLoans(){
+            $title ='All Active Loans';
+            // $subs = Psubscription::with('product')->get();
+            $activeLoans = Lsubscription::where('loan_status','Active')->oldest()->with(['loan','user'])
+                       ->paginate(20);
+            return view('LoanSub.activeLoans',compact('activeLoans','title'));
+            }
+
 
     /**
      * Remove the specified resource from storage.
@@ -162,5 +262,15 @@ class LoanSubscriptionController extends Controller
     public function destroy($id)
     {
         //
+        //
+        $loanSubscription = Lsubscription::find($id)->delete();
+        if ($loanSubscription) {
+            toastr()->success('Loan subscription has been discard successfully!');
+    
+            return redirect('/pendingLoans');
+        }
+    
+        toastr()->error('An error has occurred trying to remove loan subsscription, please try again later.');
+        return back();
     }
 }

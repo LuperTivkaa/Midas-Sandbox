@@ -19,6 +19,10 @@ public function users(){
 
 }
 
+public static function allRoles(){
+    return static::orderBy('name')->pluck('name','id');
+}
+
 //has access for permisions
 
 public function hasAccess(array $permissions)

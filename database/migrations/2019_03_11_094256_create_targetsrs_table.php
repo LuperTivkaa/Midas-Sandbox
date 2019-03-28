@@ -16,10 +16,11 @@ class CreateTargetsrsTable extends Migration
         Schema::create('targetsrs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('target_savings_id');
-            $table->decimal('monthly_savings',9,2)->nullable();
-            $table->string('_status')->default('Active');
-            $table->date('review_date');
+            $table->decimal('monthly_saving',12,3)->nullable();
+            $table->string('status')->default('Pending');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->date('review_date')->nullable();
             $table->mediumText('review_comment')->nullable();
             $table->integer('review_by'); //ID of the logged in staff
             $table->timestamps();

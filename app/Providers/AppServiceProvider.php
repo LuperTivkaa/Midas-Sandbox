@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Product;
 use App\Loan;
+use App\Role;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loanProd', Loan::loanProducts());
         });
 
+          //view composer for new user
+          view()->composer(['Registration.newUser','Users.editProfile'], function($view){
+            $view->with('roles', Role::allRoles());
+        });
+
 
 
     }
@@ -40,9 +46,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //Done by me Luper Tivkaa
-        $this->app->singleton(FakerGenerator::class, function () {
-            return FakerFactory::create('en_NG');
-          });
+        //
+        
     }
 }

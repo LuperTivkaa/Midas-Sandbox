@@ -18,9 +18,9 @@ class CreateLsubscriptionsTable extends Migration
             $table->integer('loan_id');
             $table->integer('user_id');
             $table->integer('custom_tenor')->nullable();
-            $table->decimal('amount_applied',9,2);
-            $table->decimal('amount_approved',9,2)->nullable();
-            $table->decimal('monthly_deduction',9,2)->nullable();
+            $table->decimal('amount_applied',12,3);
+            $table->decimal('amount_approved',12,3)->nullable();
+            $table->decimal('monthly_deduction',12,3)->nullable();
             $table->string('loan_status')->default('Pending');
             $table->date('loan_start_date')->nullable();
             $table->date('loan_end_date')->nullable();

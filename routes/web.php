@@ -52,9 +52,8 @@ Route::get('/Dashboard/home','DashboardController@index');
         Route::post('/nokStore','RegistrationController@nokStore');
         Route::get('/bank','RegistrationController@bank');
         Route::post('/bankStore','RegistrationController@bankStore');
-    });
-    
-    
+});
+   
 //Session/login controller
 Route::get('/login', 'SessionController@create')->name('login');
 Route::post('/signin','SessionController@store');
@@ -107,4 +106,8 @@ Route::get('/loan-request/{id}','LoanSubscriptionController@show');
 Route::get('/loanSub/edit/{id}','LoanSubscriptionController@edit');
 Route::post('/loanSub/update/{id}','LoanSubscriptionController@update');
 Route::get('/user/loan/{id}','LoanSubscriptionController@userLoanSubscriptions');
-//Route::get('/userProdSub/delete/{id}','LoanSubscriptionController@destroy');
+Route::get('/userLoan/review/{id}','LoanSubscriptionController@review');
+Route::post('/userLoan/reviewStore/{id}','LoanSubscriptionController@reviewStore');
+Route::get('/pendingLoans','LoanSubscriptionController@pendingLoans');
+Route::get('/activeLoans','LoanSubscriptionController@activeLoans');
+Route::get('/userLoan/discard/{id}','LoanSubscriptionController@destroy');

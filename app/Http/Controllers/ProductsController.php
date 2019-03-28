@@ -140,15 +140,14 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
-        $products = Product::find($id);
+        $product = Product::find($id);
         $product->delete();
         if ($product->delete()) {
             toastr()->success('Data has been deleted successfully!');
-    
-            return view('Users.index',compact('profile','title'));
+            return redirect('/products');
         }
     
-        toastr()->error('An error has occurred trying to update, please try again later.');
+        toastr()->error('An error has occurred trying to discard, please try again later.');
         return back();
     }
 }

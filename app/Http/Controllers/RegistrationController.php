@@ -23,8 +23,7 @@ class RegistrationController extends Controller
     //Register  new staff
     public function createUser (){
         $title ="New User";
-        $roles = Role::orderBy('name')->pluck('name','id');
-        return view('Registration.newUser',compact('title','roles'));
+        return view('Registration.newUser',compact('title'));
     }
 
     //Example
@@ -72,8 +71,8 @@ class RegistrationController extends Controller
         'dept'=>'required',
         'phone'=>'required',
         'dob'=>'required',
-        'home_add'=>'required|max:20',
-        'res_add'=>'required|max:20',
+        'home_add'=>'required|max:100',
+        'res_add'=>'required|max:100',
         'sex'=>'required',
         'job_cadre'=>'required',
         'staff_no'=>'required|integer',

@@ -16,8 +16,8 @@ class CreateLdeductionsTable extends Migration
         Schema::create('ldeductions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('lsubscription_id');
-            $table->decimal('amount_deducted',8,2);
-            $table->date('deduction_month');
+            $table->decimal('amount_deducted',12,3);
+            $table->date('entry_month');
             $table->integer('uploaded_by');
             $table->timestamps();
         });

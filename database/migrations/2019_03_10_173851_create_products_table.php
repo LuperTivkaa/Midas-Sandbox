@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->decimal('unit_cost', 8,2);
+            $table->decimal('unit_cost', 12,3);
             $table->timestamps();
         });
     }

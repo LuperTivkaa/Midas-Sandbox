@@ -97,8 +97,13 @@
 {{-- DROP DOWN MENU 1 --}}
 
 <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!"><i class="material-icons">add</i>New User</a></li>
-    <li><a href="#!"><i class="material-icons">view_list</i>List Users</a></li>
+
+
+    <li><a href="/New"><i class="material-icons">add</i>New User</a></li>
+
+    <li><a href="/user/all"><i class="material-icons">view_list</i>List Users</a></li>
+
+
     <li class="divider" tabindex="-1"></li>
     {{--
     <li><a href="#!"></a></li>

@@ -40,18 +40,18 @@
                     <input id="email" name="email" type="email" class="validate" required>
                     <label for="email">Email</label>
                 </div>
-                {{-- @can('all') --}}
+                @can('all')
                 <div class="input-field col s6">
                     <select id="role" name="role">
                         {{-- <option value="" disabled>Choose role</option> --}}
-                        <option value="" disabled>System Role</option>
+                        <option value="" selected>System Role</option>
                         @foreach ($roles as $id=>$role)
                         <option value="{{$id}}">{{$role}}</option>
                         @endforeach
                     </select>
                     <label>System Role</label>
                 </div>
-                {{-- @endcan --}}
+                @endcan
             </div>
             <div class="row">
                 <div class="input-field col s4">

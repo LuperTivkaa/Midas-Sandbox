@@ -17,7 +17,7 @@ class CreateLoansTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('tenor');
-            $table->decimal('interest',8,2);
+            $table->decimal('interest',12,3);
             $table->timestamps();
         });
     }

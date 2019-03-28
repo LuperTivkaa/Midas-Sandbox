@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ldeduction extends Model
 {
-    //
-     //Each saving belongs to a user
+    
+     //Each loan deduction belongs to a user
      public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    //Each loan deduction belongs to a loan subscription
+    public function subscription(){
+        return $this->belongsTo(Lsubscription::class);
     }
 }

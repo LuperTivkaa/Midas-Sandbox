@@ -16,8 +16,8 @@ class CreateSavingsTable extends Migration
         Schema::create('savings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->decimal('amount_saved',8,2);
-            $table->date('entry_for');
+            $table->decimal('amount_saved',12,3);
+            $table->date('entry_date');
             $table->integer('created_by');
             $table->timestamps();
         });

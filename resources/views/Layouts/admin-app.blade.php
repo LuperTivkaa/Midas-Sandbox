@@ -179,6 +179,9 @@ hover:true
 //INIT SELECT
 $('select').formSelect();
 
+//INIT COUNTER TEXTAREA
+$('textarea#notes').characterCounter();
+
 //INIT TOOLTIP
 $('.tooltipped').tooltip();
 

@@ -13,13 +13,12 @@ class CreateTargetsavingsTable extends Migration
      */
     public function up()
     {
+        //This table is used to upload information about target saving deductions
         Schema::create('targetsavings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->decimal('amount',8,2);
+            $table->decimal('amount',12,3); 
             $table->date('entry_date');
-            $table->date('start_date');
-            $table->date('end_date');
             $table->integer('created_by'); //ID of the logged in staff
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ class Ldeduction extends Model
     }
 
     //Each loan deduction belongs to a loan subscription
-    public function subscription(){
+    public function loansubscription(){
         return $this->belongsTo(Lsubscription::class);
     }
 }

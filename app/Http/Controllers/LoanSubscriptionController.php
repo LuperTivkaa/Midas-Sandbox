@@ -144,9 +144,10 @@ class LoanSubscriptionController extends Controller
         return back();
         }
 
-
+        
+//USER SUBSCRIPTION DETAILS PAGE
     public function userLoanSubscriptions($id){
-        $title = "User Loan Subscriptions";
+        $title = "User Page";
 
         //Find user
         $user = User::find($id);

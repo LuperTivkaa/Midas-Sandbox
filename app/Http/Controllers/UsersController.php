@@ -38,7 +38,7 @@ class UsersController extends Controller
 
     //User View Details
     public function profileDetails($id){
-        $title = "User Details";
+        $title = "User Page";
         $profile = User::find($id);
         return view('Users.userView',compact('profile','title'));
     }

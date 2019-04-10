@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}"> {{--
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> {{-- install sweet alert css --}}
 
     <title>MIDAS- {{$title}}</title>
 </head>

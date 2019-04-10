@@ -28,7 +28,7 @@
                     @foreach ($loanDetails as $item)
                     <tr>
                         <td>{{$item->loan->description}}</td>
-                        <td><a href="/user/loan/{{$item->user_id}}">{{$item->user->first_name}}</a></td>
+                        <td><a href="/user/page/{{$item->user_id}}">{{$item->user->first_name}}</a></td>
                         <td>{{$item->amount_applied}}</td>
                         <td>{{$item->created_at->diffForHumans()}}</td>
                         <td><a class="btn" href="/loanSub/edit/{{$item->id}}">Edit</a></td>

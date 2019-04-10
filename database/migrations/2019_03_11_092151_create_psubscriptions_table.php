@@ -18,6 +18,7 @@ class CreatePsubscriptionsTable extends Migration
             $table->integer('user_id');
             $table->integer('product_id');
             $table->integer('units');
+            $table->decimal('total',12,3);
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('staff_id');

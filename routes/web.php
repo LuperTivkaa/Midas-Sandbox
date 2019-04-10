@@ -105,9 +105,42 @@ Route::post('/loanSub/store','LoanSubscriptionController@store');
 Route::get('/loan-request/{id}','LoanSubscriptionController@show');
 Route::get('/loanSub/edit/{id}','LoanSubscriptionController@edit');
 Route::post('/loanSub/update/{id}','LoanSubscriptionController@update');
-Route::get('/user/loan/{id}','LoanSubscriptionController@userLoanSubscriptions');
+Route::get('/user/page/{id}','LoanSubscriptionController@userLoanSubscriptions');
 Route::get('/userLoan/review/{id}','LoanSubscriptionController@review');
 Route::post('/userLoan/reviewStore/{id}','LoanSubscriptionController@reviewStore');
 Route::get('/pendingLoans','LoanSubscriptionController@pendingLoans');
 Route::get('/activeLoans','LoanSubscriptionController@activeLoans');
 Route::get('/userLoan/discard/{id}','LoanSubscriptionController@destroy');
+
+
+//Monthly Savings Routes
+Route::get('/saving-deductions','MonthlySavingController@index');
+Route::get('/savings/export','MonthlySavingController@export')->name('saving.export');
+Route::get('/usersaving/export','MonthlySavingController@export_view')->name('usersaving.export');
+Route::get('/saving/create','MonthlySavingController@savingUpload')->name('usersaving.create');
+Route::post('/saving/upload','MonthlySavingController@savingImport')->name('savings.upload');
+
+
+//Contributors
+Route::get('/contributors-list','ContributorsController@index');
+Route::get('/inactive-contributors','ContributorsController@inactiveUsers');
+Route::get('/recent/savings','ContributorsController@recentUploads');
+Route::get('/saving/listings/{id}','ContributorsController@userListings');
+Route::get('/saving/edit/{id}','ContributorsController@edit');
+Route::post('/saving/update/{id}','ContributorsController@update');
+Route::get('/saving/remove/{id}','ContributorsController@destroy');
+Route::get('/saving/new','ContributorsController@create');
+Route::post('/saving/store','ContributorsController@store');
+
+//Monthly Target Savings Routes
+Route::get('/targetsaving-deductions','TargetSavingController@index');
+Route::get('/targetsaving/export','TargetSavingController@export')->name('ts.export');
+Route::get('/targetsaving/create','TargetSavingController@tsUpload')->name('ts.create');//upload bulk
+Route::post('/targetsaving/import','TargetSavingController@tsImport')->name('ts.import');
+Route::get('/recent/targetsavings','TargetSavingController@recentTargetSavings');
+Route::get('/targetsaving/edit/{id}','TargetSavingController@edit');
+Route::post('/ts-saving/update/{id}','TargetSavingController@update');
+Route::get('/targetsaving/remove/{id}','TargetSavingController@destroy');
+Route::get('/targetsaving/new','TargetSavingController@create'); //manually create target saving item
+Route::post('/targetsaving/store','TargetSavingController@store');
+

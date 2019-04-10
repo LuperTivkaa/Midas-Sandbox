@@ -18,7 +18,6 @@ class ProductSubscriptionController extends Controller
     {
         //List all Subscriptions
         $title ='All Product Subscriptions';
-        // $subs = Psubscription::with('product')->get();
         $prod = Product::withCount('psubscriptions')->paginate(5);
         return view('ProductSub.index',compact('prod','title'));
         // $users = DB::table('users')

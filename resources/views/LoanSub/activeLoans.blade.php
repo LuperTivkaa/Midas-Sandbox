@@ -29,7 +29,7 @@
                     @foreach ($activeLoans as $active)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td><a href="/user/loan/{{$active->user_id}}">{{$active->user->first_name}} {{$active->user->lastname_name}}</a></td>
+                        <td><a href="/user/page/{{$active->user_id}}">{{$active->user->first_name}} {{$active->user->lastname_name}}</a></td>
                         <td>{{$active->loan->description}}</td>
                         <td>{{number_format($active->amount_approved,2,'.',',')}}</td>
                         <td>{{$active->loan_start_date->toFormattedDateString()}}</td>

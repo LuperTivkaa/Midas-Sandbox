@@ -28,7 +28,7 @@
                     @foreach ($pendingLoans as $pending)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td><a href="/user/loan/{{$pending->user_id}}">{{$pending->user->first_name}} {{$pending->user->lastname_name}}</a></td>
+                        <td><a href="/user/page/{{$pending->user_id}}">{{$pending->user->first_name}} {{$pending->user->lastname_name}}</a></td>
                         <td>{{$pending->loan->description}}</td>
                         <td>{{number_format($pending->amount_applied,2,'.',',')}}</td>
                         <td>{{$pending->created_at->toFormattedDateString()}}</td>

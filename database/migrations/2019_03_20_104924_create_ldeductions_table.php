@@ -19,6 +19,12 @@ class CreateLdeductionsTable extends Migration
             $table->integer('lsubscription_id');
             $table->decimal('amount_deducted',12,3);
             $table->date('entry_month');
+            $table->string('repayment_mode',10)->default('IPPIS');
+            $table->string('bank_name',30)->nullable();
+            $table->string('bank_add',50)->nullable();
+            $table->string('depositor_name',50)->nullable();
+            $table->integer('teller_no')->nullable();
+            $table->string('notes',20)->default('Normal Deductions');
             $table->integer('uploaded_by');
             $table->timestamps();
         });

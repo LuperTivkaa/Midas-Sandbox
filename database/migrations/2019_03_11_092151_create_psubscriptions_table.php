@@ -18,10 +18,15 @@ class CreatePsubscriptionsTable extends Migration
             $table->integer('user_id');
             $table->integer('product_id');
             $table->integer('units');
-            $table->decimal('total',12,3);
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->decimal('total_amount',12,3);
+            $table->decimal('monthly_repayment',12,3);
+            $table->string('status',10)->pending('Pending');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullabe();
+            $table->decimal('net_pay',12,3);
+            $table->mediumText('review_comment')->nullable();
             $table->integer('staff_id');
+            $table->integer('review_by')->nullable(); //ID of the logged in user/staff
             $table->timestamps();
         });
     }

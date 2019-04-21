@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
 
             //seed each user relationship with 12 savings 
             $saving = factory(App\Saving::class,12)->make();
-            $user->savings()->saveMany($saving);
+            $user->usersavings()->saveMany($saving);
 
             //seed each user relationship with 2 savings review 
             $savingreview = factory(App\Savingreview::class,2)->make();

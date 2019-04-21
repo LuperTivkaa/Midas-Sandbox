@@ -15,11 +15,18 @@ class Product extends Model
         // 'password',
     ];
     //Define relationship with product subscription
-    //done // A product can have more than one product subscriptions
+    //A product can have more than one product subscriptions
     public function psubscriptions(){
         return $this->hasMany(Psubscription::class);
     }
 
+    //A product can have more than one product deductions
+    public function pdeductions(){
+        return $this->hasMany(Productdeduction::class);
+    }
+    
+
+    //List all products
     public static function  productList(){
         return static::orderBy('name')->pluck('name','id');
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Loan;
 use App\User;
 use App\Lsubscription;
+use  App\Psubscription;
 
 class LoanSubscriptionController extends Controller
 {
@@ -82,7 +83,7 @@ class LoanSubscriptionController extends Controller
     public function show($id)
         {
         //Show detail of all subscriptions for a particular product
-        //Display detail product subscription listings
+        
         $title ='Loan Subscriptions Detail';
         $loanDetails = Lsubscription::where('loan_id',$id)->with(['loan' => function ($query) {
           $query->orderBy('description', 'desc');
@@ -152,21 +153,19 @@ class LoanSubscriptionController extends Controller
         //Find user
         $user = User::find($id);
 
-        $activeLoans = Lsubscription::where('user_id',$id)
-        ->where(function ($query){
-            $query->where('loan_status','Active');
-        })->with(['loan' => function ($query) {
-        $query->orderBy('description', 'desc');
-        }])->get();
+        //Active Product Subscriptions
+        $activeLoans = Lsubscription::activeLoans($id);
 
-        $pendingLoans = Lsubscription::where('user_id',$id)
-        ->where(function ($query){
-            $query->where('loan_status','=','Pending');
-        })->with(['loan' => function ($query) {
-        $query->orderBy('description', 'desc');
-        }])->get();
+        //Pending product subscriptions
+        $pendingLoans = Lsubscription::pendingLoans($id);
+        
+        //User active product subscriptions
+        $userProducts = Psubscription::userProducts($id);
 
-        return view('LoanSub.userLoanSub',compact('title','activeLoans','pendingLoans','user'));
+        //User pending products subscriptions
+        $userPendingProducts = Psubscription::pendingProducts($id); 
+
+        return view('LoanSub.userLoanSub',compact('title','activeLoans','pendingLoans','user','userProducts','userPendingProducts'));
     }
 
 
@@ -237,7 +236,6 @@ class LoanSubscriptionController extends Controller
         //All pending loans
         public function pendingLoans(){
         $title ='All Pending Loans';
-        // $subs = Psubscription::with('product')->get();
         $pendingLoans = Lsubscription::where('loan_status','Pending')->oldest()->with(['loan','user'])
                    ->paginate(20);
         return view('LoanSub.pendingLoans',compact('pendingLoans','title'));
@@ -247,9 +245,10 @@ class LoanSubscriptionController extends Controller
 
         public function activeLoans(){
             $title ='All Active Loans';
-            // $subs = Psubscription::with('product')->get();
-            $activeLoans = Lsubscription::where('loan_status','Active')->oldest()->with(['loan','user'])
-                       ->paginate(20);
+            $activeLoans = Lsubscription::where('loan_status','Active')
+            ->oldest()
+            ->with(['loan','user'])
+            ->paginate(20);
             return view('LoanSub.activeLoans',compact('activeLoans','title'));
             }
 

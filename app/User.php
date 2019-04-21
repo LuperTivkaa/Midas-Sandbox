@@ -2,6 +2,8 @@
 namespace App;
 use App\Saving;
 use App\Savingreview;
+use App\Psubscription;
+use App\Lsubscription;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -83,6 +85,36 @@ class User extends Authenticatable
         return $this->hasMany(Ldeduction::class);
     }
 
+    //Relationship with Product deductions
+     public function productdeductions(){
+        return $this->hasMany(Productdeduction::class);
+    }
+
+    //Total sum deductible for product subscription
+    public function productSubscriptionTotal($id)
+    {
+       
+        return Psubscription::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Active');
+        })->with(['user'=> function ($q){
+            $q->where('status','Active');
+        }])
+        ->sum('monthly_repayment');
+    }
+
+
+     //Total sum deductible for loan subscription
+     public function loanSubscriptionTotal($id)
+     {
+         return Lsubscription::where('user_id', '=', $id)
+         ->where(function ($query) {
+             $query->where('loan_status', '=', 'Active');
+         })
+         ->sum('monthly_deduction');
+     }
+
+
 
     public  function totalSavings($id)
     {
@@ -101,6 +133,15 @@ class User extends Authenticatable
         return $userSavingRev->current_amount;
     }
 
+    //Is Active User
+    public function isActive($id){
+        $active =$this::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Active');
+        })->get();
+    }
+
+    //Number of active Loans
     public  function activeLoans($id)
     {
         //Number of active loans
@@ -111,6 +152,7 @@ class User extends Authenticatable
         return $activeLoans->count();
     }
 
+    //Number of Pending Loans
     public  function pendingLoans($id)
     {
         //Number of pending loans
@@ -129,6 +171,8 @@ class User extends Authenticatable
         return 0.3 * $this->totalSavings($id);
     }
 
+   
+  
     // public static function totalSavings($id)
     // {
     //     return static::selectRaw('users.name, count(*) submitted_games')

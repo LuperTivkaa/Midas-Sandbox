@@ -20,7 +20,7 @@ class CreatePsubscriptionsTable extends Migration
             $table->integer('units');
             $table->decimal('total_amount',12,3);
             $table->decimal('monthly_repayment',12,3);
-            $table->string('status',10)->pending('Pending');
+            $table->string('status',10)->default('Pending');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullabe();
             $table->decimal('net_pay',12,3);

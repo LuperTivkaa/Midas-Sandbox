@@ -31,7 +31,7 @@
                     @foreach ($userProducts as $userProduct)
                     <tr>
                         <td>{{$userProduct->product->name}}</td>
-                        <td>{{$userProduct->user->first_name}}</td>
+                        <td><a href="/user/page/{{$userProduct->user->id}}">{{$userProduct->user->first_name}}</a></td>
                         <td>{{$userProduct->units}}</td>
                         <td>{{$userProduct->product->unit_cost}}</td>
                         <td>{{$userProduct->created_at->diffForHumans()}}</td>
@@ -40,7 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{$userProducts->links()}} @else
+            @else
             <p>No product Subscriptions added yet</p>
             @endif
         </div>

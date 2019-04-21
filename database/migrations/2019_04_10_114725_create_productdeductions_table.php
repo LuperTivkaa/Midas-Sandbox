@@ -17,6 +17,8 @@ class CreateProductdeductionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('psubscription_id');
+            $table->integer('product_id');
+            $table->decimal('monthly_deduction',12,3);
             $table->date('entry_date');
             $table->string('deduction_mode',10)->default('IPPIS');
             $table->string('bank_name',30)->nullable();

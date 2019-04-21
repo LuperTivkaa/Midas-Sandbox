@@ -53,6 +53,7 @@ Route::get('/Dashboard/home','DashboardController@index');
         Route::get('/bank','RegistrationController@bank');
         Route::post('/bankStore','RegistrationController@bankStore');
 });
+
    
 //Session/login controller
 Route::get('/login', 'SessionController@create')->name('login');
@@ -90,6 +91,9 @@ Route::get('/user/products/{id}','ProductSubscriptionController@userSubscription
 Route::get('/userProdSub/edit/{id}','ProductSubscriptionController@edit');
 Route::post('/user/ProductEdit/{id}','ProductSubscriptionController@update');
 Route::get('/userProdSub/delete/{id}','ProductSubscriptionController@destroy');
+Route::get('/prodSub/pending','ProductSubscriptionController@pendingSubscriptions');
+Route::get('/prodSub/active','ProductSubscriptionController@activeSubscriptions');
+
 
 //Loan Product Routes
 Route::get('/loanProducts','LoanProductController@index');
@@ -129,7 +133,7 @@ Route::get('/saving/listings/{id}','ContributorsController@userListings');
 Route::get('/saving/edit/{id}','ContributorsController@edit');
 Route::post('/saving/update/{id}','ContributorsController@update');
 Route::get('/saving/remove/{id}','ContributorsController@destroy');
-Route::get('/saving/new','ContributorsController@create');
+Route::get('/saving/new','ContributorsController@create'); //Manually create saving, not complete
 Route::post('/saving/store','ContributorsController@store');
 
 //Monthly Target Savings Routes
@@ -141,6 +145,21 @@ Route::get('/recent/targetsavings','TargetSavingController@recentTargetSavings')
 Route::get('/targetsaving/edit/{id}','TargetSavingController@edit');
 Route::post('/ts-saving/update/{id}','TargetSavingController@update');
 Route::get('/targetsaving/remove/{id}','TargetSavingController@destroy');
-Route::get('/targetsaving/new','TargetSavingController@create'); //manually create target saving item
+Route::get('/targetsaving/new','TargetSavingController@create'); //manually create ts, not complete
 Route::post('/targetsaving/store','TargetSavingController@store');
+
+//Product Deductions
+Route::get('/product/deductions','ProductDeductionsController@index');
+Route::get('/productDeductions/export','ProductDeductionsController@export')->name('prod-deductions.export');
+Route::get('/productDeductions/upload','ProductDeductionsController@upload')->name('prod-deductions.upload');
+Route::post('/productDeductions/import','ProductDeductionsController@import')->name('prod-deductions.import');
+Route::get('/productDeduction/listings','ProductDeductionsController@productDeductions');
+Route::get('/productDeduction/detail/{id}','ProductDeductionsController@prodDeductionDetails');
+Route::get('/productDeduction/edit/{id}','ProductDeductionsController@edit');
+Route::post('/productDeduction/update/{id}','ProductDeductionsController@update');
+Route::get('/productDeduction/remove/{id}','ProductDeductionsController@destroy');
+Route::get('/product/repay/{id}','ProductDeductionsController@repay');
+Route::post('/productRepay/store','ProductDeductionsController@repayStore');
+
+
 

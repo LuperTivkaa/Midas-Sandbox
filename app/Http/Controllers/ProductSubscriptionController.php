@@ -100,12 +100,15 @@ class ProductSubscriptionController extends Controller
     //Show individual user subscriptions
     public function userSubscriptions($id){
         $title = "User Subscriptions";
-        $userProducts = Psubscription::where('user_id',$id)->with(['product' => function ($query) {
-            $query->orderBy('name', 'desc');
-        }])->paginate(10);
-
+        $userProducts = Psubscription::userProducts($id);
         return view('ProductSub.userProducts',compact('userProducts','title'));
+    }
 
+    //Item Details, pass in subscription ID
+    public function itemDetails($id){
+        $title = "Item Detail";
+        $itemDetail = Psubscription::itemDetails($id);
+        return view('ProductSub.itemDetail',compact('itemDetail','title'));
     }
 
     /**
@@ -182,4 +185,22 @@ class ProductSubscriptionController extends Controller
         toastr()->error('An error has occurred trying to delete user subscription.');
         return back();
     }
+
+    
+      //All pending subscriptions
+      public function pendingSubscriptions(){
+        $title ='All Pending Subscriptions';
+        $pendingSubs = Psubscription::pendingSubs();
+        return view('ProductSub.pending',compact('pendingSubs','title'));
+        }
+
+        //All active subscriptions
+
+        public function activeSubscriptions(){
+            $title ='All Active Subscriptions';
+            $activeSubs = Psubscription::activeSubs();
+            return view('ProductSub.active',compact('activeSubs','title'));
+            }
+
+    
 }

@@ -15,6 +15,7 @@ class Loan extends Model
 
     //loan products
     public static function loanProducts(){
-        return static::orderBy('description')->pluck('description','id');
+        return static::orderBy('description')
+                     ->pluck('description','id');
     }
 }

@@ -147,29 +147,33 @@ class ProductDeductionsController extends Controller
             'product' =>'required|integer',
             'bank_name' =>'required|string',
             'depositor_name'=>'required|string',
-            'teller_number' =>'required|integer',
+            'teller_number' =>'required|string',
             'entry_date' =>'required|date',
+            'notes' =>'required|string',
+            'bank_add' =>'required|string',
             ]);
 
             
-                $producRepay = new Productdeduction;
-                
-                $productReapy->monthly_deduction = $request['amount'];
-                $productReapy->bank_name = $request['bank_name'];
-                $productReapy->user_id = $request['user_id'];
-                $productReapy->product_id = $request['product'];
-                $productReapy->psubscription_id = $request['sub_id'];
-                $productReapy->depositor_name = $request['depositor_name'];
-                $productReapy->teller_no = $request['teller_number'];
-                $productReapy->entry_date = $request['entry_date'];
-                $productReapy->uploaded_by = auth()->id();
-                $productReapy->save();
-                if($productReapy->save()) {
+                $productRepay = new Productdeduction;
+                $productRepay->monthly_deduction = $request['amount'];
+                $productRepay->bank_name = $request['bank_name'];
+                $productRepay->user_id = $request['user_id'];
+                $productRepay->product_id = $request['product'];
+                $productRepay->psubscription_id = $request['sub_id'];
+                $productRepay->entry_date = $request['entry_date'];
+                $productRepay->teller_no = $request['teller_number'];
+                $productRepay->deduction_mode = $request['mode'];
+                $productRepay->depositor_name = $request['depositor_name'];
+                $productRepay->notes = $request['notes'];
+                $productRepay->bank_add = $request['bank_add'];
+                $productRepay->uploaded_by = auth()->id();
+                $productRepay->save();
+                if($productRepay->save()) {
                     toastr()->success('Product Repayment Successful');
-                    return redirect('/productDeduction/listings');
+                    return redirect('/prodSub/active');
                 }
             
-                toastr()->error('An error has occurred trying to make payment.');
+                toastr()->error('An error has occurred trying to record payment.');
                 return back();
             
       

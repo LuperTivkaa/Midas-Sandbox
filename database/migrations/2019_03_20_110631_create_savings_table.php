@@ -16,14 +16,15 @@ class CreateSavingsTable extends Migration
         Schema::create('savings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->decimal('amount_saved',12,3);
+            $table->decimal('amount_saved',12,3)->nullable();
+            $table->decimal('amount_withdrawn',12,3)->nullable();
             $table->date('entry_date');
             $table->string('saving_mode',20)->default('IPPIS');
             $table->string('bank_name',30)->nullable();
             $table->string('bank_add',50)->nullable();
             $table->string('depositor_name',50)->nullable();
             $table->integer('teller_no')->nullable();
-            $table->string('notes',20)->default('Normal Savings');
+            $table->string('notes',50)->nullable();
             $table->integer('created_by');
             $table->timestamps();
         });

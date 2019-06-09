@@ -21,8 +21,8 @@
     </div>
     <div class="row">
         <div class="col s12 subject-header">
-            <span><a class="btn" href="{{route('ippis.export')}}">
-                    IPPIS Format Deductions</a>
+            <span><a class="btn" href="{{route('default_ippis.export')}}">
+                    IPPIS Format XLSX</a>
             </span>
         </div>
     </div>

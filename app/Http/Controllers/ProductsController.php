@@ -16,9 +16,11 @@ class ProductsController extends Controller
     {
         //List all products
         $title ='All Products';
-        $products = Product::orderBy('name','asc')->paginate(10);
+        $products = Product::orderBy('status','desc')
+        ->paginate(10);
         return view('Products.index',compact('products','title'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +53,7 @@ class ProductsController extends Controller
         $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
-
+        $product->status = 'Active';
         $product->save();
     
         if($product->save()) {
@@ -103,7 +105,6 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $title ="Product Detail";
         $this->validate(request(), [
             'product_name' =>'required|string',
             'description'=>'required|string',
@@ -114,6 +115,7 @@ class ProductsController extends Controller
         $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
+        $product->status = 'Active';
         $product->save();
 
         //$products = Products::find($id);
@@ -122,9 +124,8 @@ class ProductsController extends Controller
         // $userid = $nokUpdate->user_id;
         // $profile = User::find($userid);
         if ($product->save()) {
-            toastr()->success('Data has been edited successfully!');
-    
-            return view('Products.productDetail',compact('product','title'));
+            toastr()->success('Product has been edited successfully!');
+            return redirect('/product/detail/'.$id);
         }
     
         toastr()->error('An error has occurred trying to update, please try again later.');
@@ -150,4 +151,34 @@ class ProductsController extends Controller
         toastr()->error('An error has occurred trying to discard, please try again later.');
         return back();
     }
+
+    //Deactivate a product
+    public function deactivate($id){
+
+        $myProd = Product::find($id);
+            $myProd->status = 'Inactive';
+                $myProd->save();
+                if($myProd->save()) {
+                    toastr()->success('Product deactivated successfully');
+                    return redirect('/products');
+                }  
+                toastr()->error('Unable to deactivate this product');
+                return back();
+        }
+
+    //Activate a product
+    public function activate($id){
+
+        $myProd = Product::find($id);
+            $myProd->status = 'Active';
+                $myProd->save();
+                if($myProd->save()) {
+                    toastr()->success('Product activated successfully');
+                    return redirect('/products');
+                }  
+                toastr()->error('Unable to activate this product');
+                return back();
+        }
+
+    
 }

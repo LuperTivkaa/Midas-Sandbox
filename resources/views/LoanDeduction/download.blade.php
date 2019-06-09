@@ -7,6 +7,7 @@
             <th>Loan Type</th>
             <th>LoanID</th>
             <th>Amount</th>
+            <th>SubscriptionID</th>
             <th>Date</th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
             <td>{{$active->loan->description}}</td>
             <td>{{$active->loan->id}}</td>
             <td>{{$active->monthly_deduction}}</td>
+            <td>{{$active->id}}</td>
             <td>{{now()->toDateString()}}</td>
         </tr>
         @endforeach

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Schema;
 use App\Product;
 use App\Loan;
 use App\Role;
+use App\User;
+use App\Saving;
+use App\TargetSaving;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,13 +29,24 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //view composer for loan product list
-        view()->composer(['LoanSub.create','LoanSub.editLoanSub'], function($view){
+        view()->composer(['LoanSub.create','LoanSub.editLoanSub','LoanSub.newLoan'], function($view){
             $view->with('loanProd', Loan::loanProducts());
         });
 
           //view composer for new user
           view()->composer(['Registration.newUser','Users.editProfile'], function($view){
             $view->with('roles', Role::allRoles());
+        });
+        //TODO
+        /**
+         * Create view composer for user dashboard
+         */
+        view()->composer('inc.dashboard-overview', function($view){
+            $view->with('totalSaving', Saving::mySavings(auth()->id()));
+        });
+
+        view()->composer('inc.dashboard-overview', function($view){
+            $view->with('tsSaving', TargetSaving::myTargetSavings(auth()->id()));
         });
 
 

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('other_name')->nullable();
             $table->string('sex');
             $table->integer('staff_no');
+            $table->string('membership_type');
             $table->string('dept');
             $table->string('phone');
             $table->string('marital_status');

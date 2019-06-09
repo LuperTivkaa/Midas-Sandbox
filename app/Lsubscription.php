@@ -26,6 +26,12 @@ class Lsubscription extends Model
     protected $dates = ['created_at', 'updated_at','loan_start_date','loan_end_date'];
 
 
+    // public function testFunction(){
+    //     $filterResult = Lsubscription::whereBetween('created_at',[$this->start_date,$this->end_date])
+    //     ->with(['loan','user']);
+    //     return $filterResult->where('repayment_mode',$this->pay_type)->unique('user_id');
+    // }
+
     //All active loan subscriptions
     public static function loanSubscriptions(){
          return  static::where('loan_status', 'Active')
@@ -33,9 +39,19 @@ class Lsubscription extends Model
          ->get();
     }
 
+     //Filter loan subscriptions
+     public static function filterResult($pay_type,$start_date,$end_date){
+        $result = static::whereBetween('created_at',[$start_date,$end_date])
+        ->with(['loan','user'])
+        ->get();
+
+        return $result->where('repayment_mode',$pay_type);
+    }
+
+ 
+   
     //distint user loan subscriptions
     public static function distinctUserLoanSub(){
-
         $records = static::where('loan_status', 'Active')
         ->with(['user','loan'])
         ->get();
@@ -129,7 +145,7 @@ public static function pendingLoans($id){
 }
 
 //Find Total deduction for a given loan subscription
-
+//Pass in loan subscription id
 public  function totalLoanDeductions($loan_id)
 {
     return Ldeduction::where('lsubscription_id',$loan_id)

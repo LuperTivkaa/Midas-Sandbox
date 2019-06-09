@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -12,8 +12,7 @@
             <div class="row">
 
                 <div class="input-field col s6">
-                    <input id="payment_number" name="payment_number" type="text" class="validate" required>
-                    <label for="payment_number">Payment Number</label>
+                    <input id="user_id" name="user_id" value="{{$id}}" type="hidden" class="validate" required>
                 </div>
 
             </div>
@@ -21,32 +20,32 @@
             <div class="row">
                 <div class="input-field col s4">
                     <select id="title" name="title">
-                                <option value="Mr">Mr</option>
-                                <option value="Mrs">Mrs</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Dr">Dr</option>
-                            </select>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Dr">Dr</option>
+                    </select>
                     <label>Title</label>
                 </div>
 
                 <div class="input-field col s4">
                     <select id="sex" name="sex">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                     <label>Gender</label>
                 </div>
                 <div class="input-field col s4">
                     <select id="relationship" name="relationship">
-                                <option value="Spouse">Spouse</option>
-                                <option value="Child">Child</option>
-                                <option value="Brother">Brother</option>
-                                <option value="Sister">Sister</option>
-                                <option value="Niece">Niece</option>
-                                <option value="Cousine">Cousine</option>
-                                <option value="Father">Father</option>
-                                <option value="Mother">Mother</option>
-                            </select>
+                        <option value="Spouse">Spouse</option>
+                        <option value="Child">Child</option>
+                        <option value="Brother">Brother</option>
+                        <option value="Sister">Sister</option>
+                        <option value="Niece">Niece</option>
+                        <option value="Cousine">Cousine</option>
+                        <option value="Father">Father</option>
+                        <option value="Mother">Mother</option>
+                    </select>
                     <label>Relationship</label>
                 </div>
             </div>

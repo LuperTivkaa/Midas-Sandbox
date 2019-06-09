@@ -11,8 +11,45 @@
 </head>
 
 <body>
+    <div class="midas-container">
+        {{-- Inlcude header section --}}
+        @include('inc.dashboard-header')
+        {{-- midas main content container --}}
+        <div class="midas-content">
+            {{-- sidebar conatiner --}}
+            @include('inc.dashboard-sidebar')
+            {{-- main content area --}}
+            <main class="midas-view">
+                {{-- overview panel --}}
+                @include('inc.dashboard-overview')
+                @include('inc.dashboard-search')
+                {{-- detail content --}}
+                <div class="detail">
+                    {{-- description section --}}
+                    <div class="description">
+                        {{-- dynamic content here --}}
+                        @yield('admin')
 
-    @yield('admin')
+                        <div class="recommend">
+                            {{-- @include('inc.dashboard-recommend') --}}
+                        </div>
+                    </div>
+                    {{-- user rieview section --}}
+                    <div class="user-reviews">
+                        @include('inc.dashboard-userreviews')
+                    </div>
+
+                </div>
+                {{-- cta section --}}
+                <div class="cta">
+                    @include('inc.dashboard-cta')
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    {{-- @yield('admin') --}}
     <script src="{{asset('js/app.js')}}"></script>
 </body>
 

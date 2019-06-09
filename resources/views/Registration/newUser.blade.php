@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -29,7 +29,8 @@
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="password_confirmation" name="password_confirmation" type="password" class="validate" required>
+                    <input id="password_confirmation" name="password_confirmation" type="password" class="validate"
+                        required>
                     <label for="password_confirmation">Confirm Password</label>
                 </div>
             </div>
@@ -43,7 +44,6 @@
                 @can('all')
                 <div class="input-field col s6">
                     <select id="role" name="role">
-                        {{-- <option value="" disabled>Choose role</option> --}}
                         <option value="" selected>System Role</option>
                         @foreach ($roles as $id=>$role)
                         <option value="{{$id}}">{{$role}}</option>
@@ -56,29 +56,29 @@
             <div class="row">
                 <div class="input-field col s4">
                     <select id="title" name="title">
-                                <option value="Mr">Mr</option>
-                                <option value="Mrs">Mrs</option>
-                                <option value="Miss">Miss</option>
-                                <option value="Dr">Dr</option>
-                            </select>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Dr">Dr</option>
+                    </select>
                     <label>Title</label>
                 </div>
 
                 <div class="input-field col s4">
                     <select id="sex" name="sex">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                     <label>Gender</label>
                 </div>
                 <div class="input-field col s4">
                     <select id="marital_status" name="marital_status">
-                                <option value="Married">Married</option>
-                                <option value="Single">Single</option>
-                                <option value="Divorced">Divorced</option>
-                                <option value="Widow">Widow</option>
-                                <option value="Widower">Widower</option>
-                            </select>
+                        <option value="Married">Married</option>
+                        <option value="Single">Single</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widow">Widow</option>
+                        <option value="Widower">Widower</option>
+                    </select>
                     <label>Marital Status</label>
                 </div>
             </div>
@@ -104,17 +104,17 @@
             <div class="row">
                 <div class="input-field col s6">
                     <select id="employ_type" name="employ_type">
-                                        <option value="Permanent">Permanent</option>
-                                        <option value="Temporal">Temporal</option>
-                                        <option value="Temporal">MIDAS Permanent</option>
-                            </select>
+                        <option value="Permanent">Permanent</option>
+                        <option value="Temporal">Temporal</option>
+                        <option value="Temporal">MIDAS Permanent</option>
+                    </select>
                     <label>Employment Type</label>
                 </div>
                 <div class="input-field col s6">
                     <select id="job_cadre" name="job_cadre">
-                                            <option value="Senior">Senior</option>
-                                            <option value="Junior">Junior</option>
-                                           
+                        <option value="Senior">Senior</option>
+                        <option value="Junior">Junior</option>
+
                     </select>
                     <label>Job Cadre</label>
                 </div>

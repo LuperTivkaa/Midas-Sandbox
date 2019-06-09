@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -13,8 +13,7 @@
             <div class="row">
 
                 <div class="input-field col s6">
-                    <input id="payment_number" name="payment_number" type="text" class="validate" required>
-                    <label for="payment_number">Payment Number</label>
+                    <input id="user_id" name="user_id" value="{{$id}}" type="hidden" class="validate" required>
                 </div>
 
             </div>

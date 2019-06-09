@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}"> {{--
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> {{-- install sweet alert css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    {{-- install sweet alert css --}}
 
     <title>MIDAS- {{$title}}</title>
 </head>
@@ -27,10 +28,11 @@
         <div class="row">
             <div class="col s12 m8 l9 user-profiles">
                 <div class="white">
-    @include('inc.messages') @yield('main-content')
+                    @include('inc.messages')
+                    @yield('main-content')
                 </div>
             </div>
-    @include('inc.admin-side-section')
+            @include('inc.admin-side-section')
         </div>
     </section>
     {{-- @yield('admin-content') --}}
@@ -41,22 +43,22 @@
             <div class="row">
                 <div class="col s12 m4 l4 grey-text text-lighten-3">
                     <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt"></i> Contact Us</h5>
-                    <hr/>
+                    <hr />
                     <address>
-                                    <h6>MIDAS Touch Multipurpose Cooperative Society Limited</h6>
-                                        Federal Medical Centre Makurdi,<br />
-                                        No 1, Hospital Road, Mission Ward,<br />
-                                        P.M.B. 102004, Makurdi, Benue State<br />
-                                        +234 081 189 014 11<br />
-                                        midastouch@gmail.com<br />
-                                    </address>
+                        <h6>MIDAS Touch Multipurpose Cooperative Society Limited</h6>
+                        Federal Medical Centre Makurdi,<br />
+                        No 1, Hospital Road, Mission Ward,<br />
+                        P.M.B. 102004, Makurdi, Benue State<br />
+                        +234 081 189 014 11<br />
+                        midastouch@gmail.com<br />
+                    </address>
 
                     <p>&copy; MIDAS TOUCH</p>
 
                 </div>
                 <div class="col s12 m4 l4 offset-m4 grey-text text-lighten-3">
                     <h5 class="font-weight-bold grey-text text-lighten-3"> <i class="fas fa-share-alt"></i> Social </h5>
-                    <hr/>
+                    <hr />
                     <ul class="list-unstyled">
                         <li><span><i class="fab fa-facebook-square"></i></span> Facebook</li>
                         <li><span><i class="fab fa-twitter-square"></i></span> Twitter</li>
@@ -76,33 +78,36 @@
     {{-- fixed action button --}}
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red">
-                <i class="material-icons">add</i>
+            <i class="material-icons">add</i>
         </a>
         <ul>
             <li>
-                <a href="/New" class="modal-trigger btn-floating light-blue accent-1 tooltipped" data-position="left" data-tooltip="Create User">
+                <a href="/New" class="modal-trigger btn-floating light-blue accent-1 tooltipped" data-position="left"
+                    data-tooltip="Create User">
                     <i class="material-icons">mode_edit</i>
-                    </a>
-            </li>
-            <li>
-                <a href="/Nok" class="modal-trigger btn-floating teal darken-3 tooltipped" data-position="left" data-tooltip="Add User NOK">
-                <i class="material-icons">person_pin</i>
                 </a>
             </li>
             <li>
-                <a href="/bank" class="modal-trigger btn-floating cyan darken-3 tooltipped" data-position="left" data-tooltip="Add User Bank">
-            <i class="material-icons">attach_money</i>
-            </a>
+                <a href="/Nok" class="modal-trigger btn-floating teal darken-3 tooltipped" data-position="left"
+                    data-tooltip="Add User NOK">
+                    <i class="material-icons">person_pin</i>
+                </a>
+            </li>
+            <li>
+                <a href="/bank" class="modal-trigger btn-floating cyan darken-3 tooltipped" data-position="left"
+                    data-tooltip="Add User Bank">
+                    <i class="material-icons">attach_money</i>
+                </a>
             </li>
 
             <li>
                 <a href="#category-modal" class="modal-trigger btn-floating red accent-3">
-                <i class="material-icons">folder</i>
+                    <i class="material-icons">folder</i>
                 </a>
             </li>
             <li>
                 <a href="#user-modal" class="modal-trigger btn-floating red accent-1">
-                <i class="material-icons">supervisor_account</i>
+                    <i class="material-icons">supervisor_account</i>
                 </a>
             </li>
         </ul>
@@ -146,8 +151,8 @@
         </div>
     </div> --}}
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin=" anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js "
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
     <script src="{{asset( 'js/app.js')}} "></script>
     <script src="{{asset( 'js/toastr.min.js')}} "></script>
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

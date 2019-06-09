@@ -68,6 +68,7 @@ class RegistrationController extends Controller
         'first_name'=>'required',
         'last_name'=>'required',
         'employ_type'=>'required',
+        'member_type'=>'required',
         'dept'=>'required',
         'phone'=>'required',
         'dob'=>'required',

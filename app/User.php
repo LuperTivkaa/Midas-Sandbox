@@ -194,6 +194,9 @@ class User extends Authenticatable
     }
 
    //Get user ID  BY IPPIS NUMBER
+   /**
+    * @param int $ippis
+    */
    public static function userID($ippis){
     if(static::where('payment_number',$ippis)->exists())
     {

@@ -118,18 +118,19 @@ class User extends Authenticatable
 
     public  function totalSavings($id)
     {
+        //
         return Saving::where('user_id',$id)->sum('amount_saved');
-        //$balance = DB::table('data')->where('user_id' '=' $id)->sum('balance');
     }
 
     public  function monthlySaving($id)
     {
         // Monthly saving amount
-        $userSavingRev = Savingreview::where('user_id', '=', $id)
-        ->where(function ($query) {
-            $query->where('status', '=', 'Active');
-        })
-        ->first();
+        // $userSavingRev = Savingreview::where('user_id', '=', $id)
+        // ->where(function ($query) {
+        //     $query->where('status', '=', 'Active');
+        // })
+        // ->first();
+        $userSavingRev = Savingreview::where('user_id', '=', $id)->first();
         return $userSavingRev->current_amount;
     }
 
@@ -163,6 +164,27 @@ class User extends Authenticatable
         return $pendingLoans->count();
     }
 
+    //Number of Pending product subscriptions
+    public  function pendingProducts($id)
+    {
+        $pendingProducts = Psubscription::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Pending');
+        })->get();
+        return $pendingProducts->count();
+    }
+
+    //Number of active product subscriptions
+    public  function activeProductSub($id)
+    {
+        //Number of active product subsriptions
+        $activeProdSub = Psubscription::where('user_id', '=', $id)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Active');
+        })->get();
+        return $activeProdSub->count();
+    }
+
     public function requiredPercent($amt){
         return 0.3 * $amt;
     }
@@ -171,7 +193,41 @@ class User extends Authenticatable
         return 0.3 * $this->totalSavings($id);
     }
 
-   
+   //Get user ID  BY IPPIS NUMBER
+   public static function userID($ippis){
+    if(static::where('payment_number',$ippis)->exists())
+    {
+        $user = static::where('payment_number', '=', $ippis)
+        ->where(function ($query) {
+            $query->where('status', '=', 'Active');
+        })->first();
+        if($user){
+            return $user->id;
+        }else{
+            toastr()->error('User is not active');
+            return back(); 
+        }
+        
+    }
+    toastr()->error('No user with this IPPIS Number');
+    return back();
+   }
+
+   //GET USER OBJECT BY ID
+   public function userInstance($id){
+       $user= $this::find($id);
+       return $user;
+   }
+
+   //Product guarantor count
+   public function guarantorCount($id){
+        return Psubscription::where('guarantor_id', '=', $id)->count();
+   }
+
+   //Loan guarantor count
+   public function loanGuarantorCount($id){
+    return Lsubscription::where('guarantor_id', '=', $id)->count();
+}
   
     // public static function totalSavings($id)
     // {

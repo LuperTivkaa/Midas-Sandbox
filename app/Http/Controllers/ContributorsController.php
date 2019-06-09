@@ -39,7 +39,10 @@ class ContributorsController extends Controller
     public function userListings($user_id){
         
         $title = 'User Saving Listing';
-        $userSavings = Saving::where('user_id',$user_id)->with('user')->latest('entry_date')->paginate(50);
+        $userSavings = Saving::where('user_id',$user_id)
+        ->with('user')
+        ->latest('entry_date')
+        ->paginate(50);
 
         
         return view('Contributors.userListings',compact('userSavings','title'));

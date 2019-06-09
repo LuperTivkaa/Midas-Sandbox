@@ -5,9 +5,12 @@
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <p class="teal-text">All Products</p>
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
-            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Product Subscription">add_shopping_cart</i></a></span>
+            <p class="teal-text">ALL PRODUCTS</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 subject-header">
+            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Product Subscription">add_shopping_cart</i></a></span>
         </div>
     </div>
 
@@ -19,7 +22,7 @@
                     <tr>
                         <th>Product Name</th>
                         <th>Description</th>
-                        <th>Unit Cost</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,8 +31,15 @@
                     <tr>
                         <td><a href="/product/detail/{{$product->id}}">{{$product->name}}</a></td>
                         <td>{{$product->description}}</td>
-                        <td>{{$product->unit_cost}}</td>
-                        <td><a href="/new-subscription">Subscribe</a></td>
+                        <td>{{$product->status}}</td>
+
+                        @if($product->status=='Active')
+                        <td><a href="/deactivate/{{$product->id}}" class="red-text darken-4">Deactivate</a></td>
+                        @else
+                        <td><a href="/activate/{{$product->id}}" class="green-text darken-4">Activate</a></td>
+                        @endif
+
+
                     </tr>
                     @endforeach
                 </tbody>

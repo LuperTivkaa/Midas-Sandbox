@@ -17,11 +17,14 @@ class CreateLsubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('loan_id');
             $table->integer('user_id');
+            $table->integer('guarantor_id');
+            $table->integer('guarantor_id2');
             $table->integer('custom_tenor')->nullable();
-            $table->decimal('amount_applied',12,3);
-            $table->decimal('amount_approved',12,3)->nullable();
-            $table->decimal('monthly_deduction',12,3)->nullable();
-            $table->decimal('net_pay',12,3);
+            $table->decimal('amount_applied',12,2);
+            $table->decimal('amount_approved',12,2)->nullable();
+            $table->decimal('monthly_deduction',20,9)->nullable();
+            $table->string('repayment_mode',10);
+            $table->decimal('net_pay',12,2);
             $table->string('loan_status')->default('Pending');
             $table->date('loan_start_date')->nullable();
             $table->date('loan_end_date')->nullable();

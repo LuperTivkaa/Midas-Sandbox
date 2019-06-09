@@ -41,8 +41,28 @@ Route::get('/gallery', 'HomeController@gallery');
 //ROUTES FOR ADMIN DASHBOARD
 
 Route::get('/Dashboard', 'MadminController@index');
-//dashobard routes
+/**
+ * Client Dashboard Below
+ * 
+ */
+Route::middleware(['auth'])->group(function () {
 Route::get('/Dashboard/home','DashboardController@index');
+Route::get('/Dashboard/user/savings','DashboardController@savings');
+Route::get('/Dashboard/savings/{id}','DashboardController@savingsByYear');
+Route::get('/Dashboard/user/savingsummary','DashboardController@savingsGroup');
+Route::get('/Dashboard/user/targetsavings','DashboardController@targetSavingHome');
+Route::get('/Dashboard/targetsavings/{id}','DashboardController@targetSavingListings');
+Route::get('/Dashboard/user/allTargetsavings','DashboardController@allTargetSavings');
+Route::post('/Dashboard/user/customsearch','DashboardController@customSearch');
+Route::get('/Dashboard/user/loans','DashboardController@allLoans');
+Route::get('/Dashboard/user/loans/{id}','DashboardController@loanDeductionHistory');
+Route::get('/Dashboard/userloans/view/{id}','DashboardController@loanDetails');
+Route::get('/Dashboard/user/schemes','DashboardController@allProducts');
+Route::get('/Dashboard/userproducts/view/{id}','DashboardController@productDetails');
+Route::get('/Dashboard/userproducts/history/{id}','DashboardController@productDeductionHistory');
+Route::get('/Dashboard/print/{from}/{to}','DashboardController@printStatement');
+Route::get('/Dashboard/downloadpdf/{from}/{to}','DashboardController@downloadStatement');
+});
 
 //REGISTRATION ROUTES
     Route::middleware(['auth'])->group(function () {
@@ -76,6 +96,8 @@ Route::post('/updateNok/{id}','UsersController@updateNok');
 
 //Products routes
 Route::get('/products','ProductsController@index');
+Route::get('/deactivate/{id}','ProductsController@deactivate');
+Route::get('/activate/{id}','ProductsController@activate');
 Route::get('/product/create','ProductsController@create');
 Route::post('/product/store','ProductsController@store');
 Route::get('/product/detail/{id}','ProductsController@show');
@@ -93,6 +115,9 @@ Route::post('/user/ProductEdit/{id}','ProductSubscriptionController@update');
 Route::get('/userProdSub/delete/{id}','ProductSubscriptionController@destroy');
 Route::get('/prodSub/pending','ProductSubscriptionController@pendingSubscriptions');
 Route::get('/prodSub/active','ProductSubscriptionController@activeSubscriptions');
+Route::get('/prodSub/stop/{id}','ProductSubscriptionController@subStop');
+Route::get('/prodSub/review/{id}','ProductSubscriptionController@review');
+Route::post('/prodSub/reviewStore/{id}','ProductSubscriptionController@reviewStore');
 
 
 //Loan Product Routes
@@ -106,14 +131,16 @@ Route::post('/loanProduct/update/{id}','LoanProductController@update');
 Route::get('/loan-subscriptions','LoanSubscriptionController@index');
 Route::get('/loanSub/create','LoanSubscriptionController@create');
 Route::post('/loanSub/store','LoanSubscriptionController@store');
-Route::get('/loan-request/{id}','LoanSubscriptionController@show');
+Route::get('/loan-request/{id}','LoanSubscriptionController@show'); 
 Route::get('/loanSub/edit/{id}','LoanSubscriptionController@edit');
+Route::get('/loanSub/stop/{id}','LoanSubscriptionController@loanStop');
 Route::post('/loanSub/update/{id}','LoanSubscriptionController@update');
 Route::get('/user/page/{id}','LoanSubscriptionController@userLoanSubscriptions');
 Route::get('/userLoan/review/{id}','LoanSubscriptionController@review');
 Route::post('/userLoan/reviewStore/{id}','LoanSubscriptionController@reviewStore');
 Route::get('/pendingLoans','LoanSubscriptionController@pendingLoans');
 Route::get('/activeLoans','LoanSubscriptionController@activeLoans');
+Route::get('/activeLoan/detail/{id}','LoanSubscriptionController@loanDetails');
 Route::get('/userLoan/discard/{id}','LoanSubscriptionController@destroy');
 
 
@@ -151,6 +178,7 @@ Route::post('/targetsaving/store','TargetSavingController@store');
 //Product Deductions
 Route::get('/product/deductions','ProductDeductionsController@index');
 Route::get('/productDeductions/export','ProductDeductionsController@export')->name('prod-deductions.export');
+//show upload form
 Route::get('/productDeductions/upload','ProductDeductionsController@upload')->name('prod-deductions.upload');
 Route::post('/productDeductions/import','ProductDeductionsController@import')->name('prod-deductions.import');
 Route::get('/productDeduction/listings','ProductDeductionsController@productDeductions');
@@ -160,6 +188,37 @@ Route::post('/productDeduction/update/{id}','ProductDeductionsController@update'
 Route::get('/productDeduction/remove/{id}','ProductDeductionsController@destroy');
 Route::get('/product/repay/{id}','ProductDeductionsController@repay');
 Route::post('/productRepay/store','ProductDeductionsController@repayStore');
+
+//Loan Deductions
+//Unfiltered loan deductions for MIDAS UPLOAD
+Route::get('/loan/deductions','LoanDeductionsController@index');
+Route::get('/loanDeductions/export','LoanDeductionsController@export')->name('loans.export');
+
+//Unfiltered loan deductions for IPPIS UPLOAD
+Route::get('/loan/ippisdeductions','LoanDeductionsController@ippis');
+Route::get('/loanDeductions/ippisexport','LoanDeductionsController@defaultIppisExport')->name('default_ippis.export');
+
+//Filtered loan deductions for IPPIS
+Route::get('/loan/filter','LoanDeductionsController@filterDeductions');
+Route::post('/loan/filterResult','LoanDeductionsController@filterLoanResult');
+Route::get('/filterExcel/{payment_type}/{start_date}/{end_date}','LoanDeductionsController@excelFilterExport');
+
+//Filtered loan deductions for MIDAS
+Route::get('/midasFilterExcel/{payment_type}/{start_date}/{end_date}','LoanDeductionsController@midasExcelFilterExport');
+
+//TODO: Implement PDF FOR DOWNLOAD
+
+
+//IMPORT LOAN DEDUCTIONS
+Route::get('/loan/uploadForm','LoanDeductionsController@importForm');
+Route::post('/loan/deductionsImport','LoanDeductionsController@importLoanDeductions')->name('deductions.import');
+Route::get('/loanDeduction/listings','LoanDeductionsController@loanDeductions');
+Route::get('/loanDeduction/edit/{id}','LoanDeductionsController@edit');
+Route::post('/loanDeduction/update/{id}','LoanDeductionsController@update');
+Route::get('/loanDeduction/remove/{id}','LoanDeductionsController@destroy');
+Route::get('/loanDeduction/history/{id}','LoanDeductionsController@loanDeductionHistory');
+Route::get('/loan/repay/{id}','LoanDeductionsController@repay');
+Route::post('/loanRepay/store','LoanDeductionsController@repayStore');
 
 
 

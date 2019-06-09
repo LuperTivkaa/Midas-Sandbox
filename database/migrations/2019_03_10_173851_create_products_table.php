@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->decimal('unit_cost', 12,3);
+            $table->integer('tenor');
+            $table->string('status',15);
             $table->timestamps();
         });
     }

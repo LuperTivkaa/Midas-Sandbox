@@ -589,3 +589,164 @@
         outline: none;
     }
 }
+//Table Styles
+table,
+th,
+td {
+    border: 0.5px solid;
+}
+
+table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead tr th,
+table tbody tr td {
+    text-align: left;
+}
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+td,
+th {
+    padding: 3px 3px;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 2px;
+    font-size: 1rem;
+}
+
+// Pagination
+
+.pagination {
+    li {
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        vertical-align: top;
+        height: 30px;
+
+        a {
+            color: #444;
+            display: inline-block;
+            font-size: 1.2rem;
+            padding: 0 10px;
+            line-height: 30px;
+        }
+
+        &.active a {
+            color: #fff;
+        }
+
+        &.active {
+            background-color: $primary-overlay;
+        }
+
+        &.disabled a {
+            cursor: default;
+            color: #999;
+        }
+
+        i {
+            font-size: 2rem;
+        }
+    }
+
+    li.pages ul li {
+        display: inline-block;
+        float: none;
+    }
+}
+@media #{$medium-and-down} {
+    .pagination {
+        width: 100%;
+
+        li.prev,
+        li.next {
+            width: 10%;
+        }
+
+        li.pages {
+            width: 80%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+}
+//CUSTOM FORM SEARCH
+.customsearch {
+    display: flex;
+    align-items: center;
+    &__item {
+        margin: 5px;
+    }
+
+    &__select {
+        background-color: $dash-grey-light2;
+        border: none; //no border
+        padding: 0.7rem 2rem; //20px
+        border-radius: 100px;
+        width: 20%;
+    }
+    &__button {
+        background-color: $dash-grey-light2;
+        border: none; //no border
+        padding: 0.7rem 2rem; //20px
+        border-radius: 100px;
+        width: 20%;
+    }
+}
+.custom-input {
+    background-color: $dash-grey-light2;
+    border: none; //no border
+    padding: 0.7rem 2rem; //20px
+    border-radius: 100px;
+}
+
+// loan detail subscriptions
+//USER PROFILE section
+.user-profiles {
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    //box-shadow: 0 2rem 5.8rem rgba(0, 0, 0, 0.04);
+    //$border-line: 1px solid #f4f2f2; //#ccc
+}
+// .profile-detail {
+//     border-left: 3px solid #0091ea;
+// }
+.side-section-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #c56087;
+    margin-bottom: 20px;
+}
+
+.myloandetail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-profile {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+.subject-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-detail {
+    display: flex;
+    align-items: center;
+}

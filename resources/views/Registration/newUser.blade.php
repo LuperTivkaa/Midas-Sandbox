@@ -44,7 +44,6 @@
                 @can('all')
                 <div class="input-field col s6">
                     <select id="role" name="role">
-                        <option value="" selected>System Role</option>
                         @foreach ($roles as $id=>$role)
                         <option value="{{$id}}">{{$role}}</option>
                         @endforeach
@@ -102,7 +101,14 @@
 
             </div>
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s4">
+                    <select id="member_type" name="member_type">
+                        <option value="Ordinary">Ordinary</option>
+                        <option value="Associate">Associate</option>
+                    </select>
+                    <label>Membership Type</label>
+                </div>
+                <div class="input-field col s4">
                     <select id="employ_type" name="employ_type">
                         <option value="Permanent">Permanent</option>
                         <option value="Temporal">Temporal</option>
@@ -110,7 +116,7 @@
                     </select>
                     <label>Employment Type</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s4">
                     <select id="job_cadre" name="job_cadre">
                         <option value="Senior">Senior</option>
                         <option value="Junior">Junior</option>

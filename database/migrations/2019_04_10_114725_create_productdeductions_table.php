@@ -24,7 +24,7 @@ class CreateProductdeductionsTable extends Migration
             $table->string('bank_name',30)->nullable();
             $table->string('bank_add',50)->nullable();
             $table->string('depositor_name',50)->nullable();
-            $table->integer('teller_no')->nullable();
+            $table->string('teller_no',12)->nullable();
             $table->string('notes',20)->default('Normal Deductions');
             $table->integer('uploaded_by');
             $table->timestamps();

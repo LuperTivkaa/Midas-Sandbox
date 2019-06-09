@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -6,11 +6,20 @@
     <div class="row">
         <div class="col s12 subject-header">
             <p class="teal-text">USER DETAILS</p>
-            <span><a href="/user/all"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Users">group</i></a></span>
-            <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create User">person_add</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="User's Savings">account_balance_wallet</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="User's Target Savings">monetization_on</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Subscribed Products Schemes">local_grocery_store</i></a></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 subject-header">
+            <span><a href="/user/all"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Users">group</i></a></span>
+            <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Create User">person_add</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="User's Savings">account_balance_wallet</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="User's Target Savings">monetization_on</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Subscribed Products Schemes">local_grocery_store</i></a></span>
         </div>
     </div>
 
@@ -25,7 +34,8 @@
                 <span class="black-text sub-profile">Birth Date</span>
                 <span class="profile__user-date grey-text lighten-2">{{$profile->dob->toFormattedDateString()}}</span>
                 <span class="black-text sub-profile">Joined Since</span>
-                <span class="profile__join-date grey-text lighten-2">{{$profile->created_at->toFormattedDateString()}}</span>
+                <span
+                    class="profile__join-date grey-text lighten-2">{{$profile->created_at->toFormattedDateString()}}</span>
                 <span class="black-text sub-profile">Sex</span>
                 <span class="profile__user-status grey-text lighten-2">{{$profile->sex}}</span>
             </div>
@@ -100,6 +110,7 @@
     </div>
 
     <div class="row user-profiles">
+        @if ($profile->nok)
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">Next of Kin</p>
             <p><i class="small material-icons pink-text darken-4">wc</i></p>
@@ -133,18 +144,21 @@
             <p>No Record Added Yet</p>
             @endif
         </div>
+        @else
+        <div class="add-more-box">
+            <h5>NEXT OF KIN</h5>
+            <a href="/Nok/{{$profile->id}}" class="add-more"><i class="small material-icons">add</i></a>
+        </div>
+        @endif
     </div>
 
     <div class="row user-profiles">
+        @if ($profile->bank)
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">Bank</p>
             <p><i class="small material-icons pink-text lighten-4">looks</i></p>
             <span class="profile__user-name">{{$profile->bank->bank_name}}</span>
-            <span class="profile__user-name">{{$profile->bank->acct_number}}</span> {{--
-            <div class="profile__user-box">
-                <span class="black-text sub-profile">Sex</span>
-                <span class="profile__user-status grey-text lighten-2">{{$user->sex}}</span>
-            </div> --}}
+            <span class="profile__user-name">{{$profile->bank->acct_number}}</span>
             <span><a href="/editBank/{{$profile->bank->id}}" class="pink-text darken-2">Edit</a></span>
         </div>
         <div class="col s12 m9 l9 pink lighten-4 profile-detail">
@@ -169,6 +183,13 @@
             <p>No Record Added Yet</p>
             @endif
         </div>
+        @else
+        <div class="add-more-box">
+            <h5>BANK DETAILS</h5>
+            <a href="/bank/{{$profile->id}}" class="add-more"><i class="small material-icons">add</i></a>
+        </div>
+        @endif
     </div>
+
 </div>
 @endsection

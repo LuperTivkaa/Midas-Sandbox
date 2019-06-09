@@ -82,7 +82,8 @@ class RegistrationController extends Controller
     
 
     $user = new User();
-    $user->payment_number = $request['payment_number'];
+    $payment_number = $request['payment_number'];
+    $user->payment_number = $payment_number;
     $user->password = Hash::make($request['password']);
     $user->email = $request['email'];
     $user->title = $request['title'];
@@ -90,6 +91,7 @@ class RegistrationController extends Controller
     $user->last_name = $request['last_name'];
     $user->other_name = $request['other_name'];
     $user->employ_type = $request['employ_type'];
+    $user->membership_type = $request['member_type'];
     $user->dept = $request['dept'];
     $user->phone = $request['phone'];
     $user->dob = $request['dob'];
@@ -105,10 +107,11 @@ class RegistrationController extends Controller
     $user->roles()->attach(request(['role']));
 
     if ($user->save()) {
+        $user_id = $user->userID($payment_number);
         toastr()->success('Data has been saved successfully!');
 
         //return redirect()->route('posts.index');
-        return redirect('/New');
+        return redirect('/userDetails/'.$user_id);
     }
 
     toastr()->error('An error has occurred please try again later.');
@@ -125,9 +128,10 @@ class RegistrationController extends Controller
 }
 
 //form for nok 
-public function nextOfKin (){
+public function nextOfKin ($id){
     $title ="User NOK";
-    return view('Registration.userNok',compact('title'));
+    $id = $id;
+    return view('Registration.userNok',compact('title','id'));
 }
 
 //Save next of kin
@@ -139,16 +143,15 @@ public function nokStore (Request $request){
         'email' =>'email',
         'title'=>'required',
         'sex'=>'required',
+        'user_id'=>'required',
         'relationship'=>'required',
         'first_name'=>'required',
         'last_name'=>'required',
         'phone'=>'required',
     ]);
-    if(User::where('payment_number',request(['payment_number']))->exists())
-    {
-        $user = User::where('payment_number',request(['payment_number']))->first();
-        $user_id = $user->id;
+       
         $user_nok = new Nok();
+        $user_id = $request['user_id'];
         $user_nok->user_id = $user_id;
         $user_nok->relationship = $request['relationship'];
         $user_nok->email = $request['email'];
@@ -163,23 +166,18 @@ public function nokStore (Request $request){
         if ($user_nok->save()) {
             toastr()->success('User Next of Kin has been saved successfully!');
     
-            //return redirect()->route('posts.index');
-            return redirect('/user/nok');
+            return redirect('/userDetails/'.$user_id);
         }
         toastr()->error('An error has occurred please try again later.');
-        return back();
-
-    }
- 
-    toastr()->error('This user does not exist yet!.');
-    return back();   
+        return back();  
 }
 
 
 //form for USER BANK DETAILS
-public function bank(){
+public function bank($id){
     $title ="User Bank Detail";
-    return view('Registration.userBank',compact('title'));
+    $id = $id;
+    return view('Registration.userBank',compact('title','id'));
 }
 
 //Save bank Store
@@ -189,15 +187,15 @@ public function bankStore (Request $request){
         'payment_number'=>'required',
         'bank_name' =>'required',
         'bank_branch' =>'required',
+        'user_id' =>'required',
         'sort_code' =>'required',
         'acct_name' =>'required',
         'acct_number' =>'required|integer|digits:10',
     ]);
 
-    if(User::where('payment_number',request(['payment_number']))->exists())
-    {
-        $user = User::where('payment_number',request(['payment_number']))->first();
-        $user_id = $user->id;
+ 
+        
+        $user_id = $request['user_id'];
         $user_bank = new Bank();
         $user_bank->bank_name = $request['bank_name'];
         $user_bank->bank_branch = $request['bank_branch'];
@@ -209,15 +207,11 @@ public function bankStore (Request $request){
         if ($user_bank->save()) {
             toastr()->success('User bank details has been saved successfully!');
     
-            //return redirect()->route('posts.index');
-            return redirect('/user/bank');
+            return redirect('/userDetails/'.$user_id);
         }
         toastr()->error('An error has occurred trying to save record, please try again later.');
         return back();
-    }
-        
-    toastr()->error('This user does not exist yet!');
-    return back();
+   
    
 }
 

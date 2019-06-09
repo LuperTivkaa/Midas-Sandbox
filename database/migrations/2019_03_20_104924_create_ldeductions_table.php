@@ -15,9 +15,10 @@ class CreateLdeductionsTable extends Migration
     {
         Schema::create('ldeductions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id'); //create in db
+            $table->integer('user_id'); 
+            $table->integer('loan_id'); 
             $table->integer('lsubscription_id');
-            $table->decimal('amount_deducted',12,3);
+            $table->decimal('amount_deducted',20,9);
             $table->date('entry_month');
             $table->string('repayment_mode',10)->default('IPPIS');
             $table->string('bank_name',30)->nullable();

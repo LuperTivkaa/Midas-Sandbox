@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -6,11 +6,16 @@
     <div class="row">
         <div class="col s12 subject-header">
             <p class="teal-text">USER PRODUCT(S)</p>
-            <span><a href="/user/all"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Users">group</i></a></span>
-            <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create User">person_add</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="User's Savings">account_balance_wallet</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="User's Target Savings">monetization_on</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Subscribed Products Schemes">local_grocery_store</i></a></span>
+            <span><a href="/user/all"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Users">group</i></a></span>
+            <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Create User">person_add</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="User's Savings">account_balance_wallet</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="User's Target Savings">monetization_on</i></a></span>
+            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Subscribed Products Schemes">local_grocery_store</i></a></span>
         </div>
     </div>
 
@@ -68,26 +73,33 @@
                 <span class="black-text sub-profile"></span>
                 <span class="profile__user-status grey-text lighten-2"></span>
             </div>
-            <span><a href="" class="pink-text darken-2">Payment History</a></span>
+            <span><a href="" class="pink-text darken-2">All Payment History</a></span>
         </div>
 
         <div class="col s12 m9 l9 blue lighten-4  profile-detail">
             <table class="highlight">
                 <thead>
                     <tr>
-                        <th>Amount NGN</th>
+                        <th>Principal NGN</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Action</th>
+                        <th>History</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($activeLoans as $active)
                     <tr>
-                        <td>{{$active->amount_approved}}</td>
+                        <td><a href="/activeLoan/detail/{{$active->id}}">{{$active->amount_approved}}</a></td>
                         <td>{{$active->loan_start_date->toFormattedDateString()}}</td>
-                        <td>{{$active->loan_start_date->diffForHumans($active->loan_end_date->toFormattedDateString())}}</td>
-                        <td><a href="/userLoan/stop/{{$active->id}}">Stop</a></td>
+                        <td>{{$active->loan_start_date->diffForHumans($active->loan_end_date->toFormattedDateString())}}
+                        </td>
+                        <td>
+                            <a href="/userLoan/stop/{{$active->id}}">Stop</a>
+                            <a href="/loan/repay/{{$active->id}}">Pay</a>
+                        </td>
+                        <td><a href="/loanDeduction/history/{{$active->id}}">View</a></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -106,9 +118,12 @@
 
             <div class="profile__user-box">
                 <span class="black-text sub-profile">Total Contribution</span>
-                <span class="profile__user-date grey-text lighten-2">NGN {{number_format($user->totalSavings($user->id)), 2, '.',','}}</span>
+                <span class="profile__user-date grey-text lighten-2">NGN
+                    {{number_format($user->totalSavings($user->id)), 2, '.',','}}</span>
                 <span class="black-text sub-profile">Monthly Contribution</span>
-                <span class="profile__join-date grey-text lighten-2">NGN {{number_format($user->monthlySaving($user->id), 2,'.',',')}}</span>
+                <span class="profile__join-date grey-text lighten-2">
+                    NGN {{number_format($user->monthlySaving($user->id), 2,'.',',')}}
+                </span>
             </div>
             {{-- <span><a href="/editBank/{id}" class="pink-text darken-2">Edit</a></span> --}}
         </div>
@@ -129,7 +144,8 @@
                         <td>{{number_format($pending->amount_applied,2,'.',',')}}</td>
                         <td>{{number_format($pending->user->requiredPercent($pending->amount_applied), 2,'.',',')}}</td>
                         <td>{{number_format($pending->user->availablePercent($pending->user_id), 2,'.',',')}}</td>
-                        <td><a href="/userLoan/review/{{$pending->id}}">Review</a> <a href="/userLoan/discard/{{$pending->id}}">Discard</a>                            </td>
+                        <td><a href="/userLoan/review/{{$pending->id}}">Review</a> <a
+                                href="/userLoan/discard/{{$pending->id}}">Discard</a> </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -145,7 +161,7 @@
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">Pending Subscriptions</p>
             <p><i class="small material-icons pink-text lighten-4">looks</i></p>
-            <span class="profile__user-name">{{$user->pendingLoans($user->id)}}</span>
+            <span class="profile__user-name">{{$user->pendingProducts($user->id)}}</span>
             <span class="profile__user-name"></span>
 
             <div class="profile__user-box">
@@ -164,8 +180,8 @@
                         <th>Item</th>
                         <th>Units</th>
                         <th>x-item</th>
-                        <th>Sum</th>
-                        <th>Net</th>
+                        <th>Total Cost NGN</th>
+                        <th>Net Pay NGN</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -177,7 +193,8 @@
                         <td>{{$product->product->unit_cost}}</td>
                         <td>{{number_format($product->total_amount,2,'.',',')}}</td>
                         <td>{{number_format($product->net_pay,2,'.',',')}}</td>
-                        <td><a href="/userLoan/review/{{$product->id}}">Review</a> <a href="/userLoan/discard/{{$product->id}}">Discard</a>                            </td>
+                        <td><a href="/prodSub/review/{{$product->id}}">Review</a> <a
+                                href="/userProdSub/delete/{{$product->id}}">Discard</a> </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -190,7 +207,7 @@
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">Active Subscriptions</p>
             <p><i class="small material-icons pink-text lighten-4">looks</i></p>
-            <span class="profile__user-name">{{$user->pendingLoans($user->id)}}</span>
+            <span class="profile__user-name">{{$user->activeProductSub($user->id)}}</span>
             <span class="profile__user-name"></span>
 
             <div class="profile__user-box">
@@ -207,10 +224,9 @@
                 <thead>
                     <tr>
                         <th>Item</th>
-                        <th>Units</th>
-                        <th>x-item</th>
-                        <th>Sum</th>
-                        <th>Repay</th>
+                        <th>Sum N</th>
+                        <th>Sum Repay N</th>
+                        <th>Balance</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -218,11 +234,12 @@
                     @foreach($userProducts as $myProduct)
                     <tr>
                         <td>{{$myProduct->product->name}}</td>
-                        <td>{{$myProduct->units}}</td>
-                        <td>{{$myProduct->product->unit_cost}}</td>
                         <td>{{number_format($myProduct->total_amount,2,'.',',')}}</td>
-                        <td>{{number_format($myProduct->monthly_repayment,2,'.',',')}}</td>
-                        <td><a href="/userLoan/review/{{$myProduct->id}}">Repay</a> <a href="/userLoan/discard/{{$myProduct->id}}">Stop</a></td>
+                        <td>{{number_format($myProduct->totalSubDeductions($myProduct->id),2,'.',',')}}</td>
+                        <td>{{number_format($myProduct->total_amount-$myProduct->totalSubDeductions($myProduct->id),2,'.',',')}}
+                        </td>
+                        <td><a href="/product/repay/{{$myProduct->id}}">Repay</a> <a
+                                href="/prodSub/stop/{{$myProduct->id}}">Stop</a></td>
                     </tr>
                     @endforeach
                 </tbody>

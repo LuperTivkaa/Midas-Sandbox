@@ -17,6 +17,7 @@ class CreateTargetsavingsTable extends Migration
         Schema::create('targetsavings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('targetsr_id');
             $table->decimal('amount',12,3);
             $table->date('entry_date');
             $table->string('target_saving_mode',10)->default('IPPIS');

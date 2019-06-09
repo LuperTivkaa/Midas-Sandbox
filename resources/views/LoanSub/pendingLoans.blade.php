@@ -1,4 +1,9 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
+
+
+
+
+
 @section('main-content')
 <div class="container">
     {{--
@@ -12,7 +17,8 @@
     <div class="row">
         <div class="col s12 subject-header">
 
-            <span><a href="/loanSub/create"><i class="small material-icons blue-text lighten-4 tooltipped" data-position="bottom" data-tooltip="New Loan Subscription">playlist_add</i></a></span>
+            <span><a href="/loanSub/create"><i class="small material-icons blue-text lighten-4 tooltipped"
+                        data-position="bottom" data-tooltip="New Loan Subscription">playlist_add</i></a></span>
         </div>
     </div>
 
@@ -34,11 +40,13 @@
                     @foreach ($pendingLoans as $pending)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td><a href="/user/page/{{$pending->user_id}}">{{$pending->user->first_name}} {{$pending->user->lastname_name}}</a></td>
+                        <td><a href="/user/page/{{$pending->user_id}}">{{$pending->user->first_name}}
+                                {{$pending->user->lastname_name}}</a></td>
                         <td>{{$pending->loan->description}}</td>
                         <td>{{number_format($pending->amount_applied,2,'.',',')}}</td>
                         <td>{{$pending->created_at->toFormattedDateString()}}</td>
-                        <td><a href="/userLoan/discard/{{$pending->id}}">Discard</a></td>
+                        <td><a href="/userLoan/review/{{$pending->id}}">Review</a></td>
+                        <td><a href="/userLoan/discard/{{$pending->id}}" id="delete">Discard</a></td>
                     </tr>
                     @endforeach
                 </tbody>

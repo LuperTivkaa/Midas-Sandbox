@@ -68,9 +68,9 @@ Route::get('/Dashboard/downloadpdf/{from}/{to}','DashboardController@downloadSta
     Route::middleware(['auth'])->group(function () {
         Route::get('/New','RegistrationController@createUser');
         Route::post('/Create','RegistrationController@storeUser');
-        Route::get('/Nok','RegistrationController@nextOfKin');
+        Route::get('/Nok/{id}','RegistrationController@nextOfKin');
         Route::post('/nokStore','RegistrationController@nokStore');
-        Route::get('/bank','RegistrationController@bank');
+        Route::get('/bank/{id}','RegistrationController@bank');
         Route::post('/bankStore','RegistrationController@bankStore');
 });
 

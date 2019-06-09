@@ -5,7 +5,11 @@
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <p class="teal-text">All Products Subscriptions</p>
+            <p class="teal-text">PRODUCT SUBSCRIPTION</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 subject-header">
             <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
             <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
         </div>

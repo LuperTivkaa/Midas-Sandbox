@@ -5,7 +5,12 @@
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <p class="teal-text">All Loan Request</p>
+            <p class="teal-text">ALL LOAN REQUEST(s)</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 subject-header">
             <span><a href="/loanSub/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Loan Subscription">playlist_add</i></a></span>
         </div>
     </div>

@@ -139,7 +139,6 @@ public function nokStore (Request $request){
     
     //validate the form
     $this->validate(request(), [
-        'payment_number'=>'required',
         'email' =>'email',
         'title'=>'required',
         'sex'=>'required',
@@ -184,7 +183,6 @@ public function bank($id){
 public function bankStore (Request $request){
     //validate the form
     $this->validate(request(), [
-        'payment_number'=>'required',
         'bank_name' =>'required',
         'bank_branch' =>'required',
         'user_id' =>'required',

@@ -15,6 +15,4 @@
         </div> --}}
         <div class="customsearch__item"><button class="custom-input" type="submit">Search</button></div>
     </form>
-
-
 </div>

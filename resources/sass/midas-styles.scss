@@ -150,6 +150,61 @@
     align-items: center;
     padding: 7px 7px 7px 7px;
 }
+//custom serach container
+// .overview {
+//     display: flex;
+//     align-items: center; // aligns the items vertically
+//     border-bottom: $border-line;
+
+//     &__heading {
+//         font-size: 2.25rem;
+//         font-weight: 300;
+//         //text-transform: uppercase;
+//         letter-spacing: 1px;
+//         padding: 1.5rem 3rem;
+//         @media only screen and (max-width: $bp-small) {
+//             font-size: 1.8rem;
+//             padding: 1.25 2rem;
+//         }
+//     }
+// }
+.search_bar {
+    text-align: center;
+}
+
+//CUSTOM SEARCH INPUT
+.customsearch {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    &__item {
+        margin: 5px;
+    }
+
+    &__select {
+        background-color: $dash-grey-light2;
+        border: none; //no border
+        padding: 0.7rem 2rem; //20px
+        border-radius: 100px;
+        width: 20%;
+    }
+    &__button {
+        background-color: $dash-grey-light2;
+        border: none; //no border
+        padding: 0.7rem 2rem; //20px
+        border-radius: 100px;
+        width: 20%;
+    }
+}
+.custom-input {
+    background-color: $dash-grey-light2 !important;
+    border: none !important; //no border
+    padding: 0.7rem 2rem !important; //20px
+    border-radius: 100px !important;
+}
+.custom-width {
+    width: 70%;
+}
 
 // .profile-detail {
 //     display: flex;

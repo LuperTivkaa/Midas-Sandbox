@@ -12,17 +12,23 @@
 
     <div class="container">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo"><img height="30"  src="{{asset('images/logo2.svg')}}" alt="logo"></a>
+            <a href="/" class="brand-logo"><img height="30" src="{{asset('images/logo2.svg')}}" alt="logo"></a>
 
-            <a href="#" data-target="slide-out" class="sidenav-trigger right show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger right show-on-large"><i
+                    class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
 
-                <li><a class="dropdown-trigger" href="/" data-target='dropdown1'><i class="material-icons left">group</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown2'><i class="material-icons left">bubble_chart</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown3'><i class="material-icons left">style</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown4'><i class="material-icons left">person</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i class="material-icons left">dashboard</i></a></li>
+                <li><a class="dropdown-trigger" href="/" data-target='dropdown1'><i
+                            class="material-icons left">group</i></a></li>
+                <li><a class="dropdown-trigger" href="/about" data-target='dropdown2'><i
+                            class="material-icons left">bubble_chart</i></a></li>
+                <li><a class="dropdown-trigger" href="/about" data-target='dropdown3'><i
+                            class="material-icons left">style</i></a></li>
+                <li><a class="dropdown-trigger" href="/about" data-target='dropdown4'><i
+                            class="material-icons left">person</i></a></li>
+                <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i
+                            class="material-icons left">dashboard</i></a></li>
             </ul>
 
         </div>
@@ -40,9 +46,10 @@
             </div>
             <a href="#"><img class="circle" src="{{asset('images/logo2.svg')}}"></a>
             <a href="#"><span class="grey-text darken-3 name">@if(Auth::check())
-                {{auth()->user()->first_name}}, {{auth()->user()->last_name}}@endif
+                    {{auth()->user()->first_name}}, {{auth()->user()->last_name}}@endif
                 </span></a>
-            <a href="#"><span class="grey-text darken-3 email">@if(Auth::check()){{auth()->user()->email}}@endif</span></a>
+            <a href="#"><span
+                    class="grey-text darken-3 email">@if(Auth::check()){{auth()->user()->email}}@endif</span></a>
         </div>
     </li>
     <li><a class="subheader">Profile</a></li>
@@ -56,8 +63,8 @@
         <div class="divider"></div>
     </li>
     <li><a class="subheader">Cooperators</a></li>
-    <li><a href="#!"><i class="material-icons">add</i>New User</a></li>
-    <li><a href="#!"><i class="material-icons">view_list</i>List Users</a></li>
+    <li><a href="/New"><i class="material-icons">add</i>New User</a></li>
+    <li><a href="/user/all"><i class="material-icons">view_list</i>List Users</a></li>
     <li>
         <div class="divider"></div>
     </li>

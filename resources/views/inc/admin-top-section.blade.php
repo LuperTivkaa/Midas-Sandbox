@@ -1,4 +1,14 @@
 <section class="section section-stats center">
+    <div class="row search_bar">
+        <form class="customsearch" method="POST" action="/Dashboard/user/customsearch">
+            {{ csrf_field() }}
+
+            <div class="customsearch__item"><input class="custom-input custom-width" type="text" name="from" id="from"
+                    placeholder="Provide IPPIS or Surname">
+            </div>
+            <div class="customsearch__item"><button class="custom-input" type="submit">Search</button></div>
+        </form>
+    </div>
     <div class="row">
         <div class="col s12 m6 l3">
             <div class="card-panel blue lighten-1 white-text center">

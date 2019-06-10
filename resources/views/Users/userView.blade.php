@@ -14,12 +14,6 @@
                         data-tooltip="All Users">group</i></a></span>
             <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom"
                         data-tooltip="Create User">person_add</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="User's Savings">account_balance_wallet</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="User's Target Savings">monetization_on</i></a></span>
-            <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="Subscribed Products Schemes">local_grocery_store</i></a></span>
         </div>
     </div>
 

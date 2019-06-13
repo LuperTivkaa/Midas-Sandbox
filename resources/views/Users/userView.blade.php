@@ -21,7 +21,14 @@
         <div class="col s12 m3 l3 profile">
             {{-- <img src="{{asset('images/andy.jpg')}}" alt="" class="circle"> --}}
             <p class="profile__heading text-grey darken-3">Personal Details</p>
-            <img src="{{asset('images/andy.jpg')}}" alt="" class="profile__photo">
+            @if ($profile->photo)
+            <img src="{{url('storage/photos/'.$profile->photo)}}" alt="" class="profile__photo">
+            <span><a href="/photo/{{$profile->id}}" class="pink-text darken-2">Edit Photo</a></span>
+            @else
+            <img src="{{url('images/girl-1.png')}}" alt="" class="profile__photo">
+            <span><a href="/photo/{{$profile->id}}" class="pink-text darken-2">Choose Photo</a></span>
+            @endif
+
             <span class="profile__user-name">{{$profile->title}}</span>
             <span class="profile__user-name">{{$profile->first_name}} {{$profile->last_name}}</span>
             <div class="profile__user-box">
@@ -36,6 +43,13 @@
 
 
             <span><a href="/editProfile/{{$profile->id}}" class="pink-text darken-2">Edit</a></span>
+            @if ($profile->status == 'Active')
+            <span><a href="/deactivateUser/{{$profile->id}}" class="pink-text darken-2">Deactivate</a></span>
+            @else
+            <span><a href="/activateUser/{{$profile->id}}" class="pink-text darken-2">Activate</a></span>
+            @endif
+            <span><a href="/user/page/{{$profile->id}}" class="grey-text darken-4">[Subscriptions]</a></span>
+
         </div>
         <div class="col s12 m9 l9 profile-detail">
             @if ($profile)

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('other_name')->nullable();
             $table->string('sex');
             $table->integer('staff_no');
+            $table->date('dofa');
             $table->string('membership_type');
             $table->string('dept');
             $table->string('phone');
@@ -35,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('employ_type');
             $table->string('job_cadre');
             $table->string('status')->default('Active');
+            $table->string('photo');
             $table->rememberToken();
             $table->timestamps();
         });

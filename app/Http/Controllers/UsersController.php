@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Nok;
 use App\Bank;
+use App\Lsubscription;
+use App\Psubscription;
 class UsersController extends Controller
 {
     /**
@@ -172,8 +174,8 @@ public function editBank($id){
         $nokUpdate->phone = $request['phone'];
         $nokUpdate->save();
          //find user
-    $userid = $nokUpdate->user_id;
-    $profile = User::find($userid);
+        $userid = $nokUpdate->user_id;
+        $profile = User::find($userid);
         if ($nokUpdate->save()) {
             toastr()->success('Data has been edited successfully!');
     
@@ -184,6 +186,63 @@ public function editBank($id){
         return back();
         }
 
+        //  Deactivate user
+        public function deactivateUser($id){
+            $loans = Lsubscription::where('user_id',$id)
+                                ->where('loan_status','Active')
+                                ->get();
+        $products = Psubscription::where('user_id',$id)
+                                   ->where('status','Active')
+                                   ->get();
+        if(count($loans)==0 && count($products)==0){
+            //find user
+            $user = User::find($id);
+            $user->status = 'Inactive';
+            if($user->save())
+            {
+                toastr()->success('User  deactivated  successfully!');
+                return redirect('/userDetails/'.$id);
+            }else{
+                //rteurn home
+                toastr()->error('Error deactivating user.');
+                return back();
+            }
+        }
+        else{
+            //redirect to the product page with a message
+            toastr()->error('You have pending subscriptions');
+            return redirect('/user/page/'.$id);
+        }
+        }
+
+        //activate user
+        public function activateUser($id){
+            $user = User::find($id);
+            $user->status = 'Inactive';
+            if($user->save())
+            {
+                toastr()->success('User  activated  successfully!');
+                return redirect('/userDetails/'.$id);
+            }else{
+                //rteurn home
+                toastr()->error('Error activating user.');
+                return back();
+            }
+        }
+
+
+        //Find user
+        public function searchUser(Request $request){
+            $title = 'User Search';
+            $this->validate(request(), [
+                'search_term' =>'required',
+            ]);
+
+            $user = new User;
+            $param = $request['search_term'];
+            $users = $user->searchUser($param);
+            return view('Users.userSearch',compact('users','title'));
+        }
     /**
      * Show the form for creating a new resource.
      *

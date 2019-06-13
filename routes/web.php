@@ -72,6 +72,8 @@ Route::get('/Dashboard/downloadpdf/{from}/{to}','DashboardController@downloadSta
         Route::post('/nokStore','RegistrationController@nokStore');
         Route::get('/bank/{id}','RegistrationController@bank');
         Route::post('/bankStore','RegistrationController@bankStore');
+        Route::get('/photo/{id}','RegistrationController@photoCreate');
+        Route::post('/photoStore','RegistrationController@photoStore');
 });
 
    
@@ -92,6 +94,9 @@ Route::get('/editBank/{id}','UsersController@editBank');
 Route::post('/updateBank/{id}','UsersController@updateBank');
 Route::get('/editNok/{id}','UsersController@editNok');
 Route::post('/updateNok/{id}','UsersController@updateNok');
+Route::get('/activateUser/{id}','UsersController@activateUser');
+Route::get('/deactivateUser/{id}','UsersController@deactivateUser');
+Route::post('/search/User','UsersController@searchUser');
 });
 
 //Products routes

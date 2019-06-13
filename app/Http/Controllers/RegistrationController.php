@@ -61,17 +61,18 @@ class RegistrationController extends Controller
    public function storeUser (Request $request){
     //validate the form
     $this->validate(request(), [
-        'payment_number'=>'required',
+        'payment_number'=>'required|integer',
         'password' =>'required|confirmed',
         'email' =>'email',
         'title'=>'required',
-        'first_name'=>'required',
-        'last_name'=>'required',
-        'employ_type'=>'required',
+        'first_name'=>'required|string',
+        'last_name'=>'required|string',
+        'employ_type'=>'required|string',
         'member_type'=>'required',
         'dept'=>'required',
         'phone'=>'required',
-        'dob'=>'required',
+        'dob'=>'required|date',
+        'dofa'=>'required|date',
         'home_add'=>'required|max:100',
         'res_add'=>'required|max:100',
         'sex'=>'required',
@@ -93,6 +94,7 @@ class RegistrationController extends Controller
     $user->employ_type = $request['employ_type'];
     $user->membership_type = $request['member_type'];
     $user->dept = $request['dept'];
+    $user->dofa = $request['dofa'];
     $user->phone = $request['phone'];
     $user->dob = $request['dob'];
     $user->home_add = $request['home_add'];
@@ -116,15 +118,6 @@ class RegistrationController extends Controller
 
     toastr()->error('An error has occurred please try again later.');
     return back();
-
-    //Login the User
-    //auth()->login($user);
-    //flash message
-    //session()->flash('message','User Created Successfully');
-    //redirect to route
-    //*** */return redirect('')->home;
-// ***return redirect('/Staff/New')->with('success','Staff Created');
-//return redirect('/New');
 }
 
 //form for nok 
@@ -208,6 +201,45 @@ public function bankStore (Request $request){
             return redirect('/userDetails/'.$user_id);
         }
         toastr()->error('An error has occurred trying to save record, please try again later.');
+        return back();
+   
+   
+}
+public function photoCreate($id){
+
+    $title = "Upload User Photo Image";
+    $id = $id;
+    return view('Registration.uploadPhoto',compact('title','id'));
+}
+
+//Upload user image
+public function photoStore(Request $request){
+    //validate the form
+    $this->validate(request(), [
+        'photo_image' =>'image|max:1999',
+        'user_id' =>'required',
+    ]);
+
+        $filenameWithExt = $request->file('photo_image')->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+        $extension = $request->file('photo_image')->getClientOriginalExtension();
+        //filename to store
+        $filenameToStore = $filename.'_'.time().'.'.$extension;
+        //image path
+        $path = $request->file('photo_image')->storeAs('public/photos',$filenameToStore);
+ 
+        
+        $user_id = $request['user_id'];
+        $user = User::find($user_id);
+
+        $user->photo = $filenameToStore;
+        $user->save();
+        if ($user->save()) {
+            toastr()->success('Photo uploaded');
+    
+            return redirect('/userDetails/'.$user_id);
+        }
+        toastr()->error('An error has occured uploading photo.');
         return back();
    
    

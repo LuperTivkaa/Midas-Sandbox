@@ -231,7 +231,17 @@ class User extends Authenticatable
    public function loanGuarantorCount($id){
     return Lsubscription::where('guarantor_id', '=', $id)->count();
 }
-  
+
+   
+    
+        //Search User
+        public function searchUser($param){
+            $result = User::where('first_name','like','%'.$param.'%')
+                            ->orWhere('payment_number',$param)
+                            ->get();
+                            return $result;
+        }
+
     // public static function totalSavings($id)
     // {
     //     return static::selectRaw('users.name, count(*) submitted_games')

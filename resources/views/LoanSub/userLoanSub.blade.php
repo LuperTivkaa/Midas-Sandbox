@@ -6,10 +6,10 @@
     <div class="row">
         <div class="col s12 subject-header">
             <p class="teal-text">USER PRODUCT(S)</p>
-            <span><a href="/user/all"><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="All Users">group</i></a></span>
-            <span><a href="/New"><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="Create User">person_add</i></a></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 subject-header">
             <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
                         data-tooltip="User's Savings">account_balance_wallet</i></a></span>
             <span><a href=""><i class="small material-icons tooltipped" data-position="bottom"
@@ -23,7 +23,7 @@
         <div class="col s12 m3 l3 profile">
             {{-- <img src="{{asset('images/andy.jpg')}}" alt="" class="circle"> --}}
             <p class="profile__heading text-grey darken-3">Personal Details</p>
-            <img src="{{asset('images/andy.jpg')}}" alt="" class="profile__photo">
+            <img src="{{url('storage/photos/'.$user->photo)}}" alt="" class="profile__photo">
             <span class="profile__user-name">{{$user->title}}</span>
             <span class="profile__user-name">{{$user->first_name}} {{$user->last_name}}</span>
             <div class="profile__user-box">
@@ -91,7 +91,9 @@
                 <tbody>
                     @foreach($activeLoans as $active)
                     <tr>
-                        <td><a href="/activeLoan/detail/{{$active->id}}">{{$active->amount_approved}}</a></td>
+                        <td><a
+                                href="/activeLoan/detail/{{$active->id}}">{{number_format($active->amount_approved,2,'.',',')}}</a>
+                        </td>
                         <td>{{$active->loan_start_date->toFormattedDateString()}}</td>
                         <td>{{$active->loan_start_date->diffForHumans($active->loan_end_date->toFormattedDateString())}}
                         </td>
@@ -190,7 +192,7 @@
                     <tr>
                         <td>{{$product->product->name}}</td>
                         <td>{{$product->units}}</td>
-                        <td>{{$product->product->unit_cost}}</td>
+                        <td>{{number_format($product->product->unit_cost,2,'.',',')}}</td>
                         <td>{{number_format($product->total_amount,2,'.',',')}}</td>
                         <td>{{number_format($product->net_pay,2,'.',',')}}</td>
                         <td><a href="/prodSub/review/{{$product->id}}">Review</a> <a

@@ -56,9 +56,7 @@
     <li>
         <div class="divider"></div>
     </li>
-
-    <li><a href="#!"><i class="material-icons">person</i>View</a></li>
-    <li><a href="#!"><i class="material-icons">settings</i>Change Password</a></li>
+    <li><a href="/change/password"><i class="material-icons">settings</i>Change Password</a></li>
     <li>
         <div class="divider"></div>
     </li>

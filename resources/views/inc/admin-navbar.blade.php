@@ -132,8 +132,8 @@
 {{-- DROP DOWN MENU 3 --}}
 
 <ul id='dropdown3' class='dropdown-content'>
-    <li><a href="#!"><i class="material-icons">create</i>New Product</a></li>
-    <li><a href="#!"><i class="material-icons">view_list</i>All Products</a></li>
+    <li><a href="/product/create"><i class="material-icons">create</i>New Product</a></li>
+    <li><a href="/products"><i class="material-icons">view_list</i>All Products</a></li>
     <li class="divider" tabindex="-1"></li>
     {{--
     <li><a href="#!">three</a></li> --}} {{--

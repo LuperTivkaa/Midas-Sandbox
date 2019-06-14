@@ -8,6 +8,7 @@ use App\Nok;
 use App\Bank;
 use App\Lsubscription;
 use App\Psubscription;
+use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
     /**
@@ -242,6 +243,33 @@ public function editBank($id){
             $param = $request['search_term'];
             $users = $user->searchUser($param);
             return view('Users.userSearch',compact('users','title'));
+        }
+
+        //Password change
+        public function passwordChange(){
+            $title = "Reset Password Change";
+            return view('Users.changePass',compact('title'));
+        }
+
+        public function passwordStore(Request $request){
+            $this->validate(request(), [
+                'payment_number'=>'required|integer',
+                'password' =>'required|confirmed',
+            ]);
+
+            
+            $payment_number = $request['payment_number'];
+            $user_id = User::userID($payment_number);
+            $user = User::find($user_id);
+
+            $user->password = Hash::make($request['password']);
+            if ($user->save()) {
+                toastr()->success('Password changed successfully!');
+                //return redirect()->route('posts.index');
+                return redirect('/userDetails/'.$user_id);
+            }
+            toastr()->error('An error has occurred please try again later.');
+            return back();
         }
     /**
      * Show the form for creating a new resource.

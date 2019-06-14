@@ -44,7 +44,7 @@
             <div class="background">
                 <img src="<?php echo e(asset('images/logo2.svg')); ?>">
             </div>
-            <a href="#"><img class="circle" src="<?php echo e(asset('images/logo2.svg')); ?>"></a>
+            <a href="#"><img class="circle" src="<?php echo e(url('storage/photos/'.auth()->user()->photo)); ?>"></a>
             <a href="#"><span class="grey-text darken-3 name"><?php if(Auth::check()): ?>
                     <?php echo e(auth()->user()->first_name); ?>, <?php echo e(auth()->user()->last_name); ?><?php endif; ?>
                 </span></a>
@@ -56,9 +56,7 @@
     <li>
         <div class="divider"></div>
     </li>
-
-    <li><a href="#!"><i class="material-icons">person</i>View</a></li>
-    <li><a href="#!"><i class="material-icons">settings</i>Change Password</a></li>
+    <li><a href="/change/password"><i class="material-icons">settings</i>Change Password</a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -91,6 +89,11 @@
     <li><a class="subheader">Staff</a></li>
     <li><a href="#!"><i class="material-icons">create</i>New Staff</a></li>
     <li><a href="#!"><i class="material-icons">view_list</i>Staff List</a></li>
+    <li>
+        <div class="divider"></div>
+    <li><a class="subheader">Composite Documents</a></li>
+    <li><a href="#!"><i class="material-icons">book</i>Statement</a></li>
+    <li><a href="#!"><i class="material-icons">view_list</i>Master Savings</a></li>
     <li>
         <div class="divider"></div>
     </li>

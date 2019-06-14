@@ -44,7 +44,7 @@
             <div class="background">
                 <img src="{{asset('images/logo2.svg')}}">
             </div>
-            <a href="#"><img class="circle" src="{{asset('images/logo2.svg')}}"></a>
+            <a href="#"><img class="circle" src="{{url('storage/photos/'.auth()->user()->photo)}}"></a>
             <a href="#"><span class="grey-text darken-3 name">@if(Auth::check())
                     {{auth()->user()->first_name}}, {{auth()->user()->last_name}}@endif
                 </span></a>

@@ -27,8 +27,8 @@
                             class="material-icons left">style</i></a></li>
                 <li><a class="dropdown-trigger" href="/about" data-target='dropdown4'><i
                             class="material-icons left">person</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i
-                            class="material-icons left">dashboard</i></a></li>
+                {{-- <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i
+                            class="material-icons left">dashboard</i></a></li> --}}
             </ul>
 
         </div>
@@ -161,12 +161,12 @@
 
 {{-- DROP DOWN MENU 4 --}}
 
-<ul id='dropdown5' class='dropdown-content'>
+{{-- <ul id='dropdown5' class='dropdown-content'>
     <li><a href="#!"><i class="material-icons">create</i>New Staff</a></li>
     <li><a href="#!"><i class="material-icons">view_list</i>Staff List</a></li>
-    <li class="divider" tabindex="-1"></li>
-    {{--
+    <li class="divider" tabindex="-1"></li> --}}
+{{--
     <li><a href="#!">three</a></li> --}} {{--
     <li><a href="#!"><i class="material-icons">cloud_upload</i>Upload Deductions</a></li> --}} {{--
     <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> --}}
-</ul>
+{{-- </ul> --}}

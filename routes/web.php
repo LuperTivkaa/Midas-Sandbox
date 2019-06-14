@@ -97,6 +97,9 @@ Route::post('/updateNok/{id}','UsersController@updateNok');
 Route::get('/activateUser/{id}','UsersController@activateUser');
 Route::get('/deactivateUser/{id}','UsersController@deactivateUser');
 Route::post('/search/User','UsersController@searchUser');
+Route::get('/change/password','UsersController@passwordChange');
+Route::post('/password/store','UsersController@passwordStore');
+
 });
 
 //Products routes

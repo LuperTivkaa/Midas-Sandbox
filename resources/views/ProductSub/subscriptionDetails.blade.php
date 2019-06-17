@@ -1,19 +1,19 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <p class="teal-text">PRODUCT DETAIL SUBSCRIPTION</p>
+            <p class="teal-text">PRODUCT SUBSCRIPTION(s)</p>
         </div>
     </div>
     <div class="row">
         <div class="col s12 subject-header">
-
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
-            <span><a href="/subscriptions"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Subscriptions">view_list</i></a></span>
-            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
+            <span><a href="/subscriptions"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Subscriptions">view_list</i></a></span>
+            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
         </div>
     </div>
 
@@ -27,7 +27,6 @@
                         <th>Owner</th>
                         <th>Total</th>
                         <th>Net Pay</th>
-                        <th>Guarantor</th>
                         <th>Date Added</th>
                         <th>Action</th>
                     </tr>
@@ -38,12 +37,10 @@
                         <td>{{$sub->product->name}}</td>
                         <td><a href="/user/products/{{$sub->user_id}}">{{$sub->user->first_name}}</a></td>
                         <td>{{number_format($sub->total_amount,2,'.',',')}}</td>
-                        <td>{{number_format($sub->net_pay,2,'.','.')}}</td>
-                        <td>{{$sub->user->userInstance($sub->guarantor_id)}} <a href="/#">({{$sub->user->guarantorCount($sub->guarantor_id)}})</a></td>
-
+                        <td>{{number_format($sub->net_pay,2,'.',',')}}</td>
                         <td>{{$sub->created_at->diffForHumans()}}</td>
-                        <td><a href="/prodSub/review/{{$sub->id}}" class="blue-text darken-2">Review</a> <a href="/userProdSub/delete/{{$sub->id}}"
-                                class="red-text lighten-3">Discard</a></td>
+                        <td><a href="/prodSub/review/{{$sub->id}}" class="blue-text darken-2">Review</a> <a
+                                href="/userProdSub/delete/{{$sub->id}}" class="red-text lighten-3">Discard</a></td>
                     </tr>
                     @endforeach
                 </tbody>

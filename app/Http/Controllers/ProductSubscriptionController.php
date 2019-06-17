@@ -56,7 +56,7 @@ class ProductSubscriptionController extends Controller
                 'product' =>'required|integer',
                 'payment_id'=>'required|integer',
                 'units' => 'required|integer|between:1,60',
-                'guarantor_id' => 'required|integer',
+                // 'guarantor_id' => 'required|integer',
                 'net_pay' =>'required|numeric|between:0.00,999999999.99',
                 ]);
     
@@ -73,7 +73,7 @@ class ProductSubscriptionController extends Controller
                     $product_sub->product_id = $request['product'];
                     $product_sub->monthly_repayment = $productSubTotalCost/$productTenor;
                     $product_sub->total_amount = $productSubTotalCost;
-                    $product_sub->guarantor_id = User::userID(request(['guarantor_id']));
+                    //$product_sub->guarantor_id = User::userID(request(['guarantor_id']));
                     $product_sub->units = $request['units'];
                     $product_sub->net_pay = $request['net_pay'];
                     $product_sub->staff_id = auth()->id();
@@ -279,6 +279,8 @@ public function reviewStore(Request $request, $id){
             $product_sub->monthly_repayment = $productSubTotalCost/$product_tenor;
             $product_sub->total_amount = $productSubTotalCost;
             $product_sub->units = $request['units'];
+            $product_sub->start_date = $request['start_date'];
+            $product_sub->end_date = $request['end_date'];
             $product_sub->status = 'Active';
             $product_sub->staff_id = auth()->id();
             $product_sub->save();

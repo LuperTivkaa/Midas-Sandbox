@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -10,8 +10,8 @@
     </div>
     <div class="row">
         <div class="col s12 subject-header">
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
-            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
+            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="New Product Subscription">add_shopping_cart</i></a></span>
         </div>
     </div>
 

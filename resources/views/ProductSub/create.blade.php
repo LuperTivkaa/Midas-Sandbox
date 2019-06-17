@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -12,22 +12,22 @@
     <div class="row">
         <div class="col s12 subject-header">
 
-            <span><a href="/subscriptions"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Subscription">view_list</i></a></span>
-            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Products">apps</i></a></span>
+            <span><a href="/subscriptions"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Subscription">view_list</i></a></span>
         </div>
     </div>
     <div class="row">
         <form class="col s12" method="POST" action="/productsub">
             {{ csrf_field() }}
             <div class="row">
-                <div class="input-field col s12 m3 l3">
+                <div class="input-field col s12 m6 l6">
                     <input placeholder="IPPIS or GFMIS" id="payment_id" name="payment_id" type="text" class="validate">
                     <label for="payment_id">Payment ID</label>
                 </div>
-                <div class="input-field col s12 m3 l3">
+                {{-- <div class="input-field col s12 m3 l3">
                     <input placeholder="GUARANTOR IPPIS" id="guarantor_id" name="guarantor_id" type="text" class="validate">
                     <label for="guarantor_id">Guarantor</label>
-                </div>
+                </div> --}}
 
                 <div class="input-field col s12 m6 l6">
                     <select id="product" name="product">

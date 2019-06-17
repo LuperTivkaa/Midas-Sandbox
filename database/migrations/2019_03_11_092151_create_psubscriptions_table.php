@@ -17,7 +17,7 @@ class CreatePsubscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('product_id');
-            $table->integer('guarantor_id'); //USE IPPIS NUMBER TO FIND USER ID
+            //$table->integer('guarantor_id'); //USE IPPIS NUMBER TO FIND USER ID
             $table->integer('units');
             $table->decimal('total_amount',12,3);
             $table->decimal('monthly_repayment',20,9);

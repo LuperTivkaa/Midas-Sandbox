@@ -47,12 +47,14 @@ class ProductsController extends Controller
         'product_name' =>'required|string',
         'description'=>'required|string',
         'unit_cost' =>'required|numeric|between:0.00,999999999.99',
+        'tenor'=>'required|integer',
         ]);
         
         $product = new Product();
         $product->name = $request['product_name'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
+        $product->tenor = $request['tenor'];
         $product->status = 'Active';
         $product->save();
     

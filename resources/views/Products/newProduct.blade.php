@@ -1,12 +1,13 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <span class="teal-text">New  Product</span>
-            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Products">view_list</i></a></span>
+            <span class="teal-text">NEW PRODUCT</span>
+            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Products">view_list</i></a></span>
         </div>
     </div>
     <div class="row">
@@ -23,14 +24,18 @@
                     <label for="description">Product Description</label>
                 </div>
 
-                <div class="input-field col s12">
+                <div class="input-field col s12 m6 l6">
                     <input id="unit_cost" name="unit_cost" type="text" class="validate" required>
                     <label for="unit_cost">Unit Cost</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input id="tenor" name="tenor" type="text" class="validate" required>
+                    <label for="tenor">Tenor</label>
                 </div>
 
             </div>
 
-            <button type="submit" class="btn">Create</button>
+            <button type="submit" class="btn">Add</button>
         </form>
     </div>
 </div>

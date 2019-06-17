@@ -47,6 +47,7 @@
             </table>
             {{$pendingSubs->links()}} @else
             <p>No Pending Product Subscriptions</p>
+            <span><a href="/prodSub/active" class="btn grey">View Active Product Subscription(s)</a></span>
             @endif
         </div>
     </div>

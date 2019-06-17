@@ -9,7 +9,7 @@
             <div class="customsearch__item"><button class="custom-input" type="submit">Search</button></div>
         </form>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col s12 m6 l3">
             <div class="card-panel blue lighten-1 white-text center">
                 <i class="material-icons">insert_emoticon</i>
@@ -53,5 +53,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </section>

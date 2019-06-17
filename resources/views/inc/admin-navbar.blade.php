@@ -79,6 +79,12 @@
     <li>
         <div class="divider"></div>
     </li>
+    <li><a class="subheader">Product Subscription</a></li>
+    <li><a href="/prodSub/active"><i class="material-icons">create</i>All Active</a></li>
+    <li><a href="/prodSub/pending"><i class="material-icons">view_list</i>All Pending</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
     <li><a class="subheader">Target Savings</a></li>
     <li><a href="#!"><i class="material-icons">create</i>New Target Saving</a></li>
     <li><a href="#!"><i class="material-icons">cloud_download</i>New Template</a></li>

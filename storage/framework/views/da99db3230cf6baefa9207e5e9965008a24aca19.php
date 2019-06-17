@@ -27,8 +27,7 @@
                             class="material-icons left">style</i></a></li>
                 <li><a class="dropdown-trigger" href="/about" data-target='dropdown4'><i
                             class="material-icons left">person</i></a></li>
-                <li><a class="dropdown-trigger" href="/about" data-target='dropdown5'><i
-                            class="material-icons left">dashboard</i></a></li>
+                
             </ul>
 
         </div>
@@ -76,6 +75,12 @@
     <li><a class="subheader">Product Schemes</a></li>
     <li><a href="#!"><i class="material-icons">create</i>New Product</a></li>
     <li><a href="#!"><i class="material-icons">view_list</i>All Products</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Product Subscription</a></li>
+    <li><a href="/prodSub/active"><i class="material-icons">create</i>All Active</a></li>
+    <li><a href="/prodSub/pending"><i class="material-icons">view_list</i>All Pending</a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -130,8 +135,8 @@
 
 
 <ul id='dropdown3' class='dropdown-content'>
-    <li><a href="#!"><i class="material-icons">create</i>New Product</a></li>
-    <li><a href="#!"><i class="material-icons">view_list</i>All Products</a></li>
+    <li><a href="/product/create"><i class="material-icons">create</i>New Product</a></li>
+    <li><a href="/products"><i class="material-icons">view_list</i>All Products</a></li>
     <li class="divider" tabindex="-1"></li>
       
 </ul>
@@ -149,9 +154,5 @@
 
 
 
-<ul id='dropdown5' class='dropdown-content'>
-    <li><a href="#!"><i class="material-icons">create</i>New Staff</a></li>
-    <li><a href="#!"><i class="material-icons">view_list</i>Staff List</a></li>
-    <li class="divider" tabindex="-1"></li>
-      
-</ul>
+
+  

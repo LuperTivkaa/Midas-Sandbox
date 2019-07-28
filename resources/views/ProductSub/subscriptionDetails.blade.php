@@ -28,7 +28,7 @@
                         <th>Total</th>
                         <th>Net Pay</th>
                         <th>Date Added</th>
-                        <th>Action</th>
+                        <th>Action/Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,8 +39,14 @@
                         <td>{{number_format($sub->total_amount,2,'.',',')}}</td>
                         <td>{{number_format($sub->net_pay,2,'.',',')}}</td>
                         <td>{{$sub->created_at->diffForHumans()}}</td>
-                        <td><a href="/prodSub/review/{{$sub->id}}" class="blue-text darken-2">Review</a> <a
-                                href="/userProdSub/delete/{{$sub->id}}" class="red-text lighten-3">Discard</a></td>
+                        <td>
+                            @if ($sub->status == 'Active')
+                            {{$sub->status}}
+                            @else
+                            <a href="/prodSub/review/{{$sub->id}}" class="blue-text darken-2">Review</a> <a
+                                href="/userProdSub/delete/{{$sub->id}}" class="red-text lighten-3">Discard</a>
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

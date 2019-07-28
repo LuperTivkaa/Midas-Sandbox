@@ -33,14 +33,22 @@ class Saving extends Model
     }
     
     /**
+     * Total debit by the user
+     * @param int $id
+     */
+    public function totalCredit($id){
+        return Saving::where('user_id',$id)->sum('amount_saved');
+    }
+
+    /**
      * Get user total savings
      * pass in user id
      * @param int $id
      */
     public static function mySavings($id){
         $savingObj = new Saving;
-        $totalSaving = Saving::where('user_id',$id)->sum('amount_saved');
-        return $totalSaving = $totalSaving-$savingObj->totalDebit($id);
+        //$totalSaving = Saving::where('user_id',$id)->sum('amount_saved');
+        return $totalSaving = $savingObj->totalCredit($id)-$savingObj->totalDebit($id);
       }
 
     /**
@@ -49,6 +57,8 @@ class Saving extends Model
      * from the begining of transactions
      * @param int $id
      */
+    //TODO
+    //CHECCK METHOD
     public function netBalance($id){
         return $this->mySavings($id)-$this->totalDebit($id);
     }
@@ -78,19 +88,18 @@ class Saving extends Model
      * @param double $credit
      * @param double $debit
      * @param int $saving_id
+     * @param int $id
      */
-    public function balanceAsAt($from,$credit,$debit,$saving_id){
-        $id = auth()->id();
+    public function balanceAsAt($from,$credit,$debit,$saving_id,$id){
+        //$id = auth()->id();
         $startDate = new Carbon($from);
         $savingCollection = Saving::where('user_id',$id);
         //previous sum of savings before the current record
         $savingsAt = $savingCollection->where('id','<',$saving_id)
-                                        ->get()
                                         ->sum('amount_saved');
         //dd($savingsAt);
         //Previous sum of debits
         $debitAt = $savingCollection->where('id','<',$saving_id)
-                                    ->get()
                                     ->sum('amount_withdrawn');
 
         $balanceAt = $savingsAt - $debitAt;

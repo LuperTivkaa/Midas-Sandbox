@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Productdivision;
 
 class ProductsController extends Controller
 {
@@ -46,15 +47,19 @@ class ProductsController extends Controller
         $this->validate(request(), [
         'product_name' =>'required|string',
         'description'=>'required|string',
-        'unit_cost' =>'required|numeric|between:0.00,999999999.99',
+        'product_category'=>'required|integer',
+        'unit_cost' =>'nullable|numeric|between:0.00,999999999.99',
         'tenor'=>'required|integer',
+        'interest'=>'required|numeric|between:0.00,999999999.99',
         ]);
         
         $product = new Product();
         $product->name = $request['product_name'];
+        $product->productdivision_id = $request['product_category'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
         $product->tenor = $request['tenor'];
+        $product->interest = $request['interest'];
         $product->status = 'Active';
         $product->save();
     
@@ -108,29 +113,29 @@ class ProductsController extends Controller
     {
         //
         $this->validate(request(), [
-            'product_name' =>'required|string',
-            'description'=>'required|string',
-            'unit_cost' =>'required|numeric|between:0.00,999999999.99',
+        'product_name' =>'required|string',
+        'description'=>'required|string',
+        'product_category'=>'required|integer',
+        'unit_cost' =>'nullable|numeric|between:0.00,999999999.99',
+        'tenor'=>'required|integer',
+        'interest'=>'required|numeric|between:0.00,999999999.99',
         ]);
 
         $product = Product::find($id);
         $product->name = $request['product_name'];
+        $product->productdivision_id = $request['product_category'];
         $product->description = $request['description'];
         $product->unit_cost = $request['unit_cost'];
-        $product->status = 'Active';
+        $product->tenor = $request['tenor'];
+        $product->interest = $request['interest'];
         $product->save();
 
-        //$products = Products::find($id);
-        //return view('Products.editProducts',compact('products','title'));
-         //find user
-        // $userid = $nokUpdate->user_id;
-        // $profile = User::find($userid);
         if ($product->save()) {
             toastr()->success('Product has been edited successfully!');
             return redirect('/product/detail/'.$id);
         }
     
-        toastr()->error('An error has occurred trying to update, please try again later.');
+        toastr()->error('An error has occurred trying to update product, please try again later.');
         return back();
     }
 
@@ -180,6 +185,20 @@ class ProductsController extends Controller
                 }  
                 toastr()->error('Unable to activate this product');
                 return back();
+        }
+
+        //Get product items based on category selection
+        public function getItems($id){
+
+                //Fetch Employees by Departmentid
+                $items = Product::productItems($id);
+                $output = '<option value="">Select Product'.'</option>';
+                foreach($items as $item){
+                    $output.='<option value="'.$item->id.'">'.$item->name.'</option>';
+                }
+                echo $output;
+                // echo json_encode($items);
+                // exit;   
         }
 
     

@@ -26,7 +26,7 @@
                         <th>Total</th>
                         <th>Net Pay</th>
                         <th>Date Added</th>
-                        <th>Action</th>
+                        <th>Action/Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,8 +37,15 @@
                         <td><?php echo e(number_format($sub->total_amount,2,'.',',')); ?></td>
                         <td><?php echo e(number_format($sub->net_pay,2,'.',',')); ?></td>
                         <td><?php echo e($sub->created_at->diffForHumans()); ?></td>
-                        <td><a href="/prodSub/review/<?php echo e($sub->id); ?>" class="blue-text darken-2">Review</a> <a
-                                href="/userProdSub/delete/<?php echo e($sub->id); ?>" class="red-text lighten-3">Discard</a></td>
+                        <td>
+                            <?php if($sub->status == 'Active'): ?>
+                            <?php echo e($sub->status); ?>
+
+                            <?php else: ?>
+                            <a href="/prodSub/review/<?php echo e($sub->id); ?>" class="blue-text darken-2">Review</a> <a
+                                href="/userProdSub/delete/<?php echo e($sub->id); ?>" class="red-text lighten-3">Discard</a>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

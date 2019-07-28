@@ -9,10 +9,11 @@ class Ldeduction extends Model
     
      protected $fillable = [
         'user_id', 
-        'loan_id',
+        'product_id',
         'lsubscription_id',
         'amount_deducted', 
         'entry_month',
+        'notes',
         'uploaded_by',
     ];
 
@@ -32,12 +33,19 @@ class Ldeduction extends Model
       public function loan(){
         return $this->belongsTo(Loan::class);
     }
+
+    //Each loan deduction belongs to a loan Product
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
     //Loan Deduction history
     //pass in subscription id
     public static function loanHistory($id){
         return static::where('lsubscription_id',$id)
-        ->with(['loan' => function ($query) {
-        $query->orderBy('description', 'desc');
+        ->with(['product' => function ($query) {
+        $query->orderBy('name', 'desc');
         }])->latest()->get();
     }
+
 }

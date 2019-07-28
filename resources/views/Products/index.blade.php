@@ -1,4 +1,4 @@
-@extends('Layouts.admin-app') 
+@extends('Layouts.admin-app')
 @section('main-content')
 <div class="container">
     {{--
@@ -10,7 +10,10 @@
     </div>
     <div class="row">
         <div class="col s12 subject-header">
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Product Subscription">add_shopping_cart</i></a></span>
+            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Create Product">playlist_add</i></a></span> <span><a href="/new-subscription"><i
+                        class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="Product Subscription">add_shopping_cart</i></a></span>
         </div>
     </div>
 
@@ -34,9 +37,9 @@
                         <td>{{$product->status}}</td>
 
                         @if($product->status=='Active')
-                        <td><a href="/deactivate/{{$product->id}}" class="red-text darken-4">Deactivate</a></td>
+                        <td><a href="/deactivate/{{$product->id}}" class="red btn">Deactivate</a></td>
                         @else
-                        <td><a href="/activate/{{$product->id}}" class="green-text darken-4">Activate</a></td>
+                        <td><a href="/activate/{{$product->id}}" class="green btn">Activate</a></td>
                         @endif
 
 

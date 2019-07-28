@@ -1,4 +1,3 @@
- 
 <?php $__env->startSection('main-content'); ?>
 <div class="container">
     
@@ -10,8 +9,10 @@
 
     <div class="row">
         <div class="col s12 subject-header">
-            <span><a href="/product/create"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="Create Product">playlist_add</i></a></span>
-            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom" data-tooltip="All Products">view_list</i></a></span>
+            <span><a href="/category/items/<?php echo e($product->productcategory->id); ?>"><i class="small material-icons tooltipped"
+                        data-position="bottom" data-tooltip="Return">arrow_back</i></a></span>
+            <span><a href="/products"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="All Products">view_list</i></a></span>
         </div>
     </div>
 
@@ -19,14 +20,20 @@
         <div class="col s12 m3 l3 profile">
             
             <p class="profile__heading text-grey darken-3">Bird View</p>
-             
+            
+            
 
             <div class="profile__user-box">
+                <span class="black-text sub-profile">Category</span>
+                <span class="profile__user-status grey-text lighten-2"><?php echo e($product->productcategory->name); ?></span>
+                <span class="black-text sub-profile">Interest Rate</span>
+                <span class="profile__user-status grey-text lighten-2"><?php echo e($product->interest); ?></span>
                 <span class="black-text sub-profile">Added On</span>
                 <span class="profile__user-date grey-text lighten-2">
-                <?php echo e($product->created_at->toFormattedDateString()); ?>
+                    <?php echo e($product->created_at->toFormattedDateString()); ?>
 
                 </span>
+                <span><a href="/editProduct/<?php echo e($product->id); ?>" class="pink-text darken-2">Edit</a></span>
                 <span class="black-text sub-profile">Subscriptions</span>
                 <h4 class="profile__join-date grey-text lighten-2"><?php echo e($product->productSubCount($product->id)); ?></h4> 
             </div>
@@ -38,16 +45,18 @@
                 <table class="highlight">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Product Description</th>
+                            <th>Name</th>
+                            <th>Description</th>
                             <th>Unit Cost</th>
+                            <th>Tenor</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><?php echo e($product->name); ?></td>
                             <td><?php echo e($product->description); ?></td>
-                            <td><?php echo e($product->unit_cost); ?></td>
+                            <td><?php echo e(number_format($product->unit_cost,2,'.','.')); ?></td>
+                            <td><?php echo e($product->tenor); ?></td>
                         </tr>
                     </tbody>
                 </table>

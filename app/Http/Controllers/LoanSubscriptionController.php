@@ -50,27 +50,31 @@ class LoanSubscriptionController extends Controller
         //
         $this->validate(request(), [
             'payment_id'=>'required|integer',
+            //'product_cat'=>'required|integer',
+            'product_item'=>'required|integer',
             'custom_tenor' =>'nullable|integer|between:1,60',
-            'guarantor_id' => 'required|integer',
+            'guarantor_id1' => 'required|integer',
+            'guarantor_id2' => 'required|integer',
             'amount_applied' =>'required|numeric|between:0.00,999999999.99',
             'net_pay' =>'required|numeric|between:0.00,999999999.99',
             ]);
 
-            if(User::where('payment_number',request(['payment_id']))->exists())
-            {
-                $user = User::where('payment_number',request(['payment_id']))->first();
-                $user_id = $user->id;
+            
+                $user_id = User::userID(request(['payment_id']));
                 $loan_sub = new Lsubscription();
-                $loan = Loan::find($request['loan_product']);
-                $loan_sub->user_id = $user_id;
+                $product = Product::find($request['product_id']);
+                
                 if($request['custom_tenor']){
                     $tenor = $request['custom_tenor'];
                 }else{
-                    $tenor = $loan->tenor;
+                    $tenor = $product->tenor;
                 }
                 $amtApplied = $request['amount_applied'];
-                $loan_sub->guarantor_id = User::userID(request(['guarantor_id']));
-                $loan_sub->loan_id = $request['loan_product'];
+                //$loan_sub->productdivision_id = $request['product_cat'];
+                $loan_sub->product_id = $request['product_item'];
+                $loan_sub->user_id = $user_id;
+                $loan_sub->guarantor_id = User::userID(request(['guarantor_id1']));
+                $loan_sub->guarantor_id2 = User::userID(request(['guarantor_id2']));
                 $loan_sub->monthly_deduction = $amtApplied/$tenor;
                 $loan_sub->custom_tenor = $tenor;
                 $loan_sub->amount_applied = $amtApplied;
@@ -81,12 +85,10 @@ class LoanSubscriptionController extends Controller
                     toastr()->success('Loan request has been saved successfully!');
                     return redirect('/loanSub/create');
                 }
-            
                 toastr()->error('An error has occurred trying to create a loan request!');
                 return back();
-            }
-        toastr()->error('No user exist with this payment identification number.');
-        return back();
+            
+       
         }
 
     /**

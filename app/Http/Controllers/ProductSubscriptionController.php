@@ -7,6 +7,7 @@ use App\Product;
 use App\User;
 use App\Psubscription;
 use Carbon\Carbon;
+use App\Productdivision;
 
 class ProductSubscriptionController extends Controller
 {
@@ -40,7 +41,8 @@ class ProductSubscriptionController extends Controller
     {
         //New Subscription from
         $title ='New Product Subscription';
-        return view('ProductSub.create',compact('title'));
+        $category = Productdivision::orderBy('name')->get();
+        return view('ProductSub.create',compact('title','category'));
     }
 
     /**
@@ -99,15 +101,12 @@ class ProductSubscriptionController extends Controller
     public function show($id)
     {
           //Display detail product subscription listings
-          $title ='Detail Product Subscriptions';
+          $title ='Product Subscriptions';
 
           $subs = Psubscription::where('product_id',$id)
-          ->where(function ($query){
-              $query->where('status','Pending');
-          })
           ->with(['product' => function ($query) {
-            $query->orderBy('name', 'desc');
-        }])->paginate(10);
+            $query->orderBy('status', 'asc');
+        }])->paginate(50);
           
           return view('ProductSub.subscriptionDetails',compact('subs','title'));
     }
@@ -282,6 +281,7 @@ public function reviewStore(Request $request, $id){
             $product_sub->start_date = $request['start_date'];
             $product_sub->end_date = $request['end_date'];
             $product_sub->status = 'Active';
+            $product_sub->review_comment = $request['notes'];
             $product_sub->staff_id = auth()->id();
             $product_sub->save();
             if($product_sub->save()) {

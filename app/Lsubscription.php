@@ -8,8 +8,12 @@ use App\Psubscription;
 class Lsubscription extends Model
 {
     //
+    //relationship with product
+        public function product(){
+        return $this->belongsTo(Product::class,'product_id');
+        }
       //relationship with user
-      public function user(){
+        public function user(){
         return $this->belongsTo(User::class);
         }
     
@@ -35,7 +39,7 @@ class Lsubscription extends Model
     //All active loan subscriptions
     public static function loanSubscriptions(){
          return  static::where('loan_status', 'Active')
-         ->with(['user','loan'])
+         ->with(['user','product'])
          ->get();
     }
 
@@ -53,7 +57,7 @@ class Lsubscription extends Model
     //distint user loan subscriptions
     public static function distinctUserLoanSub(){
         $records = static::where('loan_status', 'Active')
-        ->with(['user','loan'])
+        ->with(['user','product'])
         ->get();
        return $records->unique('user_id');
    }
@@ -68,12 +72,12 @@ class Lsubscription extends Model
         ->sum('monthly_deduction');
 
         //Product subscription
-        $prodSub = Psubscription::where('user_id',$_id)
-        ->where(function($query){
-            $query->where('status','Active');
-        })
-        ->sum('monthly_repayment');
-        return $loanSub + $prodSub;
+        // $prodSub = Psubscription::where('user_id',$_id)
+        // ->where(function($query){
+        //     $query->where('status','Active');
+        // })
+        // ->sum('monthly_repayment');
+        return $loanSub;
     }
 
     //user loan end date
@@ -124,13 +128,13 @@ class Lsubscription extends Model
         ->sum('monthly_repayment');
     }
         
-        //User Active loans
+    //User Active loans
     public static function activeLoans($id){
         return static::where('user_id',$id)
         ->where(function ($query){
             $query->where('loan_status','Active');
-        })->with(['loan' => function ($query) {
-        $query->orderBy('description', 'desc');
+        })->with(['product' => function ($query) {
+        $query->orderBy('name', 'desc');
         }])->get();
     }
 
@@ -138,9 +142,9 @@ class Lsubscription extends Model
 public static function pendingLoans($id){
   return static::where('user_id',$id)
         ->where(function ($query){
-            $query->where('loan_status','=','Pending');
-        })->with(['loan' => function ($query) {
-        $query->orderBy('description', 'desc');
+            $query->where('loan_status','!=','Active');
+        })->with(['product' => function ($query) {
+        $query->orderBy('name', 'desc');
         }])->get();
 }
 
@@ -149,7 +153,14 @@ public static function pendingLoans($id){
 public  function totalLoanDeductions($loan_id)
 {
     return Ldeduction::where('lsubscription_id',$loan_id)
-    ->sum('amount_deducted');
+                       ->sum('amount_deducted');
+}
+
+   //Product guarantor count
+   public function guarantor($id){
+    //find user
+     $user = User::find($id);
+     return $user->first_name .' '.$user->last_name;
 }
 
       

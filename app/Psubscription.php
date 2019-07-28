@@ -29,12 +29,6 @@ class Psubscription extends Model
     //all product subscriptions
     public static function allProductSubscriptions(){
 
-        // return  static::where('status', 'Active')
-        // ->where(function ($query) {
-        //     $query->where('status', '=', 'Active');
-        // })->with(['user','product'])
-        // ->paginate(50);
-
          return  static::where('status', 'Active')->with(['user','product'])->get();
         
         // return  static::findAll()

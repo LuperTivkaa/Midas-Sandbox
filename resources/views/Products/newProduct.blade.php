@@ -14,25 +14,44 @@
         <form class="col s12" method="POST" action="/product/store">
             {{ csrf_field() }}
             <div class="row">
-                <div class="input-field col s12">
+                {{-- @can('all') --}}
+                <div class="input-field col s12 m4 l4">
+                    <select id="product_category" name="product_category">
+                        @foreach ($catlist as $id=> $name)
+                        <option value="{{$id}}">{{$name}}</option>
+                        @endforeach
+                    </select>
+                    <label>Product Category</label>
+                </div>
+                {{-- @endcan --}}
+
+                <div class="input-field col s12 m4 l4">
                     <input id="product_name" name="product_name" type="text" class="validate" required>
                     <label for="product_name">Product Name</label>
                 </div>
 
-                <div class="input-field col s12">
+                <div class="input-field col s12 m4 l4">
                     <input id="description" name="description" type="text" class="validate" required>
                     <label for="description">Product Description</label>
                 </div>
+            </div>
 
-                <div class="input-field col s12 m6 l6">
-                    <input id="unit_cost" name="unit_cost" type="text" class="validate" required>
+            <div class="row">
+
+                <div class="input-field col s12 m4 l4">
+                    <input id="unit_cost" name="unit_cost" type="text" class="validate">
                     <label for="unit_cost">Unit Cost</label>
                 </div>
-                <div class="input-field col s12 m6 l6">
+
+                <div class="input-field col s12 m4 l4">
                     <input id="tenor" name="tenor" type="text" class="validate" required>
                     <label for="tenor">Tenor</label>
                 </div>
 
+                <div class="input-field col s12 m4 l4">
+                    <input id="interest" name="interest" type="text" class="validate" required>
+                    <label for="interest">Interest Rate</label>
+                </div>
             </div>
 
             <button type="submit" class="btn">Add</button>

@@ -10,6 +10,7 @@ use App\Role;
 use App\User;
 use App\Saving;
 use App\TargetSaving;
+use App\Productdivision;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,10 +34,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loanProd', Loan::loanProducts());
         });
 
+        //product items view composer
+        view()->composer(['Products.newProduct','Products.editProducts','ProductSub.create','LoanSub.create'], function($view){
+            $view->with('catlist', Productdivision::productCatList());
+        });
+
           //view composer for new user
           view()->composer(['Registration.newUser','Users.editProfile'], function($view){
             $view->with('roles', Role::allRoles());
         });
+        
         //TODO
         /**
          * Create view composer for user dashboard
@@ -48,9 +55,6 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('inc.dashboard-overview', function($view){
             $view->with('tsSaving', TargetSaving::myTargetSavings(auth()->id()));
         });
-
-
-
     }
 
     /**

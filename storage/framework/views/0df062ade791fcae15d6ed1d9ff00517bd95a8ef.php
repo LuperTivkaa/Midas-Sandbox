@@ -9,8 +9,8 @@
     </div>
     <div class="row">
         <div class="col s12 subject-header">
-            <span><a href="/loanSub/create"><i class="small material-icons tooltipped" data-position="bottom"
-                        data-tooltip="New Loan Subscription">playlist_add</i></a></span>
+            <span><a href="/new-subscription"><i class="small material-icons tooltipped" data-position="bottom"
+                        data-tooltip="New Product Subscription">playlist_add</i></a></span>
         </div>
     </div>
 

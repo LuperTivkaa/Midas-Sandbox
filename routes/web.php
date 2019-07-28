@@ -101,6 +101,13 @@ Route::get('/change/password','UsersController@passwordChange');
 Route::post('/password/store','UsersController@passwordStore');
 
 });
+//Product category routes
+Route::get('/product/category','ProductCategoryController@index');
+Route::get('/product/category/add','ProductCategoryController@create');
+Route::post('/product/category/store','ProductCategoryController@store');
+Route::get('/product/category/edit/{id}','ProductCategoryController@edit');
+Route::post('/product/category/update/{id}','ProductCategoryController@index');
+Route::get('/category/items/{id}','ProductCategoryController@categoryItems');
 
 //Products routes
 Route::get('/products','ProductsController@index');
@@ -111,6 +118,7 @@ Route::post('/product/store','ProductsController@store');
 Route::get('/product/detail/{id}','ProductsController@show');
 Route::get('/editProduct/{id}','ProductsController@edit');
 Route::post('/updateProduct/{id}','ProductsController@update');
+Route::get('/product/items/{id}','ProductsController@getItems');
 
 //Product Subscription
 Route::get('/subscriptions','ProductSubscriptionController@index');

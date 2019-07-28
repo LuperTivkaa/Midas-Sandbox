@@ -146,10 +146,10 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         //HIDE ALL SECTIONS
-    $('.section').hide();
+    //$('.section').hide();
 
         //set time out
-    setTimeout(function(){
+    // setTimeout(function(){
 
 $(document).ready(function(){
 
@@ -225,8 +225,8 @@ $('.deny').click(function(e){
 
 });
 
-    },
-    1000);
+    // },
+    // 1000);
     </script>
 
     <script>
@@ -249,6 +249,7 @@ $('.deny').click(function(e){
          })
      })
     </script>
+    <script src="<?php echo e(asset( 'js/custom.js')); ?> "></script>
 
 </body>
 <?php echo app('toastr')->render(); ?>

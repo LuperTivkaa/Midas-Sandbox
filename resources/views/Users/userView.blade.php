@@ -169,7 +169,7 @@
             <span class="profile__user-name">{{$profile->bank->acct_number}}</span>
             <span><a href="/editBank/{{$profile->bank->id}}" class="pink-text darken-2">Edit</a></span>
         </div>
-        <div class="col s12 m9 l9 pink lighten-4 profile-detail">
+        <div class="col s12 m9 l9  profile-detail">
             @if ($profile)
             <table class="highlight">
                 <thead>
@@ -206,7 +206,7 @@
         {{-- <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">Monthly Saving Reviews</p>
         </div> --}}
-        <div class="col s12  pink lighten-4 profile-detail">
+        <div class="col s12  profile-detail">
             <p class="profile__heading text-grey darken-3">Monthly Saving Reviews</p>
             <table class="highlight">
                 <thead>
@@ -214,17 +214,27 @@
                         <th>DATE ADDED</th>
                         <th>AMOUNT</th>
                         <th>STATUS</th>
+                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($SavingReview as $item)
                     <tr>
-                        <td>{{$SavingReview->created_at->toDateString()}}</td>
-                        <td>{{$SavingReview->current_amount}}</td>
-                        <td>{{$SavingReview->status}}</td>
+                        <td>{{$item->created_at->toDateString()}}</td>
+                        <td>{{number_format($item->current_amount,2,'.',',')}}</td>
+                        <td>{{$item->status}}</td>
+                        <td>
+                            @if ($item->status=='Inactive')
+                            <a href="#" class="btn red darken-3">{{$item->status}}</a>
+                            @else
+                            <a href="/saving/inactive/{{$item->id}}" class="btn grey darken-3">Deactivate</a>
+                            @endif
+                        </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <p><a href="/saving/review/{{$profile->id}}"></a></p>
+            <p><a href="/saving/review/{{$profile->id}}" class="btn green darken-4">Review</a></p>
             {{-- butn here --}}
         </div>
         @else

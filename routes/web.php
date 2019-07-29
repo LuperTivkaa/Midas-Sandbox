@@ -76,6 +76,7 @@ Route::get('/Dashboard/downloadpdf/{from}/{to}','DashboardController@downloadSta
         Route::post('/photoStore','RegistrationController@photoStore');
         Route::get('/saving/review/{id}','RegistrationController@createSaving');
         Route::post('/saving/review/store','RegistrationController@createSavingStore');
+        Route::get('/saving/inactive/{id}','RegistrationController@deactivateSavingReview');
 
 });
 

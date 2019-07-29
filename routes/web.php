@@ -74,6 +74,9 @@ Route::get('/Dashboard/downloadpdf/{from}/{to}','DashboardController@downloadSta
         Route::post('/bankStore','RegistrationController@bankStore');
         Route::get('/photo/{id}','RegistrationController@photoCreate');
         Route::post('/photoStore','RegistrationController@photoStore');
+        Route::get('/saving/review/{id}','RegistrationController@createSaving');
+        Route::post('/saving/review/store','RegistrationController@createSavingStore');
+
 });
 
    
@@ -121,19 +124,19 @@ Route::post('/updateProduct/{id}','ProductsController@update');
 Route::get('/product/items/{id}','ProductsController@getItems');
 
 //Product Subscription
-Route::get('/subscriptions','ProductSubscriptionController@index');
-Route::get('/new-subscription','ProductSubscriptionController@create');
-Route::post('/productsub','ProductSubscriptionController@store');
-Route::get('/p-sub/{id}','ProductSubscriptionController@show');
-Route::get('/user/products/{id}','ProductSubscriptionController@userSubscriptions');
-Route::get('/userProdSub/edit/{id}','ProductSubscriptionController@edit');
-Route::post('/user/ProductEdit/{id}','ProductSubscriptionController@update');
-Route::get('/userProdSub/delete/{id}','ProductSubscriptionController@destroy');
-Route::get('/prodSub/pending','ProductSubscriptionController@pendingSubscriptions');
-Route::get('/prodSub/active','ProductSubscriptionController@activeSubscriptions');
-Route::get('/prodSub/stop/{id}','ProductSubscriptionController@subStop');
-Route::get('/prodSub/review/{id}','ProductSubscriptionController@review');
-Route::post('/prodSub/reviewStore/{id}','ProductSubscriptionController@reviewStore');
+// Route::get('/subscriptions','ProductSubscriptionController@index');
+// Route::get('/new-subscription','ProductSubscriptionController@create');
+// Route::post('/productsub','ProductSubscriptionController@store');
+// Route::get('/p-sub/{id}','ProductSubscriptionController@show');
+// Route::get('/user/products/{id}','ProductSubscriptionController@userSubscriptions');
+// Route::get('/userProdSub/edit/{id}','ProductSubscriptionController@edit');
+// Route::post('/user/ProductEdit/{id}','ProductSubscriptionController@update');
+// Route::get('/userProdSub/delete/{id}','ProductSubscriptionController@destroy');
+// Route::get('/prodSub/pending','ProductSubscriptionController@pendingSubscriptions');
+// Route::get('/prodSub/active','ProductSubscriptionController@activeSubscriptions');
+// Route::get('/prodSub/stop/{id}','ProductSubscriptionController@subStop');
+// Route::get('/prodSub/review/{id}','ProductSubscriptionController@review');
+// Route::post('/prodSub/reviewStore/{id}','ProductSubscriptionController@reviewStore');
 
 
 //Loan Product Routes
@@ -192,18 +195,18 @@ Route::get('/targetsaving/new','TargetSavingController@create'); //manually crea
 Route::post('/targetsaving/store','TargetSavingController@store');
 
 //Product Deductions
-Route::get('/product/deductions','ProductDeductionsController@index');
-Route::get('/productDeductions/export','ProductDeductionsController@export')->name('prod-deductions.export');
-//show upload form
-Route::get('/productDeductions/upload','ProductDeductionsController@upload')->name('prod-deductions.upload');
-Route::post('/productDeductions/import','ProductDeductionsController@import')->name('prod-deductions.import');
-Route::get('/productDeduction/listings','ProductDeductionsController@productDeductions');
-Route::get('/productDeduction/detail/{id}','ProductDeductionsController@prodDeductionDetails');
-Route::get('/productDeduction/edit/{id}','ProductDeductionsController@edit');
-Route::post('/productDeduction/update/{id}','ProductDeductionsController@update');
-Route::get('/productDeduction/remove/{id}','ProductDeductionsController@destroy');
-Route::get('/product/repay/{id}','ProductDeductionsController@repay');
-Route::post('/productRepay/store','ProductDeductionsController@repayStore');
+// Route::get('/product/deductions','ProductDeductionsController@index');
+// Route::get('/productDeductions/export','ProductDeductionsController@export')->name('prod-deductions.export');
+// //show upload form
+// Route::get('/productDeductions/upload','ProductDeductionsController@upload')->name('prod-deductions.upload');
+// Route::post('/productDeductions/import','ProductDeductionsController@import')->name('prod-deductions.import');
+// Route::get('/productDeduction/listings','ProductDeductionsController@productDeductions');
+// Route::get('/productDeduction/detail/{id}','ProductDeductionsController@prodDeductionDetails');
+// Route::get('/productDeduction/edit/{id}','ProductDeductionsController@edit');
+// Route::post('/productDeduction/update/{id}','ProductDeductionsController@update');
+// Route::get('/productDeduction/remove/{id}','ProductDeductionsController@destroy');
+// Route::get('/product/repay/{id}','ProductDeductionsController@repay');
+// Route::post('/productRepay/store','ProductDeductionsController@repayStore');
 
 //Loan Deductions
 //Unfiltered loan deductions for MIDAS UPLOAD

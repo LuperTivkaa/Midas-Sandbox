@@ -8,6 +8,7 @@ use App\Nok;
 use App\Bank;
 use App\Lsubscription;
 use App\Psubscription;
+use App\Savingreview;
 use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
@@ -43,7 +44,9 @@ class UsersController extends Controller
     public function profileDetails($id){
         $title = "User Page";
         $profile = User::find($id);
-        return view('Users.userView',compact('profile','title'));
+        $SavingReview = Savingreview::where('user_id',$id)
+                                    ->get();
+        return view('Users.userView',compact('profile','title','SavingReview'));
     }
 
     //Show the form for editing a user
@@ -192,10 +195,8 @@ public function editBank($id){
             $loans = Lsubscription::where('user_id',$id)
                                 ->where('loan_status','Active')
                                 ->get();
-        $products = Psubscription::where('user_id',$id)
-                                   ->where('status','Active')
-                                   ->get();
-        if(count($loans)==0 && count($products)==0){
+       
+        if(count($loans)==0){
             //find user
             $user = User::find($id);
             $user->status = 'Inactive';

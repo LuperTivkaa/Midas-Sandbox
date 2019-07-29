@@ -48,7 +48,7 @@
             @else
             <span><a href="/activateUser/{{$profile->id}}" class="pink-text darken-2">Activate</a></span>
             @endif
-            <span><a href="/user/page/{{$profile->id}}" class="grey-text darken-4">[Subscriptions]</a></span>
+            <p><a href="/user/page/{{$profile->id}}" class="btn pink darken-4">Products</a></p>
 
         </div>
         <div class="col s12 m9 l9 profile-detail">
@@ -195,6 +195,42 @@
         <div class="add-more-box">
             <h5>BANK DETAILS</h5>
             <a href="/bank/{{$profile->id}}" class="add-more"><i class="small material-icons">add</i></a>
+        </div>
+        @endif
+    </div>
+
+    {{-- Check for savings --}}
+
+    <div class="row user-profiles">
+        @if ($SavingReview->count()>=1)
+        {{-- <div class="col s12 m3 l3 profile">
+            <p class="profile__heading text-grey darken-3">Monthly Saving Reviews</p>
+        </div> --}}
+        <div class="col s12  pink lighten-4 profile-detail">
+            <p class="profile__heading text-grey darken-3">Monthly Saving Reviews</p>
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>DATE ADDED</th>
+                        <th>AMOUNT</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$SavingReview->created_at->toDateString()}}</td>
+                        <td>{{$SavingReview->current_amount}}</td>
+                        <td>{{$SavingReview->status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><a href="/saving/review/{{$profile->id}}"></a></p>
+            {{-- butn here --}}
+        </div>
+        @else
+        <div class="add-more-box">
+            <h5>MONTHLY SAVING AMOUNT</h5>
+            <a href="/saving/review/{{$profile->id}}" class="add-more"><i class="small material-icons">add</i></a>
         </div>
         @endif
     </div>

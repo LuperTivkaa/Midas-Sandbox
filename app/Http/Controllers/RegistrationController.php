@@ -9,6 +9,7 @@ use App\User;
 use App\Role;
 use App\Nok;
 use App\Bank;
+use App\Savingreview;
 
 class RegistrationController extends Controller
 {
@@ -61,7 +62,7 @@ class RegistrationController extends Controller
    public function storeUser (Request $request){
     //validate the form
     $this->validate(request(), [
-        'payment_number'=>'required|integer',
+        'payment_number'=>'required|numeric||between:0.00,999999999.99',
         'password' =>'required|confirmed',
         'email' =>'email',
         'title'=>'required',
@@ -77,7 +78,7 @@ class RegistrationController extends Controller
         'res_add'=>'required|max:100',
         'sex'=>'required',
         'job_cadre'=>'required',
-        'staff_no'=>'required|integer',
+        'staff_no'=>'required|numeric||between:0.00,999999999.99',
         'marital_status'=>'required',
     ]);
     
@@ -241,8 +242,41 @@ public function photoStore(Request $request){
         }
         toastr()->error('An error has occured uploading photo.');
         return back();
-   
-   
+}
+
+//register new saving
+public function createSaving($id){
+    $title = "New Saving";
+    $id = $id;
+    return view('Registration.createSaving',compact('title','id'));
+}
+
+//store saving
+public function createSavingStore(Request $request){
+    //validate
+    $this->validate(request(), [
+        'user_id' =>'required|numeric||between:0.00,999999999.99',
+        'amount' =>'required|numeric||between:0.00,999999999.99',
+    ]);
+
+    //select active records an deactivate them
+    $savingrviews = Savingreview::where('user_id',$request['user_id'])
+                                ->where('status','Active')
+                                ->get();
+        if(count($savingrviews)>=1){
+            toastr()->error('Deactivate previous saving record and try again.');
+            return back();
+        }
+        $saving = new Savingreview;
+        $saving->user_id = $request['user_id'];
+        $saving->status = 'Active';
+        $saving->current_amount=$request['amount'];
+        if($saving->save()){
+            toastr()->success('Saving amount created successfully');
+            return redirect('/userDetails/'.$request['user_id']);
+        }
+        toastr()->error('Unable to create saving amount.');
+        return back();
 }
 
 }

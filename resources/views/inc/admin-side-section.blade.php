@@ -2,23 +2,15 @@
 
     <div class="user-profiles white side-section-inner">
         <h6 class="profile__heading pink-test lighten-4">Quick Links</h6>
-        <ul>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
+        <ul class="fa-ul">
+            <li><span class="fa-li"><i class="fas fa-th-list fa-xs"></i></span><a href="/pendingLoans">Pending Loans</a>
+            </li>
+            <li><span class="fa-li"><i class="fas fa-check-square fa-xs"></i></span>be used to</li>
         </ul>
     </div>
     <div class="user-profiles white side-section-inner">
         <h6 class="profile__heading pink-test lighten-4">A</h6>
-        <ul>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-            <li>Links Goes Here</li>
-        </ul>
+
     </div>
     <div class="user-profiles white side-section-inner">
         <h6 class="profile__heading pink-test lighten-4">B</h6>

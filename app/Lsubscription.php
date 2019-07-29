@@ -91,6 +91,12 @@ class Lsubscription extends Model
         return $loanSubObj->loan_end_date;
     }
 
+    //subscription end date
+
+    public function SubEndDate($date,$tenor){
+        return $date->addMonths($tenor)->toDateString();
+    }
+    
     //user Product Subscription
     public function productSubEndDate($_id){
         $prodSub = Psubscription::where('user_id',$_id)

@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //product items view composer
-        view()->composer(['Products.newProduct','Products.editProducts','ProductSub.create','LoanSub.create'], function($view){
+        view()->composer(['Products.newProduct','Products.editProducts','ProductSub.create','LoanSub.create','LoanSub.editLoanSub'], function($view){
             $view->with('catlist', Productdivision::productCatList());
         });
 

@@ -30,8 +30,8 @@
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">PRODUCT</p>
             <span><i class="small material-icons pink-text lighten-4">looks</i></span>
-            <span class="profile__user-name">{{$review->loan->description}}</span>
-            <span class="profile__user-name">Tenor {{$review->loan->tenor}} [ {{$review->custom_tenor}} ]</span>
+            <span class="profile__user-name">{{$review->product->name}}</span>
+            <span class="profile__user-name">Tenor {{$review->product->tenor}} [ {{$review->custom_tenor}} ]</span>
             <span class="profile__user-name">REQ %
                 {{number_format($review->user->requiredPercent($review->amount_applied),2,'.',',')}}</span>
             <span class="profile__user-name">AVAIL %
@@ -40,8 +40,13 @@
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">PRODUCT SUMMARY</p>
             <span><i class="small material-icons pink-text lighten-4">looks</i></span>
-            <span class="profile__user-name">Guarantor {{$review->user->userInstance($review->guarantor_id)}} (<a
+            <span class="profile__user-name">Guarantor 1:
+                {{$review->user->userInstance($review->guarantor_id)->first_name}} (<a
                     href="/#">{{$review->user->loanGuarantorCount($review->guarantor_id)}}</a>)
+            </span>
+            <span class="profile__user-name">Guarantor 2:
+                {{$review->user->userInstance($review->guarantor_id2)->first_name}} (<a
+                    href="/#">{{$review->user->loanGuarantorCount($review->guarantor_id2)}}</a>)
             </span>
             <span class="profile__user-name">Repayment N {{number_format($review->monthly_deduction,2,'.',',')}}</span>
             <span class="profile__user-name"><a href="/userLoan/discard/{{$review->id}}">Not sure, remove</a></span>
@@ -60,13 +65,7 @@
     <div class="row">
         <form class="col s12" method="POST" action="/userLoan/reviewStore/{{$review->id}}">
             {{ csrf_field() }}
-            <div class="row">
-                <div class="input-field col s12 m6 l6">
-                    <input placeholder="IPPIS or GFMIS" id="payment_id" name="payment_id"
-                        value="{{$review->user->payment_number}}" type="text" class="validate" disabled>
-                    <label for="payment_id">Payment ID</label>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="input-field col s12 m6 l6">
                     <input id="amount_applied" name="amount_applied" type="text"
@@ -75,19 +74,25 @@
                 </div>
 
                 <div class="input-field col s12 m6 l6">
-                    <input id="amount_approved" name="amount_approved" type="text" class="validate">
+                    <input id="amount_approved" name="amount_approved" value="{{$review->amount_applied}}" type="text"
+                        class="validate">
                     <label for="amount_approved">Amount Approved</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12 m6 l6">
-                    <input id="start_date" name="start_date" type="text" class="validate datepicker" required>
-                    <label for="start_date">Start Date</label>
+                    <input id="review_date" name="review_date" type="text" class="validate datepicker" required>
+                    <label for="review_date">Review Date</label>
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <textarea id="notes" name="notes" class="materialize-textarea" data-length="50"></textarea>
-                    <label for="notes">Review Notes</label>
+                    <select id="notes" name="notes">
+                        <option value="Recommended">Recommended</option>
+                        <option value="Queue">Queue</option>
+                        <option value="Decline">Decline</option>
+                        <option value="Undecided">Undecided</option>
+                    </select>
+                    <label>Review Notes</label>
                 </div>
             </div>
 

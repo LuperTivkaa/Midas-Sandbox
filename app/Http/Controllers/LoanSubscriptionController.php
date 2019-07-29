@@ -56,15 +56,23 @@ class LoanSubscriptionController extends Controller
             'guarantor_id1' => 'required|integer',
             'guarantor_id2' => 'required|integer',
             'units' => 'nullable|integer',
-            'amount_applied' =>'required|numeric|between:0.00,999999999.99',
+            'amount_applied' =>'nullable|numeric|between:0.00,999999999.99',
             'net_pay' =>'required|numeric|between:0.00,999999999.99',
             ]);
 
             
                 $user_id = User::userID(request(['payment_id']));
                 $loan_sub = new Lsubscription();
-                $product = Product::find($request['product_id']);
+                $product = Product::find($request['product_item']);
                 
+                //check fo active users
+                $guarantor1 = User::userID(request(['guarantor_id1']));
+                $guarantor2 = User::userID(request(['guarantor_id2']));
+                if($guarantor1=="" || $guarantor2=="" || $user_id==""){
+                    toastr()->success('One or all the users are inactive');
+                    return redirect('/loanSub/create');
+                }
+
                 $amtApplied = $request['amount_applied'];
 
                 if($request['custom_tenor']){
@@ -82,8 +90,8 @@ class LoanSubscriptionController extends Controller
                 //$loan_sub->productdivision_id = $request['product_cat'];
                 $loan_sub->product_id = $request['product_item'];
                 $loan_sub->user_id = $user_id;
-                $loan_sub->guarantor_id = User::userID(request(['guarantor_id1']));
-                $loan_sub->guarantor_id2 = User::userID(request(['guarantor_id2']));
+                $loan_sub->guarantor_id = $guarantor1;
+                $loan_sub->guarantor_id2 = $guarantor2;
                 $loan_sub->monthly_deduction = $amtApplied/$tenor;
                 $loan_sub->custom_tenor = $tenor;
                 $loan_sub->amount_applied = $amtApplied;
@@ -115,7 +123,7 @@ class LoanSubscriptionController extends Controller
         $loanDetails = Lsubscription::where('loan_id',$id)
         ->where(function($query){
             $query->where('loan_status','Pending');
-        })->with(['loan' => function ($query) {
+        })->with(['product' => function ($query) {
           $query->orderBy('description', 'desc');
       }])->paginate(10);
 
@@ -132,8 +140,12 @@ class LoanSubscriptionController extends Controller
         {
         // Show form for editing loan subscription
         $title ='Edit Loan Subscription';
+        $user = new User;
         $lSub = Lsubscription::find($id);
-        return view('LoanSub.editLoanSub',compact('lSub','title'));
+        $g1 = $user->userInstance($lSub->guarantor_id)->payment_number;
+        $g2 = $user->userInstance($lSub->guarantor_id2)->payment_number;
+        $paymentNumber = $user->userInstance($lSub->user_id)->payment_number;
+        return view('LoanSub.editLoanSub',compact('lSub','title','g1','g2','paymentNumber'));
         }
 
     /**
@@ -148,43 +160,61 @@ class LoanSubscriptionController extends Controller
         //
         $this->validate(request(), [
             'payment_id'=>'required|integer',
+            //'product_cat'=>'required|integer',
+            'product_item'=>'required|integer',
             'custom_tenor' =>'nullable|integer|between:1,60',
-            'guarantor_id' => 'required|integer',
-            'amount_applied' =>'required|numeric|between:0.00,999999999.99',
+            'guarantor_id1' => 'required|integer',
+            'guarantor_id2' => 'required|integer',
+            'units' => 'nullable|integer',
+            'amount_applied' =>'nullable|numeric|between:0.00,999999999.99',
             'net_pay' =>'required|numeric|between:0.00,999999999.99',
             ]);
 
-            if(User::where('payment_number',request(['payment_id']))->exists())
-            {
-                $user = User::where('payment_number',request(['payment_id']))->first();
-                $user_id = $user->id;
-                $loan_sub = new Lsubscription();
-                $loan = Loan::find($request['loan_product']);
-                $loan_sub->user_id = $user_id;
+            
+                $user_id = User::userID(request(['payment_id']));
+                $loan_sub = Lsubscription::find($id);
+                $product = Product::find($request['product_item']);
+                
+                //check fo active users
+                $guarantor1 = User::userID(request(['guarantor_id1']));
+                $guarantor2 = User::userID(request(['guarantor_id2']));
+                if($guarantor1=="" || $guarantor2=="" || $user_id==""){
+                    toastr()->success('One or all the users are inactive');
+                    return redirect('/loanSub/create');
+                }
+
+                $amtApplied = $request['amount_applied'];
+
                 if($request['custom_tenor']){
                     $tenor = $request['custom_tenor'];
                 }else{
-                    $tenor = $loan->tenor;
+                    $tenor = $product->tenor;
                 }
-                $amtApplied = $request['amount_applied'];
-                $loan_sub->guarantor_id = User::userID(request(['guarantor_id']));
-                $loan_sub->loan_id = $request['loan_product'];
+
+                if($amtApplied){
+                    $amtApplied = $amtApplied;
+                }else{
+                    $amtApplied = $product->unit_cost * $request['units'];
+                }
+                
+                //$loan_sub->productdivision_id = $request['product_cat'];
+                $loan_sub->product_id = $request['product_item'];
+                $loan_sub->user_id = $user_id;
+                $loan_sub->guarantor_id = $guarantor1;
+                $loan_sub->guarantor_id2 = $guarantor2;
                 $loan_sub->monthly_deduction = $amtApplied/$tenor;
                 $loan_sub->custom_tenor = $tenor;
                 $loan_sub->amount_applied = $amtApplied;
+                $loan_sub->units = $request['units'];
                 $loan_sub->net_pay = $request['net_pay'];
                 $loan_sub->created_by = auth()->id();
                 $loan_sub->save();
                 if($loan_sub->save()) {
-                    toastr()->success('Loan request has been edited successfully!');
+                    toastr()->success('Loan request has been updated successfully!');
                     return redirect('/loanSub/create');
                 }
-            
                 toastr()->error('An error has occurred trying to update a loan request!');
                 return back();
-            }
-        toastr()->error('No user exist with this payment identification number.');
-        return back();
         }
 
         
@@ -202,10 +232,10 @@ class LoanSubscriptionController extends Controller
         $pendingLoans = Lsubscription::pendingLoans($id);
         
         //User active product subscriptions
-        $userProducts = Psubscription::userProducts($id);
+        //$userProducts = Psubscription::userProducts($id);
 
         //User pending products subscriptions
-        $userPendingProducts = Psubscription::pendingProducts($id); 
+        //$userPendingProducts = Psubscription::pendingProducts($id); 
 
         return view('LoanSub.userLoanSub',compact('title','activeLoans','pendingLoans','user','userProducts','userPendingProducts'));
     }
@@ -225,46 +255,27 @@ class LoanSubscriptionController extends Controller
         //
             
             $this->validate(request(), [
-            'notes' =>'required',
-            'start_date' =>'required|date',
+            'notes' =>'required|string',
+            'review_date' =>'required|date',
             'amount_approved' =>'required|numeric|between:0.00,999999999.99',
             ]);
 
 
                  //Retrieve loan subscription instance
                 $loan_sub = Lsubscription::find($id);
-                //check if custom tenor is checked
-                //if answer is yes
-                //then use that for calculating deductions
-                //if not use default
-                $tenorCheck = Lsubscription::where('id',$id)
-                ->where(function ($query){
-                $query->whereNotNull('custom_tenor');
-                })->get();
-
-
-                if($tenorCheck->isEmpty()){
-                    $tenor = $loan_sub->loan->tenor;
-                }else
-                {
-                    $tenor = $loan_sub->custom_tenor;
-                }
                 
                 $approved_amt = $request['amount_approved'];
+                $notes = $request['notes'];
 
-                $monthly_deduction = $approved_amt/$tenor;
-                $end_Date = new Carbon($request['start_date']);
-                
+                $rev_date = new Carbon($request['review_date']);
                 $loan_sub->amount_approved = $approved_amt;
-                $loan_sub->monthly_deduction = $monthly_deduction;
-                $loan_sub->loan_status = 'Active';
-                $loan_sub->loan_start_date = $request['start_date'];
-                $loan_sub->loan_end_date = $end_Date->addMonths($tenor)->toDateString();
-                $loan_sub->review_comment = $request['notes'];
+                $loan_sub->loan_status = 'Reviewed';
+                $loan_sub->review_date =$rev_date;
+                $loan_sub->review_comment = $notes;
                 $loan_sub->review_by = auth()->id();
                 $loan_sub->save();
                 if($loan_sub->save()) {
-                    toastr()->success('Loan request has been approved successfully!');
+                    toastr()->success('Loan request has been reviewed successfully!');
                     //redirect user loans listing page
                     return redirect('/pendingLoans');
                 }

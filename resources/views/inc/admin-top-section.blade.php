@@ -9,30 +9,22 @@
             <div class="customsearch__item"><button class="custom-input" type="submit">Search</button></div>
         </form>
     </div>
-    {{-- <div class="row">
-        <div class="col s12 m6 l3">
-            <div class="card-panel blue lighten-1 white-text center">
-                <i class="material-icons">insert_emoticon</i>
-                <h6>Active Users</h6>
-                <h5 class="count">768</h5>
-                <div class="progress grey lighten-1">
-                    <div class="determinate white" style="width:40%;"></div>
-                </div>
+    <div class="row">
+        <div class="col s12 m6 l6">
+            <div class="card-panel pink-text center top-side-div">
+                <i class="fas fa-user-friends"></i>
+                <div><span><a href="/contributors-list">Active Users</a></span></div>
             </div>
         </div>
 
-        <div class="col s12 m6 l3">
-            <div class="card-panel teal lighten-1 white-text center">
-                <i class="material-icons">mode_edit</i>
-                <h6>Deductions</h6>
-                <h5 class="count">14768000</h5>
-                <div class="progress grey lighten-1">
-                    <div class="determinate white" style="width:40%;"></div>
-                </div>
+        <div class="col s12 m6 l6 ">
+            <div class="card-panel  pink-text center top-side-div">
+                <i class="fas fa-plus-circle"></i>
+                <div> <span><a href="/loanSub/create">New Loan</a></span></div>
             </div>
         </div>
 
-        <div class="col s12 m6 l3">
+        {{-- <div class="col s12 m6 l3">
             <div class="card-panel blue lighten-1 white-text center">
                 <i class="material-icons">insert_emoticon</i>
                 <h6>Target Savings</h6>
@@ -52,6 +44,6 @@
                     <div class="determinate white" style="width:40%;"></div>
                 </div>
             </div>
-        </div>
-    </div> --}}
+        </div> --}}
+    </div>
 </section>

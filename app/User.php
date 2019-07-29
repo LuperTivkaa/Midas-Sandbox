@@ -91,17 +91,17 @@ class User extends Authenticatable
     }
 
     //Total sum deductible for product subscription
-    public function productSubscriptionTotal($id)
-    {
+    // public function productSubscriptionTotal($id)
+    // {
        
-        return Psubscription::where('user_id', '=', $id)
-        ->where(function ($query) {
-            $query->where('status', '=', 'Active');
-        })->with(['user'=> function ($q){
-            $q->where('status','Active');
-        }])
-        ->sum('monthly_repayment');
-    }
+    //     return Psubscription::where('user_id', '=', $id)
+    //     ->where(function ($query) {
+    //         $query->where('status', '=', 'Active');
+    //     })->with(['user'=> function ($q){
+    //         $q->where('status','Active');
+    //     }])
+    //     ->sum('monthly_repayment');
+    // }
 
 
      //Total sum deductible for loan subscription
@@ -124,13 +124,11 @@ class User extends Authenticatable
 
     public  function monthlySaving($id)
     {
-        // Monthly saving amount
-        // $userSavingRev = Savingreview::where('user_id', '=', $id)
-        // ->where(function ($query) {
-        //     $query->where('status', '=', 'Active');
-        // })
-        // ->first();
-        $userSavingRev = Savingreview::where('user_id', '=', $id)->first();
+      
+        $userSavingRev = Savingreview::where('user_id', '=', $id)
+                                    ->where('status','Active')
+                                    ->first();
+            
         return $userSavingRev->current_amount;
     }
 
@@ -164,15 +162,7 @@ class User extends Authenticatable
         return $pendingLoans->count();
     }
 
-    //Number of Pending product subscriptions
-    public  function pendingProducts($id)
-    {
-        $pendingProducts = Psubscription::where('user_id', '=', $id)
-        ->where(function ($query) {
-            $query->where('status', '=', 'Pending');
-        })->get();
-        return $pendingProducts->count();
-    }
+  
 
     //Number of active product subscriptions
     public  function activeProductSub($id)
@@ -198,22 +188,10 @@ class User extends Authenticatable
     * @param int $ippis
     */
    public static function userID($ippis){
-    if(static::where('payment_number',$ippis)->exists())
-    {
         $user = static::where('payment_number', '=', $ippis)
-        ->where(function ($query) {
-            $query->where('status', '=', 'Active');
-        })->first();
-        if($user){
+                        ->where('status', '=', 'Active')
+                        ->first();
             return $user->id;
-        }else{
-            toastr()->error('User is not active');
-            return back(); 
-        }
-        
-    }
-    toastr()->error('No user with this IPPIS Number');
-    return back();
    }
 
    //GET USER OBJECT BY ID

@@ -265,7 +265,7 @@ public function createSavingStore(Request $request){
                                 ->get();
         if(count($savingrviews)>=1){
             toastr()->error('Deactivate previous saving record and try again.');
-            return back();
+            return redirect('/userDetails/'.$request['user_id']);
         }
         $saving = new Savingreview;
         $saving->user_id = $request['user_id'];
@@ -277,6 +277,14 @@ public function createSavingStore(Request $request){
         }
         toastr()->error('Unable to create saving amount.');
         return back();
+}
+
+//deactivate saving
+public function deactivateSavingReview($id){
+    $id = $id;
+    $savingReview = Savingreview::find($id);
+    $savingReview->status='Inactive';
+    $savingReview->save();
 }
 
 }

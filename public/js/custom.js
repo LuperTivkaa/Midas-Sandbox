@@ -7,9 +7,9 @@ $(document).ready(function() {
 
         // Empty the dropdown
         //$("#product_item")
-            //.find("option")
-            //.not(":first")
-            //.remove();
+        //.find("option")
+        //.not(":first")
+        //.remove();
 
         // AJAX request
         $.get({
@@ -19,7 +19,33 @@ $(document).ready(function() {
         }).done(function(data) {
             $("#product_item").html(data);
             //INIT SELECT
-            $('select').formSelect();
+            $("select").formSelect();
+        });
+    });
+
+    //deactivate a saving
+    $(".saving-review").on("click", function(e) {
+        // Department id
+        preventDefault();
+        //get url
+        var url_link = $(this).attr("href");
+        var id = $(this).val();
+
+        // Empty the dropdown
+        //$("#product_item")
+        //.find("option")
+        //.not(":first")
+        //.remove();
+
+        // AJAX request
+        $.get({
+            url: "/saving/inactive/" + url_link
+            //type: "get",
+            //dataType: "html"
+        }).done(function(data) {
+            $("#product_item").html(data);
+            //INIT SELECT
+            $("select").formSelect();
         });
     });
 });

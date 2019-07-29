@@ -55,6 +55,7 @@ class LoanSubscriptionController extends Controller
             'custom_tenor' =>'nullable|integer|between:1,60',
             'guarantor_id1' => 'required|integer',
             'guarantor_id2' => 'required|integer',
+            'units' => 'nullable|integer',
             'amount_applied' =>'required|numeric|between:0.00,999999999.99',
             'net_pay' =>'required|numeric|between:0.00,999999999.99',
             ]);
@@ -64,12 +65,20 @@ class LoanSubscriptionController extends Controller
                 $loan_sub = new Lsubscription();
                 $product = Product::find($request['product_id']);
                 
+                $amtApplied = $request['amount_applied'];
+
                 if($request['custom_tenor']){
                     $tenor = $request['custom_tenor'];
                 }else{
                     $tenor = $product->tenor;
                 }
-                $amtApplied = $request['amount_applied'];
+
+                if($amtApplied){
+                    $amtApplied = $amtApplied;
+                }else{
+                    $amtApplied = $product->unit_cost * $request['units'];
+                }
+                
                 //$loan_sub->productdivision_id = $request['product_cat'];
                 $loan_sub->product_id = $request['product_item'];
                 $loan_sub->user_id = $user_id;
@@ -78,6 +87,7 @@ class LoanSubscriptionController extends Controller
                 $loan_sub->monthly_deduction = $amtApplied/$tenor;
                 $loan_sub->custom_tenor = $tenor;
                 $loan_sub->amount_applied = $amtApplied;
+                $loan_sub->units = $request['units'];
                 $loan_sub->net_pay = $request['net_pay'];
                 $loan_sub->created_by = auth()->id();
                 $loan_sub->save();

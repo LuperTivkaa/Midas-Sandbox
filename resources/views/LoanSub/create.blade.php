@@ -37,7 +37,7 @@
             </div>
 
             <div class="row">
-                <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12 m5 l5">
                     <select id="product_cat" name="product_cat">
                         @foreach ($catlist as $id=>$name)
                         <option value="{{$id}}">{{$name}}</option>
@@ -45,8 +45,11 @@
                     </select>
                     <label>Product Category</label>
                 </div>
-
-                <div class="input-field col s12 m6 l6">
+                <div class="input-field col s12 m2 l2">
+                    <input id="units" name="units" type="number" class="validate">
+                    <label for="units">Units</label>
+                </div>
+                <div class="input-field col s12 m5 l5">
                     <select id="product_item" name="product_item">
                     </select>
                     <label>Product</label>

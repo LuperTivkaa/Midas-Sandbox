@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/midas-styles.css')}}"> {{--
     <link rel="stylesheet" href="{{asset('css/toastr.min.css')}}"> --}}
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     {{-- install sweet alert css --}}
 
@@ -26,7 +27,7 @@
         {{--
     @include('inc.messages') --}}
         <div class="row">
-            <div class="col s12 m8 l9 user-profiles">
+            <div class="col s12 m10 l10 user-profiles">
                 <div class="white">
                     @include('inc.messages')
                     @yield('main-content')

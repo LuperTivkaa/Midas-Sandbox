@@ -1,8 +1,7 @@
 /*
 custom styles without scss
 */
-
-.top-side-div {
+.top-banner {
     height: 100px;
-    border: 2px solid grey;
+    border: 0.9px solid grey;
 }

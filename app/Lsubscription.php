@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Psubscription;
+use Carbon\Carbon;
 
 class Lsubscription extends Model
 {
@@ -94,7 +95,8 @@ class Lsubscription extends Model
     //subscription end date
 
     public function SubEndDate($date,$tenor){
-        return $date->addMonths($tenor)->toDateString();
+        $date_val = new Carbon($date);
+        return $date_val->addMonths($tenor)->toDateString();
     }
     
     //user Product Subscription

@@ -10,7 +10,7 @@
     @include('inc.messages') --}}
     <div class="row">
         <div class="col s12 subject-header">
-            <p class="pink-text lighten-4">PENDING LOANS</p>
+            <p class="teal-text">PENDING LOANS</p>
 
         </div>
     </div>

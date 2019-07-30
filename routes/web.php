@@ -163,7 +163,10 @@ Route::get('/activeLoans','LoanSubscriptionController@activeLoans');
 Route::get('/activeLoan/detail/{id}','LoanSubscriptionController@loanDetails');
 Route::get('/userLoan/discard/{id}','LoanSubscriptionController@destroy');
 Route::get('/audited/loans','LoanSubscriptionController@auditedLoans');
-
+Route::get('/approve/loans/{id}','LoanSubscriptionController@approveLoan');
+Route::get('/approved/loans','LoanSubscriptionController@readyLoans');
+Route::get('/pay/loan/{id}','LoanSubscriptionController@payLoan');
+Route::post('/pay/store/{id}','LoanSubscriptionController@payStore');
 
 //Monthly Savings Routes
 Route::get('/saving-deductions','MonthlySavingController@index');

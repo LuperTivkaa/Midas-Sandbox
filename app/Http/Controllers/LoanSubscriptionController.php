@@ -9,6 +9,7 @@ use App\Product;
 use App\Lsubscription;
 use  App\Psubscription;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 class LoanSubscriptionController extends Controller
 {
@@ -363,7 +364,6 @@ class LoanSubscriptionController extends Controller
         }
 
         //all audited loans
-         //All pending loans
          public function auditedLoans(){
             $title ='All Audited Loans';
             $auditedLoans = Lsubscription::where('loan_status','Reviewed')
@@ -371,4 +371,103 @@ class LoanSubscriptionController extends Controller
                                             ->paginate(20);
             return view('LoanSub.auditedLoans',compact('auditedLoans','title'));
             }
+
+            //All approved loans
+            public function readyLoans(){
+                $title ='All Aprroved Loans';
+                $approvedLoans = Lsubscription::where('loan_status','Approved')
+                                                ->oldest()->with(['product','user'])
+                                                ->paginate(20);
+                return view('LoanSub.approvedLoans',compact('approvedLoans','title'));
+                }
+
+            //Approve Loans
+            public function approveLoan($id){
+                   
+                    $userLoan = Lsubscription::find($id);
+
+                    // $approved_amt = number_format($userLoan->amount_approved,2,'.',',');
+                    // $product = $userLoan->product->name;
+                    // $phone = $userLoan->user->phone;
+
+                    $userLoan->loan_status ="Approved";
+                    $userLoan->approved_date= now()->toDateString();
+                    $userLoan->approve_by = auth()->id();
+                    $userLoan->save();
+                    //send message of approval 
+                    // if($userLoan->save()){
+                    //     //send message
+                    //     $client = new Client;
+                    //     $api = '9IGspBnLAjWENmr9nPogQRN9PuVwAHsSPtGi5szTdBfVmC2leqAe8vsZh6dg';
+                    //     $to = $phone;
+                    //     $from= 'MIDAS';
+                    //     $message = 'Your loan has been approved N'.$approved_amt;
+                    //    $url = 'https://www.bulksmsnigeria.com/api/v1/sms/create?api_token='.$api.'&from='.$from.'&to='.$to.'&body='.$message.'&dnd=1';
+
+                    //    $response = $client->request('GET', $url,['verify'=>false]);
+                    // //    if($response->getStatusCode()==200){
+                    // //        //redirect here
+                    // //    }
+                    // }else{
+                    //     toastr()->error('Unable to approve loan! try again');
+                    //     return back();
+                    // }
+                   
+                    
+                }
+
+                //Pay loan form
+                public function payLoan($id){
+                    $title ='Pay Loans';
+                    $review = Lsubscription::find($id);
+                    return view('LoanSub.payLoans',compact('review','title'));
+                }
+
+                //public loan store activate loan
+                public function payStore(Request $request){
+                    $this->validate(request(), [
+                        'start_date' =>'required|date',
+                        'sub_id' =>'required|integer',
+                        ]);
+            
+                        
+                        $loan_id = $request['sub_id'];
+                        $dt = $request['start_date'];
+                        $date = new Carbon($dt);
+                        $start_date = $date->toDateString();
+                        //Retrieve loan subscription instance
+                        $loan_sub = Lsubscription::find($loan_id);
+                        $tenor = $loan_sub->custom_tenor;
+                        $amt_approved = number_format($loan_sub->amount_approved,2,'.',',');
+                        $product = $loan_sub->product->name;
+                        $phone = $loan_sub->user->phone;
+                        $end_Date = $loan_sub->SubEndDate($start_date,$tenor);
+                        //update loan
+                        $loan_sub->loan_start_date = $start_date;
+                        $loan_sub->loan_end_date = $end_Date;
+                        $loan_sub->loan_status = 'Active';
+
+                        if($loan_sub->save()){
+                            //send message
+                            $client = new Client;
+                                $api = '9IGspBnLAjWENmr9nPogQRN9PuVwAHsSPtGi5szTdBfVmC2leqAe8vsZh6dg';
+                                $to = $phone;
+                                $from= 'MIDAS TOUCH';
+                                $message = 'Your earlier approved '.$product.' loan of N'. $amt_approved.' has been paid and is now active. Thank you.';
+                               $url = 'https://www.bulksmsnigeria.com/api/v1/sms/create?api_token='.$api.'&from='.$from.'&to='.$to.'&body='.$message.'&dnd=1';
+        
+                               $response = $client->request('GET', $url,['verify'=>false]);
+                               toastr()->success('Loan activated successfully!');
+                               return redirect('/approved/loans');
+                            //    if($response->getStatusCode()==200){
+                            //        //redirect here
+                            //    }
+                        }else{
+                            //not saved
+                            toastr()->error('Unable to activate lloan! try again');
+                            return back();
+                        }
+                        
+
+                }
 }

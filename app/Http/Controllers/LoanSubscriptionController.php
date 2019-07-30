@@ -287,8 +287,9 @@ class LoanSubscriptionController extends Controller
         //All pending loans
         public function pendingLoans(){
         $title ='All Pending Loans';
-        $pendingLoans = Lsubscription::where('loan_status','Pending')->oldest()->with(['loan','user'])
-                   ->paginate(20);
+        $pendingLoans = Lsubscription::where('loan_status','Pending')
+                                    ->oldest()->with(['product','user'])
+                                    ->paginate(20);
         return view('LoanSub.pendingLoans',compact('pendingLoans','title'));
         }
 
@@ -353,12 +354,21 @@ class LoanSubscriptionController extends Controller
 
         }
 
-        //Loan Details
-        public function loanDetails($id){
+            //Loan Details
+            public function loanDetails($id){
             $title = 'User Loan Details';
             //find the loan subscription details
             $userLoan = Lsubscription::find($id);
             return view('LoanSub.activeLoanDetails',compact('userLoan','title'));
         }
 
+        //all audited loans
+         //All pending loans
+         public function auditedLoans(){
+            $title ='All Audited Loans';
+            $auditedLoans = Lsubscription::where('loan_status','Reviewed')
+                                            ->oldest()->with(['product','user'])
+                                            ->paginate(20);
+            return view('LoanSub.auditedLoans',compact('auditedLoans','title'));
+            }
 }

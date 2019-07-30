@@ -162,6 +162,7 @@ Route::get('/pendingLoans','LoanSubscriptionController@pendingLoans');
 Route::get('/activeLoans','LoanSubscriptionController@activeLoans');
 Route::get('/activeLoan/detail/{id}','LoanSubscriptionController@loanDetails');
 Route::get('/userLoan/discard/{id}','LoanSubscriptionController@destroy');
+Route::get('/audited/loans','LoanSubscriptionController@auditedLoans');
 
 
 //Monthly Savings Routes

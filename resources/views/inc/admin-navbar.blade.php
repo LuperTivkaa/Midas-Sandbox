@@ -84,8 +84,10 @@
     <li><a class="subheader">Subscriptions</a></li>
     <li><a href="/loanSub/create"><i class="material-icons">add</i>New Subscription</a></li>
     <li><a href="/loan-subscriptions"><i class="material-icons">view_list</i>All Subscriptions</a></li>
-    <li><a href="/prodSub/pending"><i class="material-icons">view_list</i>All Pending</a></li>
-    <li><a href="/product/deductions"><i class="material-icons">view_list</i>Deductions</a></li>
+    <li><a href="/pendingLoans"><i class="material-icons">view_list</i>Pending Loans</a></li>
+    <li><a href="/audited/loans"><i class="material-icons">edit</i>Audited Loans</a></li>
+    <li><a href="/approved/loans"><i class="material-icons">edit</i>Approved Loans</a></li>
+
     <li>
         <div class="divider"></div>
     </li>

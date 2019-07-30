@@ -22,7 +22,8 @@
             <span class="profile__user-name">{{$review->user->payment_number}}</span>
             <span class="profile__user-name">{{$review->user->first_name}} {{$review->user->last_name}}</span>
             <span class="profile__user-name">TOTAL CONTR
-                {{number_format($review->user->totalSavings($review->user_id),2,'.',',')}}</span>
+                <a
+                    href="/saving/listings/{{$review->user_id}}">{{number_format($review->user->totalSavings($review->user_id),2,'.',',')}}</a></span>
             <span class="profile__user-name">MNTH SAVE
                 {{number_format($review->user->monthlySaving($review->user_id),2,'.',',')}}</span>
         </div>
@@ -55,6 +56,7 @@
         <div class="col s12 m3 l3 profile">
             <p class="profile__heading text-grey darken-3">STATUS</p>
             <span><i class="small material-icons pink-text lighten-4">looks</i></span>
+            <span class="profile__user-name">{{$review->loan_status}}</span>
             <span class="profile__user-name">Active Loans <a
                     href="/user/page/{{$review->user_id}}">{{$review->user->activeLoans($review->user_id)}}</a></span>
             <span class="profile__user-name">Net Pay N {{number_format($review->net_pay,2,'.',',')}}</span>

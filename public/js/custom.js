@@ -23,13 +23,15 @@ $(document).ready(function() {
         });
     });
 
-    //deactivate a saving
-    $(".saving-review").on("click", function(e) {
+    //approve loan
+    $(".approve-loan").on("click", function(e) {
         // Department id
-        preventDefault();
+        e.preventDefault();
+        //change text
+        var myObj = $(this);
+        $(this).text("wait...");
         //get url
         var url_link = $(this).attr("href");
-        var id = $(this).val();
 
         // Empty the dropdown
         //$("#product_item")
@@ -39,13 +41,17 @@ $(document).ready(function() {
 
         // AJAX request
         $.get({
-            url: "/saving/inactive/" + url_link
+            url: url_link
             //type: "get",
             //dataType: "html"
-        }).done(function(data) {
-            $("#product_item").html(data);
-            //INIT SELECT
-            $("select").formSelect();
-        });
+        })
+            .done(function(data) {
+                myObj.text("Approve");
+                //reload page
+                location.reload(true);
+            })
+            .fail(function() {
+                myObj.text("Approve");
+            });
     });
 });
